@@ -1,6 +1,6 @@
 # 🛡️ Network ACL Architecture — Deep Beginner Explanation
 
-[← Previous: Subnet Service Internals](./05-subnet-service-internals.md) | [Index](./README.md) | [Next: ACL Service Internals →](./07-acl-service-internals.md)
+[← Previous: Subnet Service Internals](./subnet-service-internals.md) | [Index](./README.md) | [Next: ACL Service Internals →](./acl-service-internals.md)
 
 ---
 
@@ -1228,4 +1228,4 @@ This layered model is foundational to cloud network security architecture.
 
 ---
 
-[← Previous: Subnet Service Internals](./05-subnet-service-internals.md) | [Index](./README.md) | [Next: ACL Service Internals →](./07-acl-service-internals.md)
+[← Previous: Subnet Service Internals](./subnet-service-internals.md) | [Index](./README.md) | [Next: ACL Service Internals →](./acl-service-internals.md)

@@ -1,6 +1,6 @@
 # 🔐 VPN Architecture — Deep Beginner Explanation
 
-[← Previous: Route Table Service](./09-route-table-service.md) | [Index](./README.md) | [Next: Hub-Spoke DNS Architecture →](./10a-hub-spoke-dns-architecture.md)
+[← Previous: Route Table Service](./route-table-service.md) | [Index](./README.md) | [Next: Hub-Spoke DNS Architecture →](./hub-spoke-dns-architecture.md)
 
 ---
 
@@ -796,4 +796,4 @@ VPN architecture is the foundation of enterprise hybrid cloud networking.
 
 ---
 
-[← Previous: Route Table Service](./09-route-table-service.md) | [Index](./README.md) | [Next: Transit Gateway Integration →](./11-transit-gateway-integration.md)
+[← Previous: Route Table Service](./route-table-service.md) | [Index](./README.md) | [Next: Hub-Spoke DNS Architecture →](./hub-spoke-dns-architecture.md)

@@ -1,6 +1,6 @@
 # 📤 Outputs and Downstream Consumption — Deep Beginner Explanation
 
-[← Previous: Flow Logs and Observability](./14-flow-logs-observability.md) | [Index](./README.md) | [Next: End of Topics →](./README.md)
+[← Previous: Flow Logs and Observability](./flow-logs-observability.md) | [Index](./README.md) | [Next: End of Topics →](./README.md)
 
 ---
 
@@ -760,4 +760,4 @@ is later constructed on top of that foundation using the exported outputs.
 
 ---
 
-[← Previous: Flow Logs and Observability](./14-flow-logs-observability.md) | [Index](./README.md) | [Next: End of Topics →](./README.md)
+[← Previous: Flow Logs and Observability](./flow-logs-observability.md) | [Index](./README.md) | [Next: End of Topics →](./README.md)

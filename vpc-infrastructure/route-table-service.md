@@ -1,6 +1,6 @@
 # 🗺️ Route Table Service — Deep Beginner Explanation
 
-[← Previous: Security Group Service Internals](./08-security-group-service-internals.md) | [Index](./README.md) | [Next: VPN Architecture →](./10-vpn-architecture.md)
+[← Previous: Security Group Service Internals](./security-group-service-internals.md) | [Index](./README.md) | [Next: VPN Architecture →](./vpn-architecture.md)
 
 ---
 
@@ -1044,4 +1044,4 @@ Every packet depends on routing decisions to reach its destination correctly.
 
 ---
 
-[← Previous: Security Group Service Internals](./08-security-group-service-internals.md) | [Index](./README.md) | [Next: VPN Architecture →](./10-vpn-architecture.md)
+[← Previous: Security Group Service Internals](./security-group-service-internals.md) | [Index](./README.md) | [Next: VPN Architecture →](./vpn-architecture.md)

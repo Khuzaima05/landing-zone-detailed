@@ -1,6 +1,6 @@
 # ⚖️ Load Balancer Architecture — Overview
 
-[← Previous: Floating IP Architecture](./12-floating-ip-architecture.md) | [Index](./README.md) | [Next: Flow Logs and Observability →](./14-flow-logs-observability.md)
+[← Previous: Floating IP Architecture](./floating-ip-architecture.md) | [Index](./README.md) | [Next: Flow Logs and Observability →](./flow-logs-observability.md)
 
 ---
 
@@ -338,4 +338,4 @@ Design multi-tier architecture from the start.
 
 ---
 
-[← Previous: Floating IP Architecture](./12-floating-ip-architecture.md) | [Index](./README.md) | [Next: Flow Logs and Observability →](./14-flow-logs-observability.md)
+[← Previous: Floating IP Architecture](./floating-ip-architecture.md) | [Index](./README.md) | [Next: Flow Logs and Observability →](./flow-logs-observability.md)

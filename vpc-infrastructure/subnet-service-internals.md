@@ -1,6 +1,6 @@
 # 🌐 Subnet Service Internals — Deep Beginner Explanation
 
-[← Previous: CIDR Planning & IPAM](./04-cidr-planning-ipam.md) | [Index](./README.md) | [Next: Network ACL Architecture →](./06-network-acl-architecture.md)
+[← Previous: CIDR Planning & IPAM](./cidr-planning-ipam.md) | [Index](./README.md) | [Next: Network ACL Architecture →](./network-acl-architecture.md)
 
 ---
 
@@ -1041,4 +1041,4 @@ It determines:
 
 ---
 
-[← Previous: CIDR Planning & IPAM](./04-cidr-planning-ipam.md) | [Index](./README.md) | [Next: Network ACL Architecture →](./06-network-acl-architecture.md)
+[← Previous: CIDR Planning & IPAM](./cidr-planning-ipam.md) | [Index](./README.md) | [Next: Network ACL Architecture →](./network-acl-architecture.md)

@@ -1,6 +1,6 @@
 # 🌉 Transit Gateway Integration — Overview
 
-[← Previous: Hub-Spoke DNS Architecture](./10a-hub-spoke-dns-architecture.md) | [Index](./README.md) | [Next: Floating IP Architecture →](./12-floating-ip-architecture.md)
+[← Previous: Hub-Spoke DNS Architecture](./hub-spoke-dns-architecture.md) | [Index](./README.md) | [Next: Floating IP Architecture →](./floating-ip-architecture.md)
 
 ---
 
@@ -382,4 +382,4 @@ Overlapping CIDRs cause routing conflicts.
 
 ---
 
-[← Previous: Hub-Spoke DNS Architecture](./10a-hub-spoke-dns-architecture.md) | [Index](./README.md) | [Next: Floating IP Architecture →](./12-floating-ip-architecture.md)
+[← Previous: Hub-Spoke DNS Architecture](./hub-spoke-dns-architecture.md) | [Index](./README.md) | [Next: Floating IP Architecture →](./floating-ip-architecture.md)

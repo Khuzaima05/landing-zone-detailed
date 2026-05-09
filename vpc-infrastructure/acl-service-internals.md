@@ -1,6 +1,6 @@
 # 🔍 ACL Service Internals — Deep Beginner Explanation
 
-[← Previous: Network ACL Architecture](./06-network-acl-architecture.md) | [Index](./README.md) | [Next: Security Group Service Internals →](./08-security-group-service-internals.md)
+[← Previous: Network ACL Architecture](./network-acl-architecture.md) | [Index](./README.md) | [Next: Security Group Service Internals →](./security-group-service-internals.md)
 
 ---
 
@@ -705,7 +705,7 @@ before passengers reach:
 
 ---
 
-[← Previous: Network ACL Architecture](./06-network-acl-architecture.md) | [Index](./README.md) | [Next: Security Group Service Internals →](./08-security-group-service-internals.md)
+[← Previous: Network ACL Architecture](./network-acl-architecture.md) | [Index](./README.md) | [Next: Security Group Service Internals →](./security-group-service-internals.md)
 
 ---
 

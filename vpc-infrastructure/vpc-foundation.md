@@ -860,4 +860,4 @@ Now that you understand the VPC foundation, continue to:
 
 ---
 
-[← Back to Main Guide](README.md) | [Next: VPC Service Internals →](02-vpc-service-internals.md)
+[← Back to Main Guide](README.md) | [Next: VPC Service Internals →](vpc-service-internals.md)

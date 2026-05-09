@@ -1,6 +1,6 @@
 # 🔧 VPC Service Internals — Deep Beginner Explanation
 
-[← Previous: VPC Foundation](./01-vpc-foundation.md) | [Index](./README.md) | [Next: Zones & Datacenter Architecture →](./03-zones-datacenter-architecture.md)
+[← Previous: VPC Foundation](./vpc-foundation.md) | [Index](./README.md) | [Next: Zones & Datacenter Architecture →](./zones-datacenter-architecture.md)
 
 ---
 
@@ -563,4 +563,4 @@ This is why VPC is the **foundational networking service** in IBM Cloud.
 
 ---
 
-[← Previous: VPC Foundation](./01-vpc-foundation.md) | [Index](./README.md) | [Next: Zones & Datacenter Architecture →](./03-zones-datacenter-architecture.md)
+[← Previous: VPC Foundation](./vpc-foundation.md) | [Index](./README.md) | [Next: Zones & Datacenter Architecture →](./zones-datacenter-architecture.md)

@@ -1,6 +1,6 @@
 # 🏢 Zones and Datacenter Architecture — Deep Beginner Explanation
 
-[← Previous: VPC Service Internals](./02-vpc-service-internals.md) | [Index](./README.md) | [Next: CIDR Planning & IPAM →](./04-cidr-planning-ipam.md)
+[← Previous: VPC Service Internals](./vpc-service-internals.md) | [Index](./README.md) | [Next: CIDR Planning & IPAM →](./cidr-planning-ipam.md)
 
 ---
 
@@ -719,4 +719,4 @@ This is the **foundational physical architecture** behind IBM Cloud VPC networki
 
 ---
 
-[← Previous: VPC Service Internals](./02-vpc-service-internals.md) | [Index](./README.md) | [Next: CIDR Planning & IPAM →](./04-cidr-planning-ipam.md)
+[← Previous: VPC Service Internals](./vpc-service-internals.md) | [Index](./README.md) | [Next: CIDR Planning & IPAM →](./cidr-planning-ipam.md)

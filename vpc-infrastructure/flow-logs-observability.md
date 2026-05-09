@@ -1,6 +1,6 @@
 # 📡 Flow Logs and Observability — Deep Beginner Explanation
 
-[← Previous: Load Balancer Architecture](./13-load-balancer-architecture.md) | [Index](./README.md) | [Next: Outputs and Downstream Consumption →](./15-outputs-downstream-consumption.md)
+[← Previous: Load Balancer Architecture](./load-balancer-architecture.md) | [Index](./README.md) | [Next: Outputs and Downstream Consumption →](./outputs-downstream-consumption.md)
 
 ---
 
@@ -1026,4 +1026,4 @@ They provide visibility into how traffic moves through the infrastructure.
 
 ---
 
-[← Previous: Load Balancer Architecture](./13-load-balancer-architecture.md) | [Index](./README.md) | [Next: Outputs and Downstream Consumption →](./15-outputs-downstream-consumption.md)
+[← Previous: Load Balancer Architecture](./load-balancer-architecture.md) | [Index](./README.md) | [Next: Outputs and Downstream Consumption →](./outputs-downstream-consumption.md)

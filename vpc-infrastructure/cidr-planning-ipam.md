@@ -1,6 +1,6 @@
 # 🗺️ CIDR Planning and IPAM — Deep Beginner Explanation
 
-[← Previous: Zones & Datacenter Architecture](./03-zones-datacenter-architecture.md) | [Index](./README.md) | [Next: Subnet Service Internals →](./05-subnet-service-internals.md)
+[← Previous: Zones & Datacenter Architecture](./zones-datacenter-architecture.md) | [Index](./README.md) | [Next: Subnet Service Internals →](./subnet-service-internals.md)
 
 ---
 
@@ -792,7 +792,7 @@ CIDR planning is basically:
 
 ---
 
-[← Previous: Zones & Datacenter Architecture](./03-zones-datacenter-architecture.md) | [Index](./README.md) | [Next: Subnet Service Internals →](./05-subnet-service-internals.md)
+[← Previous: Zones & Datacenter Architecture](./zones-datacenter-architecture.md) | [Index](./README.md) | [Next: Subnet Service Internals →](./subnet-service-internals.md)
 
 ---
 
