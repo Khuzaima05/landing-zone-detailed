@@ -104,14 +104,14 @@ This guide is organized into 15 comprehensive topics covering all aspects of IBM
     - Migration guidance to alternatives
     - **Note:** VPN Gateway functionality is being deprecated
 
-10a. **[Hub-Spoke DNS Architecture](hub-spoke-dns-architecture.md)** 🆕
+11. **[Hub-Spoke DNS Architecture](hub-spoke-dns-architecture.md)** 🆕
     - Hub-spoke DNS patterns
     - DNS resolution binding between VPCs
     - Custom DNS resolvers
     - DNS zones and records management
     - Variables: enable_hub, hub_vpc_id, resolver_type, dns_zones, dns_records
 
-11. **[Transit Gateway Integration](transit-gateway-integration.md)**
+12. **[Transit Gateway Integration](transit-gateway-integration.md)**
     - Multi-VPC connectivity overview
     - Hub-and-spoke architecture
     - Integration patterns with VPC
@@ -119,13 +119,13 @@ This guide is organized into 15 comprehensive topics covering all aspects of IBM
 
 ### Advanced Features
 
-12. **[Floating IP Architecture](floating-ip-architecture.md)**
+13. **[Floating IP Architecture](floating-ip-architecture.md)**
     - Public internet exposure overview
     - Bastion host patterns
     - Security considerations
     - **Note:** Workload-specific, streamlined content
 
-13. **[Load Balancer Architecture](load-balancer-architecture.md)**
+14. **[Load Balancer Architecture](load-balancer-architecture.md)**
     - Traffic distribution overview
     - High availability patterns
     - VPC integration points
@@ -133,7 +133,7 @@ This guide is organized into 15 comprehensive topics covering all aspects of IBM
 
 ### Observability and Integration
 
-14. **[Flow Logs and Observability](flow-logs-observability.md)**
+15. **[Flow Logs and Observability](flow-logs-observability.md)**
     - Network telemetry
     - Flow log collectors
     - Traffic metadata
@@ -141,7 +141,7 @@ This guide is organized into 15 comprehensive topics covering all aspects of IBM
     - Compliance and auditing
     - Troubleshooting with logs
 
-15. **[Outputs and Downstream Consumption](outputs-downstream-consumption.md)**
+16. **[Outputs and Downstream Consumption](outputs-downstream-consumption.md)**
     - Infrastructure metadata
     - Terraform outputs
     - Module dependencies
