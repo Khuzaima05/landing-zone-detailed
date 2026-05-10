@@ -1,7 +1,5 @@
 # 🗺️ Learning Path & Roadmap
 
-<div class="learning-roadmap">
-
 ## 🎯 Your Journey Through IBM Cloud Landing Zone
 
 Follow this sequential path to master IBM Cloud infrastructure!
@@ -199,5 +197,3 @@ Track your progress:
 
 !!! info "Estimated Total Time"
     Complete mastery: **16-22 hours** of focused learning
-
-</div>

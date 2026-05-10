@@ -17,27 +17,27 @@ theme:
   name: material
   language: en
   
-  # Color Palette
+  # Color Palette - Netflix Dark Theme Default
   palette:
-    # Light mode - Vibrant and playful
-    - scheme: default
-      primary: deep purple
-      accent: pink
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    
-    # Dark mode - Modern and sleek
+    # Dark mode - Netflix inspired (default)
     - scheme: slate
-      primary: deep purple
-      accent: pink
+      primary: black
+      accent: red
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+    
+    # Light mode - Optional fallback
+    - scheme: default
+      primary: indigo
+      accent: red
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
   
-  # Fonts
+  # Fonts - Clean and modern
   font:
-    text: Poppins
+    text: Inter
     code: JetBrains Mono
   
   # Logo and Favicon

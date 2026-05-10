@@ -1,99 +1,123 @@
-/* IBM Cloud Landing Zone - Custom Styles */
+/* IBM Cloud Landing Zone - Netflix-Inspired Dark Theme */
 
 /* ============================================
-   IBM Color Palette
+   Netflix Color Palette
    ============================================ */
 :root {
-  /* IBM Blue */
-  --ibm-blue-10: #edf5ff;
-  --ibm-blue-20: #d0e2ff;
-  --ibm-blue-30: #a6c8ff;
-  --ibm-blue-40: #78a9ff;
-  --ibm-blue-50: #4589ff;
-  --ibm-blue-60: #0f62fe;
-  --ibm-blue-70: #0043ce;
-  --ibm-blue-80: #002d9c;
-  --ibm-blue-90: #001d6c;
-  --ibm-blue-100: #001141;
+  /* Netflix Core Colors */
+  --netflix-black: #141414;
+  --netflix-dark-gray: #1f1f1f;
+  --netflix-medium-gray: #2f2f2f;
+  --netflix-light-gray: #3f3f3f;
+  --netflix-red: #E50914;
+  --netflix-red-dark: #B20710;
+  --netflix-red-light: #F40612;
   
-  /* IBM Gray */
-  --ibm-gray-10: #f4f4f4;
-  --ibm-gray-20: #e0e0e0;
-  --ibm-gray-30: #c6c6c6;
-  --ibm-gray-40: #a8a8a8;
-  --ibm-gray-50: #8d8d8d;
-  --ibm-gray-60: #6f6f6f;
-  --ibm-gray-70: #525252;
-  --ibm-gray-80: #393939;
-  --ibm-gray-90: #262626;
-  --ibm-gray-100: #161616;
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #e5e5e5;
+  --text-muted: #b3b3b3;
+  --text-dim: #808080;
   
-  /* Accent Colors */
-  --ibm-cyan: #1192e8;
-  --ibm-teal: #009d9a;
-  --ibm-green: #24a148;
-  --ibm-purple: #8a3ffc;
-  --ibm-magenta: #ee5396;
+  /* Accent Colors (minimal use) */
+  --accent-blue: #0071eb;
+  --accent-green: #46d369;
+  --accent-yellow: #ffa00a;
 }
 
 /* ============================================
-   Custom Primary Color
+   Netflix Dark Theme Base
    ============================================ */
-[data-md-color-scheme="default"] {
-  --md-primary-fg-color: var(--ibm-blue-60);
-  --md-primary-fg-color--light: var(--ibm-blue-40);
-  --md-primary-fg-color--dark: var(--ibm-blue-80);
-  --md-accent-fg-color: var(--ibm-cyan);
-  --md-accent-fg-color--transparent: rgba(17, 146, 232, 0.1);
-}
-
 [data-md-color-scheme="slate"] {
-  --md-primary-fg-color: var(--ibm-blue-50);
-  --md-primary-fg-color--light: var(--ibm-blue-30);
-  --md-primary-fg-color--dark: var(--ibm-blue-70);
-  --md-accent-fg-color: var(--ibm-cyan);
+  --md-default-bg-color: var(--netflix-black);
+  --md-default-fg-color: var(--text-secondary);
+  --md-code-bg-color: var(--netflix-dark-gray);
+  --md-code-fg-color: var(--text-secondary);
+  
+  /* Primary colors - Netflix red for key accents only */
+  --md-primary-fg-color: var(--netflix-black);
+  --md-primary-fg-color--light: var(--netflix-dark-gray);
+  --md-primary-fg-color--dark: #000000;
+  --md-accent-fg-color: var(--netflix-red);
+  --md-accent-fg-color--transparent: rgba(229, 9, 20, 0.1);
+  
+  /* Typography colors */
+  --md-typeset-color: var(--text-secondary);
+  --md-typeset-a-color: var(--text-primary);
+  
+  /* Background colors */
+  --md-footer-bg-color: var(--netflix-black);
+  --md-footer-bg-color--dark: #000000;
 }
 
 /* ============================================
-   Typography - IBM Plex
+   Typography - Clean and Modern
    ============================================ */
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 body {
-  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--netflix-black);
+  color: var(--text-secondary);
 }
 
 code, pre, .md-typeset code {
-  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
 }
 
 /* ============================================
-   Hero Section
+   Header - Dark with Subtle Gradient
+   ============================================ */
+.md-header {
+  background: linear-gradient(180deg, #000000 0%, var(--netflix-black) 100%) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid var(--netflix-dark-gray);
+}
+
+.md-header__title {
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.md-header__button {
+  color: var(--text-secondary);
+}
+
+.md-header__button:hover {
+  color: var(--text-primary);
+}
+
+/* ============================================
+   Hero Section - Netflix Style
    ============================================ */
 .hero-section {
-  background: linear-gradient(135deg, var(--ibm-blue-60) 0%, var(--ibm-blue-80) 100%);
-  color: white;
+  background: linear-gradient(180deg, var(--netflix-dark-gray) 0%, var(--netflix-black) 100%);
+  color: var(--text-primary);
   padding: 4rem 2rem;
   text-align: center;
   margin: -1.6rem -1.6rem 2rem -1.6rem;
-  border-radius: 0 0 1rem 1rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid var(--netflix-medium-gray);
 }
 
 .hero-section h1 {
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: white;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: var(--text-primary);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  letter-spacing: -1px;
 }
 
 .hero-section p {
   font-size: 1.25rem;
   margin-bottom: 2rem;
-  opacity: 0.95;
+  color: var(--text-secondary);
 }
 
 .hero-buttons {
@@ -106,34 +130,36 @@ code, pre, .md-typeset code {
 .hero-button {
   display: inline-block;
   padding: 0.75rem 2rem;
-  background: white;
-  color: var(--ibm-blue-60);
+  background: var(--netflix-red);
+  color: var(--text-primary);
   text-decoration: none;
-  border-radius: 0.5rem;
+  border-radius: 4px;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(229, 9, 20, 0.3);
 }
 
 .hero-button:hover {
+  background: var(--netflix-red-light);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  color: var(--ibm-blue-70);
+  box-shadow: 0 4px 12px rgba(229, 9, 20, 0.5);
+  color: var(--text-primary);
 }
 
 .hero-button.secondary {
   background: transparent;
-  color: white;
-  border: 2px solid white;
+  color: var(--text-primary);
+  border: 2px solid var(--text-muted);
 }
 
 .hero-button.secondary:hover {
-  background: white;
-  color: var(--ibm-blue-60);
+  background: var(--netflix-dark-gray);
+  border-color: var(--text-primary);
+  color: var(--text-primary);
 }
 
 /* ============================================
-   Feature Cards
+   Feature Cards - Dark Netflix Style
    ============================================ */
 .feature-grid {
   display: grid;
@@ -143,50 +169,51 @@ code, pre, .md-typeset code {
 }
 
 .feature-card {
-  background: var(--md-default-bg-color);
-  border: 1px solid var(--md-default-fg-color--lightest);
-  border-radius: 0.75rem;
+  background: var(--netflix-dark-gray);
+  border: 1px solid var(--netflix-medium-gray);
+  border-radius: 8px;
   padding: 1.5rem;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .feature-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(15, 98, 254, 0.15);
-  border-color: var(--ibm-blue-60);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  border-color: var(--netflix-light-gray);
+  background: var(--netflix-medium-gray);
 }
 
 .feature-card-icon {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: var(--ibm-blue-60);
+  color: var(--netflix-red);
 }
 
 .feature-card h3 {
   margin-top: 0;
-  color: var(--ibm-blue-70);
+  color: var(--text-primary);
   font-weight: 600;
 }
 
 .feature-card p {
-  color: var(--md-default-fg-color--light);
+  color: var(--text-muted);
   line-height: 1.6;
 }
 
 .feature-card a {
-  color: var(--ibm-blue-60);
+  color: var(--text-primary);
   text-decoration: none;
   font-weight: 500;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   margin-top: 1rem;
+  transition: color 0.2s ease;
 }
 
 .feature-card a:hover {
-  color: var(--ibm-blue-80);
-  text-decoration: underline;
+  color: var(--netflix-red);
 }
 
 /* ============================================
@@ -198,8 +225,9 @@ code, pre, .md-typeset code {
   gap: 2rem;
   margin: 3rem 0;
   padding: 2rem;
-  background: linear-gradient(135deg, var(--ibm-blue-10) 0%, var(--ibm-blue-20) 100%);
-  border-radius: 1rem;
+  background: var(--netflix-dark-gray);
+  border-radius: 8px;
+  border: 1px solid var(--netflix-medium-gray);
 }
 
 .stat-item {
@@ -209,139 +237,358 @@ code, pre, .md-typeset code {
 .stat-number {
   font-size: 3rem;
   font-weight: 700;
-  color: var(--ibm-blue-60);
+  color: var(--netflix-red);
   display: block;
   margin-bottom: 0.5rem;
 }
 
 .stat-label {
   font-size: 1rem;
-  color: var(--ibm-gray-70);
+  color: var(--text-muted);
   font-weight: 500;
 }
 
 /* ============================================
-   Admonitions Enhancement
+   Content Area - Dark Background
+   ============================================ */
+.md-content {
+  background-color: var(--netflix-black);
+}
+
+.md-content article {
+  background: var(--netflix-black);
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   Admonitions - Netflix Style
    ============================================ */
 .md-typeset .admonition,
 .md-typeset details {
+  background: var(--netflix-dark-gray);
   border-left: 4px solid;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  color: var(--text-secondary);
+}
+
+.md-typeset .admonition-title,
+.md-typeset summary {
+  background: var(--netflix-medium-gray);
+  color: var(--text-primary);
 }
 
 .md-typeset .admonition.note {
-  border-left-color: var(--ibm-blue-60);
+  border-left-color: var(--accent-blue);
 }
 
 .md-typeset .admonition.tip {
-  border-left-color: var(--ibm-green);
+  border-left-color: var(--accent-green);
 }
 
 .md-typeset .admonition.warning {
-  border-left-color: #f1c21b;
+  border-left-color: var(--accent-yellow);
 }
 
 .md-typeset .admonition.danger {
-  border-left-color: #da1e28;
+  border-left-color: var(--netflix-red);
+}
+
+.md-typeset .admonition.info {
+  border-left-color: var(--text-muted);
 }
 
 /* ============================================
-   Code Blocks Enhancement
+   Code Blocks - Dark Theme
    ============================================ */
+.md-typeset pre {
+  background: var(--netflix-dark-gray);
+  border: 1px solid var(--netflix-medium-gray);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
 .md-typeset pre > code {
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: var(--netflix-dark-gray);
+  color: var(--text-secondary);
+}
+
+.md-typeset code {
+  background: var(--netflix-medium-gray);
+  color: var(--text-primary);
+  border-radius: 3px;
+  padding: 0.1em 0.4em;
 }
 
 .md-typeset .highlight .filename {
-  background: var(--ibm-blue-60);
-  color: white;
+  background: var(--netflix-medium-gray);
+  color: var(--text-primary);
   padding: 0.5rem 1rem;
-  border-radius: 0.5rem 0.5rem 0 0;
+  border-radius: 4px 4px 0 0;
   font-weight: 600;
+  border-bottom: 1px solid var(--netflix-light-gray);
 }
 
 /* ============================================
-   Navigation Enhancement
+   Navigation - Dark Sidebar
    ============================================ */
-.md-nav__item--active > .md-nav__link {
-  color: var(--ibm-blue-60);
+.md-sidebar {
+  background-color: var(--netflix-black);
+}
+
+.md-nav {
+  color: var(--text-secondary);
+}
+
+.md-nav__title {
+  background-color: var(--netflix-dark-gray);
+  color: var(--text-primary);
   font-weight: 600;
+}
+
+.md-nav__item--active > .md-nav__link {
+  color: var(--netflix-red);
+  font-weight: 600;
+}
+
+.md-nav__link {
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
 }
 
 .md-nav__link:hover {
-  color: var(--ibm-blue-60);
+  color: var(--text-primary);
+  background: var(--netflix-dark-gray);
+  border-radius: 4px;
 }
 
 /* ============================================
-   Tables Enhancement
+   Tables - Dark Theme
    ============================================ */
 .md-typeset table:not([class]) {
-  border-radius: 0.5rem;
+  border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  background: var(--netflix-dark-gray);
 }
 
 .md-typeset table:not([class]) th {
-  background: var(--ibm-blue-60);
-  color: white;
+  background: var(--netflix-medium-gray);
+  color: var(--text-primary);
   font-weight: 600;
+  border-bottom: 2px solid var(--netflix-light-gray);
+}
+
+.md-typeset table:not([class]) td {
+  border-bottom: 1px solid var(--netflix-medium-gray);
+  color: var(--text-secondary);
 }
 
 .md-typeset table:not([class]) tr:hover {
-  background: var(--ibm-blue-10);
+  background: var(--netflix-medium-gray);
 }
 
 /* ============================================
-   Tabs Enhancement
+   Tabs - Dark Theme
    ============================================ */
+.md-typeset .tabbed-set {
+  background: var(--netflix-dark-gray);
+  border-radius: 4px;
+}
+
 .md-typeset .tabbed-set > input:checked + label {
-  border-bottom: 3px solid var(--ibm-blue-60);
-  color: var(--ibm-blue-60);
+  border-bottom: 3px solid var(--netflix-red);
+  color: var(--text-primary);
+  background: var(--netflix-medium-gray);
+}
+
+.md-typeset .tabbed-set > label {
+  color: var(--text-muted);
+}
+
+.md-typeset .tabbed-set > label:hover {
+  color: var(--text-primary);
 }
 
 /* ============================================
-   Search Enhancement
+   Search - Dark Theme
    ============================================ */
 .md-search__input {
-  border-radius: 2rem;
+  background: var(--netflix-dark-gray);
+  color: var(--text-primary);
+  border: 1px solid var(--netflix-medium-gray);
+  border-radius: 4px;
+}
+
+.md-search__input::placeholder {
+  color: var(--text-muted);
 }
 
 .md-search__input:focus {
-  box-shadow: 0 0 0 3px rgba(15, 98, 254, 0.2);
+  border-color: var(--netflix-red);
+  box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.2);
+}
+
+.md-search-result {
+  background: var(--netflix-dark-gray);
+  color: var(--text-secondary);
+}
+
+.md-search-result__link:hover {
+  background: var(--netflix-medium-gray);
 }
 
 /* ============================================
-   Footer Enhancement
+   Footer - Dark Theme
    ============================================ */
 .md-footer {
-  background: linear-gradient(135deg, var(--ibm-blue-80) 0%, var(--ibm-blue-90) 100%);
+  background: var(--netflix-black);
+  border-top: 1px solid var(--netflix-dark-gray);
+  color: var(--text-muted);
+}
+
+.md-footer-meta {
+  background: #000000;
+}
+
+.md-footer__link {
+  color: var(--text-muted);
+}
+
+.md-footer__link:hover {
+  color: var(--text-primary);
 }
 
 /* ============================================
-   Breadcrumbs
+   Grid Cards - Netflix Style
    ============================================ */
-.breadcrumbs {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-  color: var(--md-default-fg-color--light);
+.grid.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
 }
 
-.breadcrumbs a {
-  color: var(--ibm-blue-60);
-  text-decoration: none;
+.grid.cards > * {
+  background: var(--netflix-dark-gray);
+  border: 1px solid var(--netflix-medium-gray);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
 }
 
-.breadcrumbs a:hover {
-  text-decoration: underline;
+.grid.cards > *:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border-color: var(--netflix-light-gray);
+  background: var(--netflix-medium-gray);
 }
 
 /* ============================================
-   Loading Animation
+   Learning Roadmap Styles
+   ============================================ */
+.learning-roadmap h2 {
+  color: var(--text-primary);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--netflix-red);
+  padding-bottom: 0.5rem;
+}
+
+.learning-roadmap h3 {
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: var(--netflix-dark-gray);
+  border-radius: 4px;
+  border-left: 4px solid var(--netflix-red);
+}
+
+/* ============================================
+   Mermaid Diagrams - Dark Theme
+   ============================================ */
+.mermaid {
+  background: var(--netflix-dark-gray);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border: 1px solid var(--netflix-medium-gray);
+}
+
+/* ============================================
+   Links - Netflix Style
+   ============================================ */
+.md-typeset a {
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.md-typeset a:hover {
+  color: var(--netflix-red);
+  border-bottom-color: var(--netflix-red);
+}
+
+/* ============================================
+   Checkboxes - Custom Style
+   ============================================ */
+.md-typeset .task-list-item input[type="checkbox"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--text-muted);
+  border-radius: 3px;
+  background: var(--netflix-dark-gray);
+  cursor: pointer;
+}
+
+.md-typeset .task-list-item input[type="checkbox"]:checked {
+  background: var(--netflix-red);
+  border-color: var(--netflix-red);
+}
+
+.md-typeset .task-list-item input[type="checkbox"]:checked::after {
+  content: "✓";
+  color: white;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  line-height: 14px;
+}
+
+/* ============================================
+   Scrollbar - Netflix Style
+   ============================================ */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--netflix-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--netflix-medium-gray);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--netflix-light-gray);
+}
+
+/* ============================================
+   Smooth Transitions
+   ============================================ */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* ============================================
+   Animations
    ============================================ */
 @keyframes fadeIn {
   from {
@@ -394,6 +641,11 @@ code, pre, .md-typeset code {
   .md-footer {
     display: none;
   }
+  
+  body {
+    background: white;
+    color: black;
+  }
 }
 
 /* ============================================
@@ -403,7 +655,7 @@ code, pre, .md-typeset code {
   position: absolute;
   top: -40px;
   left: 0;
-  background: var(--ibm-blue-60);
+  background: var(--netflix-red);
   color: white;
   padding: 8px;
   text-decoration: none;
@@ -414,261 +666,55 @@ code, pre, .md-typeset code {
   top: 0;
 }
 
-/* ============================================
-   Custom Scrollbar
-   ============================================ */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+/* Focus states */
+*:focus-visible {
+  outline: 2px solid var(--netflix-red);
+  outline-offset: 2px;
 }
-
-::-webkit-scrollbar-track {
-  background: var(--md-default-bg-color);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--ibm-blue-60);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--ibm-blue-70);
-}
-
-/* Made with Bob */
-
 
 /* ============================================
-   PLAYFUL THEME REDESIGN
+   Buttons and Interactive Elements
    ============================================ */
-
-/* Import Poppins and JetBrains Mono fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
-
-/* Playful gradient header */
-.md-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
-}
-
-/* Animated gradient for main title */
-.md-header__title {
-  background: linear-gradient(45deg, #fff, #ffd700);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 3s infinite;
-}
-
-@keyframes shimmer {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-/* Playful card-like sections */
-.md-content article {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
-  padding: 2rem;
-  backdrop-filter: blur(10px);
-}
-
-/* Colorful navigation items */
-.md-nav__link:hover {
-  background: linear-gradient(90deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
-  border-radius: 10px;
-  transform: translateX(5px);
-  transition: all 0.3s ease;
-}
-
-/* Fun emoji bullets for lists */
-.md-typeset ul li::marker {
-  content: "🚀 ";
-}
-
-/* Colorful code blocks */
-.md-typeset pre {
-  border-left: 4px solid #667eea;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Playful buttons */
 .md-button {
-  background: linear-gradient(135deg, #667eea, #764ba2) !important;
-  border-radius: 25px;
+  background: var(--netflix-red) !important;
+  color: var(--text-primary) !important;
+  border-radius: 4px;
   padding: 10px 25px;
-  transition: transform 0.2s;
-  color: white !important;
+  transition: all 0.2s ease;
+  border: none;
 }
 
 .md-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+  background: var(--netflix-red-light) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(229, 9, 20, 0.4);
 }
 
-/* Animated progress indicators */
-.learning-path-step {
-  position: relative;
-  padding-left: 40px;
-  margin: 20px 0;
+.md-button--primary {
+  background: var(--netflix-red) !important;
 }
 
-.learning-path-step::before {
-  content: "✨";
-  position: absolute;
-  left: 0;
-  font-size: 24px;
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-/* Learning Roadmap Styles */
-.learning-roadmap {
-  padding: 2rem;
-}
-
-.learning-roadmap h2 {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-size: 2rem;
-  font-weight: 700;
+/* ============================================
+   Breadcrumbs
+   ============================================ */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   margin-bottom: 1rem;
-}
-
-.learning-roadmap h3 {
-  color: #667eea;
-  font-weight: 600;
-  margin-top: 2rem;
-}
-
-/* Mermaid diagram styling */
-.mermaid {
-  background: rgba(102, 126, 234, 0.05);
-  border-radius: 15px;
-  padding: 1.5rem;
-  margin: 1.5rem 0;
-}
-
-/* Grid cards for quick navigation */
-.grid.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
-}
-
-.grid.cards > * {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-  border: 2px solid rgba(102, 126, 234, 0.3);
-  border-radius: 15px;
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.grid.cards > *:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-  border-color: #667eea;
-}
-
-/* Enhanced admonitions with playful colors */
-.md-typeset .admonition.tip {
-  border-left-color: #43e97b;
-  background: rgba(67, 233, 123, 0.1);
-}
-
-.md-typeset .admonition.info {
-  border-left-color: #667eea;
-  background: rgba(102, 126, 234, 0.1);
-}
-
-/* Playful hover effects for links */
-.md-typeset a {
-  color: #667eea;
-  transition: all 0.2s ease;
-}
-
-.md-typeset a:hover {
-  color: #764ba2;
-  text-decoration: underline wavy;
-}
-
-/* Animated checkboxes */
-.md-typeset .task-list-item input[type="checkbox"]:checked::before {
-  content: "✅";
-}
-
-.md-typeset .task-list-item input[type="checkbox"]::before {
-  content: "⬜";
-}
-
-/* Phase sections with gradient backgrounds */
-.learning-roadmap > div > h3 {
-  background: linear-gradient(90deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
-  padding: 1rem;
-  border-radius: 10px;
-  border-left: 5px solid #667eea;
-}
-
-/* Estimated time badges */
-.learning-roadmap p strong {
-  background: linear-gradient(135deg, #f093fb, #f5576c);
-  color: white;
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
   font-size: 0.9rem;
-  display: inline-block;
+  color: var(--text-muted);
 }
 
-/* Dark mode adjustments */
-[data-md-color-scheme="slate"] .md-content article {
-  background: rgba(0, 0, 0, 0.2);
+.breadcrumbs a {
+  color: var(--text-secondary);
+  text-decoration: none;
 }
 
-[data-md-color-scheme="slate"] .grid.cards > * {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+.breadcrumbs a:hover {
+  color: var(--text-primary);
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
+/* Made with Bob - Netflix Dark Theme Edition */
 
-/* Playful focus states */
-*:focus {
-  outline: 3px solid rgba(102, 126, 234, 0.5);
-  outline-offset: 2px;
-  border-radius: 5px;
-}
-
-/* Enhanced table styling */
-.md-typeset table:not([class]) {
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.15);
-}
-
-.md-typeset table:not([class]) th {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-}
-
-/* Playful scrollbar */
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #764ba2, #667eea);
-}
-
-/* Made with Bob - Playful Edition */
+/* Made with Bob */
