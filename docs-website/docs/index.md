@@ -40,57 +40,60 @@ hide:
 **Click on any component to navigate to its documentation**
 
 ```mermaid
-graph LR
-    OBJECTIVE["Deploy Enterprise Landing Zone"]
+flowchart LR
+    OBJ[Objective]
+    FOUND[Foundation]
+    COMP[Compute]
+    DAT[Data]
     
-    OBJECTIVE --> FOUNDATION["Foundation Strategy"]
-    OBJECTIVE --> COMPUTE["Compute Strategy"]
-    OBJECTIVE --> DATA["Data Strategy"]
+    OBJ --> FOUND
+    OBJ --> COMP
+    OBJ --> DAT
     
-    FOUNDATION --> FOUNDATION_T1["Network Tactic"]
-    FOUNDATION --> FOUNDATION_T2["Security Tactic"]
+    FOUND --> NET[Network]
+    FOUND --> SEC[Security]
     
-    FOUNDATION_T1 --> VPC["VPC Infrastructure"]
-    FOUNDATION_T1 --> SUBNET["Subnets"]
-    FOUNDATION_T1 --> RT["Route Tables"]
-    FOUNDATION_T1 --> VPN["VPN Gateway"]
+    NET --> VPC[VPC]
+    NET --> SUB[Subnets]
+    NET --> RT[Routes]
+    NET --> VPN[VPN]
     
-    FOUNDATION_T2 --> ACL["Network ACLs"]
-    FOUNDATION_T2 --> SG["Security Groups"]
-    FOUNDATION_T2 --> IAM["IAM Policies"]
+    SEC --> ACL[ACLs]
+    SEC --> SG[Groups]
+    SEC --> IAM[IAM]
     
-    COMPUTE --> COMPUTE_T1["Virtual Servers Tactic"]
-    COMPUTE --> COMPUTE_T2["Containers Tactic"]
+    COMP --> VS[Servers]
+    COMP --> CONT[Containers]
     
-    COMPUTE_T1 --> VSI["VSI Instances"]
-    COMPUTE_T1 --> LB["Load Balancers"]
-    COMPUTE_T1 --> FIP["Floating IPs"]
+    VS --> VSI[VSI]
+    VS --> LB[Balancer]
+    VS --> FIP[IPs]
     
-    COMPUTE_T2 --> K8S["Kubernetes Clusters"]
-    COMPUTE_T2 --> REGISTRY["Container Registry"]
+    CONT --> K8S[K8S]
+    CONT --> REG[Registry]
     
-    DATA --> DATA_T1["Storage Tactic"]
-    DATA --> DATA_T2["Database Tactic"]
+    DAT --> STOR[Storage]
+    DAT --> DBS[Database]
     
-    DATA_T1 --> BLOCK["Block Storage"]
-    DATA_T1 --> OBJECT["Object Storage"]
-    DATA_T1 --> FILE["File Storage"]
+    STOR --> BLK[Block]
+    STOR --> OBJ[Object]
+    STOR --> FIL[File]
     
-    DATA_T2 --> DB["Managed Databases"]
-    DATA_T2 --> BACKUP["Backup Services"]
+    DBS --> DB[DB]
+    DBS --> BAK[Backup]
     
     classDef objectiveStyle fill:#2d2d2d,stroke:#E50914,stroke-width:3px,color:#fff
     classDef strategyStyle fill:#8B4513,stroke:#E50914,stroke-width:2px,color:#fff
     classDef tacticStyle fill:#4169E1,stroke:#666,stroke-width:2px,color:#fff
     classDef kpiStyle fill:#90EE90,stroke:#666,stroke-width:1px,color:#000
     
-    class OBJECTIVE objectiveStyle
-    class FOUNDATION,COMPUTE,DATA strategyStyle
-    class FOUNDATION_T1,FOUNDATION_T2,COMPUTE_T1,COMPUTE_T2,DATA_T1,DATA_T2 tacticStyle
-    class VPC,SUBNET,RT,VPN,ACL,SG,IAM,VSI,LB,FIP,K8S,REGISTRY,BLOCK,OBJECT,FILE,DB,BACKUP kpiStyle
+    class OBJ objectiveStyle
+    class FOUND,COMP,DAT strategyStyle
+    class NET,SEC,VS,CONT,STOR,DBS tacticStyle
+    class VPC,SUB,RT,VPN,ACL,SG,IAM,VSI,LB,FIP,K8S,REG,BLK,OBJ,FIL,DB,BAK kpiStyle
     
     click VPC "vpc/vpc-foundation/" "VPC Foundation Guide"
-    click SUBNET "vpc/subnet-service-internals/" "Subnet Service Guide"
+    click SUB "vpc/subnet-service-internals/" "Subnet Service Guide"
     click RT "vpc/route-table-service/" "Route Tables Guide"
     click VPN "vpc/vpn-architecture/" "VPN Architecture Guide"
     click ACL "vpc/network-acl-architecture/" "Network ACL Guide"
@@ -100,9 +103,8 @@ graph LR
     click LB "vpc/load-balancer-architecture/" "Load Balancer Guide"
     click FIP "vpc/floating-ip-architecture/" "Floating IP Guide"
     click K8S "cluster/" "Cluster Infrastructure Guide"
-    click BLOCK "storage/" "Block Storage Guide"
-    click OBJECT "storage/" "Object Storage Guide"
-    click FILE "storage/" "File Storage Guide"
+    click BLK "storage/" "Block Storage Guide"
+    click FIL "storage/" "File Storage Guide"
     click DB "database/" "Database Infrastructure Guide"
 
 ### 📋 Dependency Rules

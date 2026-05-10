@@ -131,7 +131,7 @@ extra_css:
 
 # Extra JavaScript
 extra_javascript:
-  - https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js
+  - https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js
   - javascripts/mermaid-init.js
   - javascripts/extra.js
   - javascripts/mathjax.js
