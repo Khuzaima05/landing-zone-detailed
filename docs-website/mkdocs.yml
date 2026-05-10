@@ -15,7 +15,6 @@ copyright: Copyright &copy; 2024 IBM Corporation
 # Theme Configuration
 theme:
   name: material
-  custom_dir: overrides
   language: en
   
   # Color Palette
