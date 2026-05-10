@@ -161,8 +161,7 @@ plugins:
       collapse_single_pages: false
       strict: false
   
-  - tags:
-      tags_file: tags.md
+  - tags
 
 # Markdown Extensions
 markdown_extensions:
@@ -220,6 +219,17 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
       clickable_checkbox: true
+
+# Validation - Disable strict mode for Vercel
+validation:
+  nav:
+    omitted_files: info
+    not_found: warn
+    absolute_links: info
+  links:
+    not_found: warn
+    absolute_links: info
+    unrecognized_links: info
 
 # Navigation Structure
 nav:

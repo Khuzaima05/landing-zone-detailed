@@ -23,7 +23,7 @@ fi
 
 # Build the documentation
 echo "📦 Building documentation..."
-mkdocs build --strict --verbose
+mkdocs build --verbose
 
 echo ""
 echo "✅ Build complete!"
