@@ -39,73 +39,58 @@ hide:
 
 **Click on any component to navigate to its documentation**
 
-```mermaid
-flowchart LR
-    OBJ[Objective]
-    FOUND[Foundation]
-    COMP[Compute]
-    DAT[Data]
+
+<div class="grid cards" markdown>
+
+-   **🏗️ Foundation Strategy**
     
-    OBJ --> FOUND
-    OBJ --> COMP
-    OBJ --> DAT
+    ---
     
-    FOUND --> NET[Network]
-    FOUND --> SEC[Security]
+    **Network Components:**
     
-    NET --> VPC[VPC]
-    NET --> SUB[Subnets]
-    NET --> RT[Routes]
-    NET --> VPN[VPN]
+    - [VPC Infrastructure](vpc/vpc-foundation/)
+    - [Subnets](vpc/subnet-service-internals/)
+    - [Route Tables](vpc/route-table-service/)
+    - [VPN Gateway](vpc/vpn-architecture/)
     
-    SEC --> ACL[ACLs]
-    SEC --> SG[Groups]
-    SEC --> IAM[IAM]
+    **Security Components:**
     
-    COMP --> VS[Servers]
-    COMP --> CONT[Containers]
+    - [Network ACLs](vpc/network-acl-architecture/)
+    - [Security Groups](vpc/security-group-service-internals/)
+    - [IAM Policies](iam/)
+
+-   **💻 Compute Strategy**
     
-    VS --> VSI[VSI]
-    VS --> LB[Balancer]
-    VS --> FIP[IPs]
+    ---
     
-    CONT --> K8S[K8S]
-    CONT --> REG[Registry]
+    **Virtual Servers:**
     
-    DAT --> STOR[Storage]
-    DAT --> DBS[Database]
+    - [VSI Instances](vsi/vsi-provisioning-overview/)
+    - [Load Balancers](vpc/load-balancer-architecture/)
+    - [Floating IPs](vpc/floating-ip-architecture/)
     
-    STOR --> BLK[Block]
-    STOR --> OBJ[Object]
-    STOR --> FIL[File]
+    **Containers:**
     
-    DBS --> DB[DB]
-    DBS --> BAK[Backup]
+    - [Kubernetes Clusters](cluster/)
+    - [Container Registry](cluster/)
+
+-   **💾 Data Strategy**
     
-    classDef objectiveStyle fill:#2d2d2d,stroke:#E50914,stroke-width:3px,color:#fff
-    classDef strategyStyle fill:#8B4513,stroke:#E50914,stroke-width:2px,color:#fff
-    classDef tacticStyle fill:#4169E1,stroke:#666,stroke-width:2px,color:#fff
-    classDef kpiStyle fill:#90EE90,stroke:#666,stroke-width:1px,color:#000
+    ---
     
-    class OBJ objectiveStyle
-    class FOUND,COMP,DAT strategyStyle
-    class NET,SEC,VS,CONT,STOR,DBS tacticStyle
-    class VPC,SUB,RT,VPN,ACL,SG,IAM,VSI,LB,FIP,K8S,REG,BLK,OBJ,FIL,DB,BAK kpiStyle
+    **Storage:**
     
-    click VPC "vpc/vpc-foundation/" "VPC Foundation Guide"
-    click SUB "vpc/subnet-service-internals/" "Subnet Service Guide"
-    click RT "vpc/route-table-service/" "Route Tables Guide"
-    click VPN "vpc/vpn-architecture/" "VPN Architecture Guide"
-    click ACL "vpc/network-acl-architecture/" "Network ACL Guide"
-    click SG "vpc/security-group-service-internals/" "Security Groups Guide"
-    click IAM "iam/" "IAM Infrastructure Guide"
-    click VSI "vsi/vsi-provisioning-overview/" "VSI Infrastructure Guide"
-    click LB "vpc/load-balancer-architecture/" "Load Balancer Guide"
-    click FIP "vpc/floating-ip-architecture/" "Floating IP Guide"
-    click K8S "cluster/" "Cluster Infrastructure Guide"
-    click BLK "storage/" "Block Storage Guide"
-    click FIL "storage/" "File Storage Guide"
-    click DB "database/" "Database Infrastructure Guide"
+    - [Block Storage](storage/)
+    - [Object Storage](storage/)
+    - [File Storage](storage/)
+    
+    **Database:**
+    
+    - [Managed Databases](database/)
+    - [Backup Services](database/)
+
+</div>
+
 
 ### 📋 Dependency Rules
 
