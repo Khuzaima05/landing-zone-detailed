@@ -1333,4 +1333,239 @@ All inside:
 
 ---
 
+---
+
+## 📝 Knowledge Check: Test Your VSI Understanding
+
+Test your knowledge of IBM Cloud VSI infrastructure with these questions, progressing from basic concepts to advanced scenarios.
+
+---
+
+### Easy Level Questions
+
+??? question "1. What does VSI stand for?"
+    - [ ] Virtual Storage Instance
+    - [x] Virtual Server Instance
+    - [ ] Virtual Security Instance
+    - [ ] Virtual System Interface
+
+    **Explanation:** VSI stands for Virtual Server Instance - a virtual machine running in IBM Cloud VPC.
+
+??? question "2. What is the first layer in VSI provisioning?"
+    - [ ] Network Foundation
+    - [x] Resource Scoping & Ownership
+    - [ ] Compute Instantiation
+    - [ ] Storage Configuration
+
+    **Explanation:** Resource scoping and ownership (resource_group_id, tags, prefix) comes first to establish administrative identity.
+
+??? question "3. What must a VSI attach to in order to have network connectivity?"
+    - [ ] A VPC
+    - [x] A subnet
+    - [ ] A security group
+    - [ ] A floating IP
+
+    **Explanation:** Every VSI must attach to at least one subnet via a network interface to have network connectivity.
+
+??? question "4. How many boot sources can be used simultaneously for a VSI?"
+    - [x] Only one (image_id, catalog_offering, or boot_volume_snapshot_crn)
+    - [ ] Two
+    - [ ] Three
+    - [ ] As many as needed
+
+    **Explanation:** The module enforces that only ONE boot source is used to ensure determinism and avoid conflicts.
+
+??? question "5. What type of IP address does a VSI receive by default when attached to a subnet?"
+    - [ ] Public IP
+    - [x] Private IP
+    - [ ] Floating IP
+    - [ ] No IP address
+
+    **Explanation:** By default, VSIs receive private IP addresses from the subnet's CIDR range.
+
+---
+
+### Medium Level Questions
+
+??? question "6. What is the purpose of the `prefix` variable in VSI provisioning?"
+    - [ ] To set the IP address prefix
+    - [x] To establish consistent naming across all generated resources
+    - [ ] To define the subnet prefix
+    - [ ] To configure the boot volume prefix
+
+    **Explanation:** The prefix becomes the naming foundation used throughout the module for all resources.
+
+??? question "7. What does the `vsi_per_subnet` variable control?"
+    - [ ] The number of subnets per VSI
+    - [x] The number of VSI instances created in each subnet
+    - [ ] The number of IPs per VSI
+    - [ ] The number of volumes per VSI
+
+    **Explanation:** `vsi_per_subnet` drives horizontal scaling by determining how many VSI instances are created in each provided subnet.
+
+??? question "8. What is the purpose of `manage_reserved_ips`?"
+    - [ ] To reserve more IP addresses
+    - [x] To ensure the same private IP persists across VSI recreations
+    - [ ] To manage public IPs
+    - [ ] To allocate floating IPs
+
+    **Explanation:** When enabled, reserved IPs ensure the same private IP persists across VSI recreations, preventing application/firewall rule breakage.
+
+??? question "9. What is the maximum number of security groups that can be attached to a network interface?"
+    - [ ] 3
+    - [x] 5
+    - [ ] 10
+    - [ ] Unlimited
+
+    **Explanation:** IBM Cloud allows a maximum of 5 security groups per network interface.
+
+??? question "10. What does a Floating IP provide?"
+    - [ ] Additional private IPs
+    - [ ] Faster network speed
+    - [x] Public internet accessibility to the VSI
+    - [ ] Better security
+
+    **Explanation:** A Floating IP exposes a VSI to the internet by providing a public IP address that NATs to the private IP.
+
+??? question "11. What is the purpose of `snapshot_consistency_group_id`?"
+    - [ ] To group similar snapshots
+    - [x] To ensure synchronized snapshots across multiple volumes
+    - [ ] To improve snapshot performance
+    - [ ] To reduce snapshot costs
+
+    **Explanation:** Consistency groups ensure all volumes are captured together as one atomic state, preventing data inconsistency.
+
+??? question "12. What does `machine_type` determine?"
+    - [ ] Only the CPU cores
+    - [ ] Only the RAM
+    - [x] CPU cores, RAM, and network throughput
+    - [ ] Only the storage capacity
+
+    **Explanation:** `machine_type` is a predefined hardware profile that determines CPU cores, RAM, and network throughput.
+
+---
+
+### Hard Level Questions
+
+??? question "13. Why is the VSI provisioning flow described as 'strictly layered'?"
+    - [ ] For better performance
+    - [ ] To reduce costs
+    - [x] Each layer depends on the previous layer and maps to specific API calls
+    - [ ] To simplify the code
+
+    **Explanation:** The flow is layered because each stage depends on the previous one, and each variable directly maps to specific API calls or resource configurations.
+
+??? question "14. What happens if you enable both `enable_floating_ip` and use a public gateway?"
+    - [ ] The VSI becomes inaccessible
+    - [ ] Only one will work
+    - [x] The VSI has both inbound (floating IP) and outbound (gateway) internet access
+    - [ ] They conflict and cause errors
+
+    **Explanation:** Floating IP provides inbound access, while public gateway provides outbound access. They can coexist for bidirectional internet connectivity.
+
+??? question "15. What is the purpose of `primary_vni_additional_ip_count`?"
+    - [ ] To add more network interfaces
+    - [x] To assign multiple private IPs to the same network interface
+    - [ ] To increase network bandwidth
+    - [ ] To improve security
+
+    **Explanation:** This variable allows multiple private IPs on the same network interface for hosting multiple applications, failover, or IP-based licensing.
+
+??? question "16. Why would you use `placement_group_id`?"
+    - [ ] To group VSIs logically
+    - [x] To influence VSI distribution across physical hosts for availability or performance
+    - [ ] To organize security groups
+    - [ ] To manage IP addresses
+
+    **Explanation:** Placement groups influence how VSIs are distributed across physical hosts, either for high availability (spread) or low latency (pack).
+
+??? question "17. What is the difference between `create_security_group` and `security_group_ids`?"
+    - [ ] They do the same thing
+    - [x] First creates a new security group, second attaches existing ones
+    - [ ] First is for inbound, second for outbound
+    - [ ] First is faster than second
+
+    **Explanation:** `create_security_group = true` creates a new security group, while `security_group_ids` attaches pre-existing security groups.
+
+??? question "18. What problem does `allow_ip_spoofing` solve?**
+    - [ ] Improves security
+    - [ ] Increases network speed
+    - [x] Allows VSI to send packets from non-assigned IP addresses (for advanced networking)
+    - [ ] Prevents IP conflicts
+
+    **Explanation:** IP spoofing allows a VSI to send packets with source IPs that aren't assigned to it, needed for advanced use cases like NAT appliances or load balancers.
+
+??? question "19. What is the relationship between `vpc_id` and `subnets` in VSI provisioning?"
+    - [ ] They are independent
+    - [ ] vpc_id is optional if subnets are provided
+    - [x] vpc_id anchors the VSI to a network, subnets determine exact placement and zones
+    - [ ] They must match exactly
+
+    **Explanation:** `vpc_id` selects the isolated virtual network, while `subnets` determine the exact network segments and availability zones where instances are placed.
+
+??? question "20. Why can't you use multiple boot sources simultaneously?"
+    - [ ] It's too expensive
+    - [ ] It's too slow
+    - [x] To ensure determinism - there must be exactly one source of truth for how the machine boots
+    - [ ] IBM Cloud doesn't support it technically
+
+    **Explanation:** The constraint ensures determinism by having exactly one source of truth for the boot process, avoiding conflicts or ambiguity.
+
+---
+
+### Expert Level Questions
+
+??? question "21. A VSI needs to host 3 different applications, each requiring its own IP address. What's the solution?"
+    - [ ] Create 3 separate VSIs
+    - [ ] Use 3 floating IPs
+    - [x] Use `primary_vni_additional_ip_count` to assign multiple private IPs
+    - [ ] Create 3 subnets
+
+    **Explanation:** `primary_vni_additional_ip_count` allows multiple private IPs on the same network interface, perfect for hosting multiple applications.
+
+??? question "22. What happens if you don't specify `resource_group_id`?"
+    - [ ] The VSI won't be created
+    - [ ] It uses a random resource group
+    - [x] Resources are created in the default resource group
+    - [ ] It creates a new resource group automatically
+
+    **Explanation:** If not specified, resources are created in the account's default resource group, but explicit specification is recommended for organization.
+
+??? question "23. Why would you use `enable_dedicated_host` instead of shared infrastructure?"
+    - [ ] It's cheaper
+    - [ ] It's faster
+    - [x] For compliance, isolation, or licensing requirements that need exclusive physical servers
+    - [ ] It's easier to manage
+
+    **Explanation:** Dedicated hosts provide exclusive physical servers for compliance requirements, enhanced isolation, or software licensing that requires dedicated hardware.
+
+??? question "24. A database VSI has 3 volumes: database files, transaction logs, and application data. Why use a consistency group for snapshots?"
+    - [ ] To save storage space
+    - [ ] To speed up snapshots
+    - [x] To ensure all volumes are captured at the same point in time, preventing data corruption
+    - [ ] To reduce costs
+
+    **Explanation:** Independent snapshots at different times can cause data inconsistency. Consistency groups capture all volumes atomically, ensuring data integrity during restoration.
+
+??? question "25. What is the complete flow from VSI creation to internet accessibility?"
+    - [ ] Create VSI → Add floating IP
+    - [ ] Create VSI → Attach to VPC
+    - [x] Resource scoping → Network foundation → Compute instantiation → Storage → Networking → Security groups → Optional floating IP
+    - [ ] Create VSI → Configure security groups → Done
+
+    **Explanation:** The complete flow is strictly layered: resource scoping defines ownership, VPC inputs define network placement, compute variables define the machine, storage attaches persistence, networking exposes the instance, security restricts traffic, and optional floating IPs provide public access.
+
+---
+
+### Scoring Guide
+
+- **20-25 correct**: 🏆 **Expert** - You have mastered VSI infrastructure!
+- **15-19 correct**: 🌟 **Advanced** - Strong understanding, review missed topics
+- **10-14 correct**: 📚 **Intermediate** - Good foundation, continue learning
+- **5-9 correct**: 🌱 **Beginner** - Review the material and try again
+- **0-4 correct**: 📖 **Start Here** - Read through the guide carefully
+
+---
+
+
 **End of Document**

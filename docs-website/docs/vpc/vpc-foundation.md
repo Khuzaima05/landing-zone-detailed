@@ -848,6 +848,238 @@ Bad IP planning causes problems later with VPNs, Transit Gateway, and Kubernetes
 ### 7. Observability is Essential
 Flow logs and monitoring are not optional—they're critical for security and troubleshooting.
 
+## 📝 Knowledge Check: Test Your Understanding
+
+Test your knowledge of IBM Cloud VPC foundations with these questions, progressing from basic concepts to advanced scenarios.
+
+---
+
+### Easy Level Questions
+
+??? question "1. What does VPC stand for?"
+    - [ ] Virtual Private Connection
+    - [x] Virtual Private Cloud
+    - [ ] Virtual Public Cloud
+    - [ ] Virtual Protected Container
+
+    **Explanation:** VPC stands for Virtual Private Cloud - a logically isolated network environment in the cloud.
+
+??? question "2. What is the primary purpose of a VPC?"
+    - [ ] To provide physical servers
+    - [x] To create an isolated network environment
+    - [ ] To store data
+    - [ ] To manage user accounts
+
+    **Explanation:** A VPC creates a logically isolated software-defined network for your cloud resources.
+
+??? question "3. In traditional datacenters, what type of infrastructure was used for networking?"
+    - [x] Hardware-based (routers, switches, firewalls)
+    - [ ] Software-only solutions
+    - [ ] Cloud-based services
+    - [ ] Virtual machines
+
+    **Explanation:** Traditional datacenters relied entirely on physical hardware like routers, switches, and firewalls.
+
+??? question "4. What is the default internet connectivity for workloads in IBM Cloud VPC?"
+    - [ ] Full internet access
+    - [ ] Inbound only
+    - [ ] Outbound only
+    - [x] No internet access (private by default)
+
+    **Explanation:** By default, workloads in IBM Cloud VPC are private and cannot access the internet without additional services.
+
+??? question "5. Which RFC1918 address range provides the most IP addresses?"
+    - [x] 10.0.0.0/8 (16,777,216 addresses)
+    - [ ] 172.16.0.0/12 (1,048,576 addresses)
+    - [ ] 192.168.0.0/16 (65,536 addresses)
+    - [ ] All provide the same number
+
+    **Explanation:** The 10.0.0.0/8 range provides 16,777,216 addresses, the largest of the three private ranges.
+
+---
+
+### Medium Level Questions
+
+??? question "6. What is the scope of an IBM Cloud VPC?"
+    - [ ] Global (spans all regions)
+    - [x] Regional (spans one region)
+    - [ ] Zonal (limited to one zone)
+    - [ ] Account-wide
+
+    **Explanation:** A VPC is a regional resource that spans all availability zones within a single region.
+
+??? question "7. Where do actual workloads physically run in a VPC?"
+    - [ ] At the VPC level
+    - [ ] At the regional level
+    - [x] In zonal subnets
+    - [ ] In the cloud globally
+
+    **Explanation:** While VPCs are regional, actual workloads run in specific availability zones within subnets.
+
+??? question "8. What technology does IBM Cloud use to create virtual networks?"
+    - [ ] Physical VLANs
+    - [ ] Hardware switches
+    - [x] Software-Defined Networking (SDN)
+    - [ ] Traditional routing protocols
+
+    **Explanation:** IBM Cloud uses SDN technologies like VXLAN encapsulation and distributed virtual routers.
+
+??? question "9. What is the main difference between Network ACLs and Security Groups?"
+    - [ ] ACLs are faster
+    - [x] ACLs are stateless, Security Groups are stateful
+    - [ ] Security Groups are subnet-level
+    - [ ] They are the same thing
+
+    **Explanation:** Network ACLs are stateless (require explicit return rules), while Security Groups are stateful (automatically allow return traffic).
+
+??? question "10. Which service provides outbound-only internet access?"
+    - [ ] Floating IP
+    - [x] Public Gateway
+    - [ ] Load Balancer
+    - [ ] VPN Gateway
+
+    **Explanation:** Public Gateway provides outbound internet connectivity through NAT, but workloads remain inaccessible from the internet.
+
+??? question "11. Can two different customers use the same CIDR range (e.g., 10.0.0.0/16) in their VPCs?"
+    - [x] Yes, VPCs are isolated through software-defined segmentation
+    - [ ] No, CIDR ranges must be globally unique
+    - [ ] Only if they're in different regions
+    - [ ] Only with special permission
+
+    **Explanation:** VPCs remain completely isolated through software-defined network segmentation, even with identical CIDR ranges.
+
+??? question "12. What type of subnet architecture does IBM Cloud VPC Gen2 use?"
+    - [ ] Layer-2 VLAN-based
+    - [x] Layer-3 routed
+    - [ ] Layer-4 application-based
+    - [ ] Hybrid Layer-2/Layer-3
+
+    **Explanation:** IBM Cloud VPC Gen2 uses Layer-3 routed subnets, not traditional Layer-2 VLAN-based subnets.
+
+---
+
+### Hard Level Questions
+
+??? question "13. Why is careful CIDR planning critical in IBM Cloud VPC?"
+    - [ ] To save IP addresses
+    - [ ] To improve performance
+    - [x] To avoid conflicts with VPNs, Transit Gateway, and Kubernetes networking
+    - [ ] To reduce costs
+
+    **Explanation:** Poor CIDR planning causes routing conflicts with VPNs, Transit Gateway connections, Kubernetes pod networks, and hybrid cloud scenarios.
+
+??? question "14. In a multi-zone VPC architecture, what happens if one availability zone fails?"
+    - [ ] The entire VPC becomes unavailable
+    - [ ] All zones restart automatically
+    - [x] Workloads in other zones continue functioning
+    - [ ] Traffic is automatically rerouted to remaining zones
+
+    **Explanation:** Each zone has independent infrastructure. If one fails, workloads in other zones continue operating, but automatic failover requires proper application architecture.
+
+??? question "15. What is the recommended approach for production workload internet access?"
+    - [ ] Assign Floating IPs to all servers
+    - [ ] Use Public Gateway for all traffic
+    - [x] Use Public Load Balancers with backend servers
+    - [ ] Disable internet access completely
+
+    **Explanation:** Public Load Balancers provide controlled entry points with health checks, SSL termination, and better security than direct Floating IPs.
+
+??? question "16. When Terraform creates a VPC, what actually happens in IBM Cloud?"
+    - [ ] Physical hardware is installed
+    - [ ] A dedicated router is provisioned
+    - [x] A logical routing domain is allocated in the distributed control plane
+    - [ ] A new datacenter is created
+
+    **Explanation:** IBM allocates a virtual routing domain in its software-defined networking control plane - no physical hardware is provisioned.
+
+??? question "17. Which statement about Network ACL rule evaluation is correct?"
+    - [ ] All rules are evaluated simultaneously
+    - [x] Rules are evaluated sequentially in order
+    - [ ] Only the first matching rule is applied
+    - [ ] Rules are evaluated randomly
+
+    **Explanation:** Network ACL rules are evaluated sequentially in order, and the first matching rule determines the action.
+
+??? question "18. What is the primary difference between traditional datacenter subnets and IBM Cloud VPC subnets?"
+    - [ ] VPC subnets are slower
+    - [ ] Traditional subnets are more secure
+    - [x] VPC subnets are software-defined Layer-3 constructs without broadcast domain dependency
+    - [ ] There is no difference
+
+    **Explanation:** IBM Cloud VPC subnets are Layer-3 routed constructs managed by distributed software routers, not Layer-2 broadcast domains.
+
+??? question "19. In the us-south region with zones us-south-1, us-south-2, and us-south-3, where does a VPC exist?"
+    - [ ] Only in us-south-1
+    - [ ] In whichever zone you choose
+    - [x] Spans all three zones (regional resource)
+    - [ ] In a separate management zone
+
+    **Explanation:** VPCs are regional resources that automatically span all availability zones in the region.
+
+??? question "20. What is the correct security architecture for defense in depth?"
+    - [ ] Use only Security Groups
+    - [ ] Use only Network ACLs
+    - [x] Use both Network ACLs (subnet-level) and Security Groups (workload-level)
+    - [ ] Use Floating IPs with firewalls
+
+    **Explanation:** Defense in depth requires layered security: Network ACLs for coarse-grained subnet protection and Security Groups for fine-grained workload protection.
+
+---
+
+### Expert Level Questions
+
+??? question "21. A company needs to connect their VPC (10.0.0.0/16) to an on-premises datacenter (10.0.0.0/16). What is the problem?"
+    - [ ] No problem, VPCs are isolated
+    - [ ] The connection will be slow
+    - [x] Overlapping CIDR ranges will cause routing conflicts
+    - [ ] It requires special IBM approval
+
+    **Explanation:** Overlapping CIDR ranges between VPC and on-premises networks cause routing conflicts. While VPCs are isolated from each other, VPN/Transit Gateway connections require non-overlapping address spaces.
+
+??? question "22. An application in subnet 10.0.1.0/24 needs to access a database in subnet 10.0.2.0/24 within the same VPC. What is required?"
+    - [ ] A VPN connection
+    - [ ] A Public Gateway
+    - [ ] A Load Balancer
+    - [x] Proper Security Group and ACL rules allowing the traffic
+
+    **Explanation:** Traffic within a VPC is routed automatically, but Security Groups and Network ACLs must permit the traffic between subnets.
+
+??? question "23. What happens to return traffic in a stateless Network ACL?"
+    - [ ] It's automatically allowed
+    - [ ] It's automatically blocked
+    - [x] It requires explicit allow rules for both directions
+    - [ ] It uses a different path
+
+    **Explanation:** Stateless ACLs don't track connections, so you must explicitly allow both inbound and outbound traffic for bidirectional communication.
+
+??? question "24. A VSI with a Public Gateway can access the internet. Can the internet access the VSI directly?"
+    - [ ] Yes, through the Public Gateway
+    - [x] No, Public Gateway only provides outbound NAT
+    - [ ] Yes, but only on specific ports
+    - [ ] Yes, if Security Groups allow it
+
+    **Explanation:** Public Gateway provides outbound-only connectivity through NAT. The VSI remains inaccessible from the internet. Inbound access requires Floating IP or Load Balancer.
+
+??? question "25. Why does IBM Cloud VPC use distributed virtual routers instead of centralized hardware routers?"
+    - [ ] To reduce costs
+    - [ ] To simplify management
+    - [x] To provide scalability, eliminate single points of failure, and enable software-defined control
+    - [ ] To improve security
+
+    **Explanation:** Distributed virtual routers provide horizontal scalability, eliminate single points of failure, enable instant provisioning, and allow software-defined network control at scale.
+
+---
+
+### Scoring Guide
+
+- **20-25 correct**: 🏆 **Expert** - You have mastered VPC foundations!
+- **15-19 correct**: 🌟 **Advanced** - Strong understanding, review missed topics
+- **10-14 correct**: 📚 **Intermediate** - Good foundation, continue learning
+- **5-9 correct**: 🌱 **Beginner** - Review the material and try again
+- **0-4 correct**: 📖 **Start Here** - Read through the guide carefully
+
+---
+
 ---
 
 ## Next Steps
