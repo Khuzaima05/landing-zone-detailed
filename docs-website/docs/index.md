@@ -37,8 +37,6 @@ hide:
 
 ## 🌳 Infrastructure Dependency Tree
 
-<div class="dependency-tree-container">
-
 **Click on any component to navigate to its documentation**
 
 ```mermaid
@@ -62,8 +60,6 @@ graph TD
     VSI --> OBS[Observability]
     K8S --> OBS
 ```
-
-</div>
 
 ### 📋 Dependency Rules
 
