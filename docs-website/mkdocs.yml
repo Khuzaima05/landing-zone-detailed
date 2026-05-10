@@ -1,0 +1,331 @@
+# Site Information
+site_name: IBM Cloud Landing Zone - Complete Guide
+site_url: https://ibm-cloud-landing-zone.github.io/
+site_author: IBM Cloud Team
+site_description: Comprehensive guide for IBM Cloud Landing Zone infrastructure deployment and management
+
+# Repository
+repo_name: IBM Cloud Landing Zone
+repo_url: https://github.com/ibm-cloud/landing-zone
+edit_uri: edit/main/docs/
+
+# Copyright
+copyright: Copyright &copy; 2024 IBM Corporation
+
+# Theme Configuration
+theme:
+  name: material
+  custom_dir: overrides
+  language: en
+  
+  # Color Palette
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  
+  # Fonts
+  font:
+    text: IBM Plex Sans
+    code: IBM Plex Mono
+  
+  # Logo and Favicon
+  logo: assets/images/ibm-cloud-logo.svg
+  favicon: assets/images/favicon.ico
+  
+  # Features
+  features:
+    # Navigation
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    
+    # Table of Contents
+    - toc.follow
+    - toc.integrate
+    
+    # Search
+    - search.suggest
+    - search.highlight
+    - search.share
+    
+    # Header
+    - header.autohide
+    
+    # Content
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+    - content.action.edit
+    - content.action.view
+    
+    # Announce
+    - announce.dismiss
+
+# Extra Configuration
+extra:
+  # Social Links
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ibm-cloud/landing-zone
+      name: GitHub Repository
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/ibm
+      name: IBM on LinkedIn
+    - icon: fontawesome/solid/globe
+      link: https://www.ibm.com/cloud
+      name: IBM Cloud
+  
+  # Analytics (optional)
+  analytics:
+    provider: google
+    property: G-XXXXXXXXXX
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: >-
+            Thanks for your feedback! Help us improve by
+            <a href="https://github.com/ibm-cloud/landing-zone/issues/new" target="_blank" rel="noopener">opening an issue</a>.
+  
+  # Version
+  version:
+    provider: mike
+    default: latest
+  
+  # Generator
+  generator: false
+
+# Extra CSS
+extra_css:
+  - stylesheets/extra.css
+  - stylesheets/custom.css
+
+# Extra JavaScript
+extra_javascript:
+  - javascripts/extra.js
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# Plugins
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+      lang:
+        - en
+  
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+      htmlmin_opts:
+        remove_comments: true
+      cache_safe: true
+  
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+      fallback_to_build_date: true
+  
+  - awesome-pages:
+      filename: .pages
+      collapse_single_pages: false
+      strict: false
+  
+  - tags:
+      tags_file: tags.md
+
+# Markdown Extensions
+markdown_extensions:
+  # Python Markdown
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - meta
+  - tables
+  - toc:
+      permalink: true
+      permalink_title: Anchor link to this section
+      toc_depth: 3
+  
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.critic:
+      mode: view
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+      use_pygments: true
+      auto_title: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: ibm-cloud
+      repo: landing-zone
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: true
+
+# Navigation Structure
+nav:
+  - Home: index.md
+  - Getting Started:
+    - getting-started.md
+    - Quick Start: getting-started/quick-start.md
+    - Prerequisites: getting-started/prerequisites.md
+    - Installation: getting-started/installation.md
+  
+  - VPC Infrastructure:
+    - vpc/index.md
+    - Foundation: vpc/vpc-foundation.md
+    - Service Internals: vpc/vpc-service-internals.md
+    - Zones & Datacenters: vpc/zones-datacenter-architecture.md
+    - CIDR Planning & IPAM: vpc/cidr-planning-ipam.md
+    - Subnet Service: vpc/subnet-service-internals.md
+    - Network ACL Architecture: vpc/network-acl-architecture.md
+    - ACL Service Internals: vpc/acl-service-internals.md
+    - Security Groups: vpc/security-group-service-internals.md
+    - Route Tables: vpc/route-table-service.md
+    - VPN Architecture: vpc/vpn-architecture.md
+    - Transit Gateway: vpc/transit-gateway-integration.md
+    - Floating IPs: vpc/floating-ip-architecture.md
+    - Load Balancers: vpc/load-balancer-architecture.md
+    - Flow Logs: vpc/flow-logs-observability.md
+    - Hub-Spoke DNS: vpc/hub-spoke-dns-architecture.md
+    - Terraform Mapping: vpc/terraform-mapping.md
+    - Outputs: vpc/outputs-downstream-consumption.md
+  
+  - VSI Infrastructure:
+    - vsi/index.md
+    - Complete Guide: vsi/vsi-infrastructure-complete-guide.md
+  
+  - Cluster Infrastructure:
+    - cluster/index.md
+    - Overview: cluster/overview.md
+    - Kubernetes Service: cluster/kubernetes-service.md
+    - OpenShift: cluster/openshift.md
+    - Configuration: cluster/configuration.md
+  
+  - Security Infrastructure:
+    - security/index.md
+    - Overview: security/overview.md
+    - Key Management: security/key-management.md
+    - Secrets Manager: security/secrets-manager.md
+    - Security & Compliance: security/security-compliance.md
+  
+  - Observability Infrastructure:
+    - observability/index.md
+    - Overview: observability/overview.md
+    - Logging: observability/logging.md
+    - Monitoring: observability/monitoring.md
+    - Activity Tracker: observability/activity-tracker.md
+  
+  - Storage Infrastructure:
+    - storage/index.md
+    - Overview: storage/overview.md
+    - Block Storage: storage/block-storage.md
+    - Object Storage: storage/object-storage.md
+    - File Storage: storage/file-storage.md
+  
+  - Database Infrastructure:
+    - database/index.md
+    - Overview: database/overview.md
+    - Cloud Databases: database/cloud-databases.md
+    - Database Configuration: database/configuration.md
+  
+  - Networking Infrastructure:
+    - networking/index.md
+    - Overview: networking/overview.md
+    - DNS Services: networking/dns-services.md
+    - CDN: networking/cdn.md
+    - Direct Link: networking/direct-link.md
+  
+  - IAM Infrastructure:
+    - iam/index.md
+    - Overview: iam/overview.md
+    - Access Groups: iam/access-groups.md
+    - Service IDs: iam/service-ids.md
+    - Policies: iam/policies.md
+  
+  - Resource Management:
+    - resource-management/index.md
+    - Overview: resource-management/overview.md
+    - Resource Groups: resource-management/resource-groups.md
+    - Tagging Strategy: resource-management/tagging-strategy.md
+  
+  - Reference:
+    - API Reference: reference/api.md
+    - CLI Reference: reference/cli.md
+    - Terraform Modules: reference/terraform.md
+    - Best Practices: reference/best-practices.md
+    - Troubleshooting: reference/troubleshooting.md
+    - FAQ: reference/faq.md
+  
+  - Contributing:
+    - contributing.md
+    - Code of Conduct: contributing/code-of-conduct.md
+    - Development Guide: contributing/development.md
+  
+  - Tags: tags.md
+
+# Made with Bob

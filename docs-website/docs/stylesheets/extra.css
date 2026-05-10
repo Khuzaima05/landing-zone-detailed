@@ -1,0 +1,438 @@
+/* IBM Cloud Landing Zone - Custom Styles */
+
+/* ============================================
+   IBM Color Palette
+   ============================================ */
+:root {
+  /* IBM Blue */
+  --ibm-blue-10: #edf5ff;
+  --ibm-blue-20: #d0e2ff;
+  --ibm-blue-30: #a6c8ff;
+  --ibm-blue-40: #78a9ff;
+  --ibm-blue-50: #4589ff;
+  --ibm-blue-60: #0f62fe;
+  --ibm-blue-70: #0043ce;
+  --ibm-blue-80: #002d9c;
+  --ibm-blue-90: #001d6c;
+  --ibm-blue-100: #001141;
+  
+  /* IBM Gray */
+  --ibm-gray-10: #f4f4f4;
+  --ibm-gray-20: #e0e0e0;
+  --ibm-gray-30: #c6c6c6;
+  --ibm-gray-40: #a8a8a8;
+  --ibm-gray-50: #8d8d8d;
+  --ibm-gray-60: #6f6f6f;
+  --ibm-gray-70: #525252;
+  --ibm-gray-80: #393939;
+  --ibm-gray-90: #262626;
+  --ibm-gray-100: #161616;
+  
+  /* Accent Colors */
+  --ibm-cyan: #1192e8;
+  --ibm-teal: #009d9a;
+  --ibm-green: #24a148;
+  --ibm-purple: #8a3ffc;
+  --ibm-magenta: #ee5396;
+}
+
+/* ============================================
+   Custom Primary Color
+   ============================================ */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: var(--ibm-blue-60);
+  --md-primary-fg-color--light: var(--ibm-blue-40);
+  --md-primary-fg-color--dark: var(--ibm-blue-80);
+  --md-accent-fg-color: var(--ibm-cyan);
+  --md-accent-fg-color--transparent: rgba(17, 146, 232, 0.1);
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: var(--ibm-blue-50);
+  --md-primary-fg-color--light: var(--ibm-blue-30);
+  --md-primary-fg-color--dark: var(--ibm-blue-70);
+  --md-accent-fg-color: var(--ibm-cyan);
+}
+
+/* ============================================
+   Typography - IBM Plex
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+body {
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code, pre, .md-typeset code {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+}
+
+/* ============================================
+   Hero Section
+   ============================================ */
+.hero-section {
+  background: linear-gradient(135deg, var(--ibm-blue-60) 0%, var(--ibm-blue-80) 100%);
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+  margin: -1.6rem -1.6rem 2rem -1.6rem;
+  border-radius: 0 0 1rem 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero-section p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-button {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: white;
+  color: var(--ibm-blue-60);
+  text-decoration: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.hero-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  color: var(--ibm-blue-70);
+}
+
+.hero-button.secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.hero-button.secondary:hover {
+  background: white;
+  color: var(--ibm-blue-60);
+}
+
+/* ============================================
+   Feature Cards
+   ============================================ */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.feature-card {
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(15, 98, 254, 0.15);
+  border-color: var(--ibm-blue-60);
+}
+
+.feature-card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--ibm-blue-60);
+}
+
+.feature-card h3 {
+  margin-top: 0;
+  color: var(--ibm-blue-70);
+  font-weight: 600;
+}
+
+.feature-card p {
+  color: var(--md-default-fg-color--light);
+  line-height: 1.6;
+}
+
+.feature-card a {
+  color: var(--ibm-blue-60);
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.feature-card a:hover {
+  color: var(--ibm-blue-80);
+  text-decoration: underline;
+}
+
+/* ============================================
+   Statistics Section
+   ============================================ */
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--ibm-blue-10) 0%, var(--ibm-blue-20) 100%);
+  border-radius: 1rem;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--ibm-blue-60);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: var(--ibm-gray-70);
+  font-weight: 500;
+}
+
+/* ============================================
+   Admonitions Enhancement
+   ============================================ */
+.md-typeset .admonition,
+.md-typeset details {
+  border-left: 4px solid;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.md-typeset .admonition.note {
+  border-left-color: var(--ibm-blue-60);
+}
+
+.md-typeset .admonition.tip {
+  border-left-color: var(--ibm-green);
+}
+
+.md-typeset .admonition.warning {
+  border-left-color: #f1c21b;
+}
+
+.md-typeset .admonition.danger {
+  border-left-color: #da1e28;
+}
+
+/* ============================================
+   Code Blocks Enhancement
+   ============================================ */
+.md-typeset pre > code {
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.md-typeset .highlight .filename {
+  background: var(--ibm-blue-60);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+  font-weight: 600;
+}
+
+/* ============================================
+   Navigation Enhancement
+   ============================================ */
+.md-nav__item--active > .md-nav__link {
+  color: var(--ibm-blue-60);
+  font-weight: 600;
+}
+
+.md-nav__link:hover {
+  color: var(--ibm-blue-60);
+}
+
+/* ============================================
+   Tables Enhancement
+   ============================================ */
+.md-typeset table:not([class]) {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.md-typeset table:not([class]) th {
+  background: var(--ibm-blue-60);
+  color: white;
+  font-weight: 600;
+}
+
+.md-typeset table:not([class]) tr:hover {
+  background: var(--ibm-blue-10);
+}
+
+/* ============================================
+   Tabs Enhancement
+   ============================================ */
+.md-typeset .tabbed-set > input:checked + label {
+  border-bottom: 3px solid var(--ibm-blue-60);
+  color: var(--ibm-blue-60);
+}
+
+/* ============================================
+   Search Enhancement
+   ============================================ */
+.md-search__input {
+  border-radius: 2rem;
+}
+
+.md-search__input:focus {
+  box-shadow: 0 0 0 3px rgba(15, 98, 254, 0.2);
+}
+
+/* ============================================
+   Footer Enhancement
+   ============================================ */
+.md-footer {
+  background: linear-gradient(135deg, var(--ibm-blue-80) 0%, var(--ibm-blue-90) 100%);
+}
+
+/* ============================================
+   Breadcrumbs
+   ============================================ */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.breadcrumbs a {
+  color: var(--ibm-blue-60);
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+/* ============================================
+   Loading Animation
+   ============================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media screen and (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-section p {
+    font-size: 1rem;
+  }
+  
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-section {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+@media print {
+  .hero-section,
+  .md-header,
+  .md-sidebar,
+  .md-footer {
+    display: none;
+  }
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--ibm-blue-60);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* ============================================
+   Custom Scrollbar
+   ============================================ */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--md-default-bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ibm-blue-60);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ibm-blue-70);
+}
+
+/* Made with Bob */

@@ -1,0 +1,489 @@
+/* Additional Custom Styles for IBM Cloud Landing Zone */
+
+/* ============================================
+   Module Cards
+   ============================================ */
+.module-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.module-card {
+  position: relative;
+  background: var(--md-default-bg-color);
+  border: 2px solid var(--md-default-fg-color--lightest);
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.module-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--ibm-blue-60), var(--ibm-cyan));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.module-card:hover::before {
+  transform: scaleX(1);
+}
+
+.module-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(15, 98, 254, 0.2);
+  border-color: var(--ibm-blue-60);
+}
+
+.module-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.module-card-icon {
+  font-size: 2.5rem;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--ibm-blue-10), var(--ibm-blue-20));
+  border-radius: 0.75rem;
+  color: var(--ibm-blue-60);
+}
+
+.module-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ibm-blue-70);
+  margin: 0;
+}
+
+.module-card-description {
+  color: var(--md-default-fg-color--light);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.module-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.module-tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--ibm-blue-10);
+  color: var(--ibm-blue-70);
+  border-radius: 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.module-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ibm-blue-60);
+  text-decoration: none;
+  font-weight: 600;
+  transition: gap 0.3s ease;
+}
+
+.module-card-link:hover {
+  gap: 0.75rem;
+  color: var(--ibm-blue-80);
+}
+
+/* ============================================
+   Architecture Diagrams
+   ============================================ */
+.architecture-diagram {
+  background: var(--md-code-bg-color);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.architecture-diagram svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ============================================
+   Quick Links Section
+   ============================================ */
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.quick-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.quick-link:hover {
+  border-color: var(--ibm-blue-60);
+  background: var(--ibm-blue-10);
+  transform: translateX(4px);
+}
+
+.quick-link-icon {
+  font-size: 1.5rem;
+  color: var(--ibm-blue-60);
+}
+
+.quick-link-text {
+  flex: 1;
+}
+
+.quick-link-title {
+  font-weight: 600;
+  color: var(--md-default-fg-color);
+  margin: 0;
+}
+
+.quick-link-description {
+  font-size: 0.85rem;
+  color: var(--md-default-fg-color--light);
+  margin: 0;
+}
+
+/* ============================================
+   Learning Path
+   ============================================ */
+.learning-path {
+  position: relative;
+  padding-left: 2rem;
+  margin: 2rem 0;
+}
+
+.learning-path::before {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--ibm-blue-60), var(--ibm-cyan));
+}
+
+.learning-step {
+  position: relative;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.learning-step::before {
+  content: attr(data-step);
+  position: absolute;
+  left: -2.5rem;
+  top: 1.5rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ibm-blue-60);
+  color: white;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 8px rgba(15, 98, 254, 0.3);
+}
+
+.learning-step:hover {
+  border-color: var(--ibm-blue-60);
+  box-shadow: 0 4px 16px rgba(15, 98, 254, 0.15);
+}
+
+.learning-step h3 {
+  margin-top: 0;
+  color: var(--ibm-blue-70);
+}
+
+/* ============================================
+   Code Comparison
+   ============================================ */
+.code-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.code-comparison-item {
+  position: relative;
+}
+
+.code-comparison-label {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  background: var(--ibm-blue-60);
+  color: white;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  z-index: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .code-comparison {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   Best Practices Box
+   ============================================ */
+.best-practices {
+  background: linear-gradient(135deg, var(--ibm-green) 0%, #1e8e3e 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 16px rgba(36, 161, 72, 0.2);
+}
+
+.best-practices h3 {
+  color: white;
+  margin-top: 0;
+}
+
+.best-practices ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.best-practices li {
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   Warning Box
+   ============================================ */
+.warning-box {
+  background: linear-gradient(135deg, #f1c21b 0%, #d4a500 100%);
+  color: var(--ibm-gray-100);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 16px rgba(241, 194, 27, 0.2);
+}
+
+.warning-box h4 {
+  color: var(--ibm-gray-100);
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ============================================
+   Info Box
+   ============================================ */
+.info-box {
+  background: linear-gradient(135deg, var(--ibm-blue-10) 0%, var(--ibm-blue-20) 100%);
+  border-left: 4px solid var(--ibm-blue-60);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin: 2rem 0;
+}
+
+.info-box h4 {
+  color: var(--ibm-blue-70);
+  margin-top: 0;
+}
+
+/* ============================================
+   Progress Indicator
+   ============================================ */
+.progress-indicator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 0;
+  padding: 1rem;
+  background: var(--md-default-bg-color);
+  border-radius: 0.5rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.progress-step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+.progress-step::after {
+  content: '';
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: var(--md-default-fg-color--lightest);
+  z-index: -1;
+}
+
+.progress-step:last-child::after {
+  display: none;
+}
+
+.progress-step.active .progress-dot {
+  background: var(--ibm-blue-60);
+  color: white;
+}
+
+.progress-step.completed .progress-dot {
+  background: var(--ibm-green);
+  color: white;
+}
+
+.progress-dot {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color--light);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.progress-label {
+  font-size: 0.85rem;
+  color: var(--md-default-fg-color--light);
+}
+
+/* ============================================
+   Tooltip
+   ============================================ */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted var(--ibm-blue-60);
+  cursor: help;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: var(--ibm-gray-90);
+  color: white;
+  text-align: center;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 0.85rem;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* ============================================
+   Callout Boxes
+   ============================================ */
+.callout {
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  margin: 2rem 0;
+  border-left: 4px solid;
+}
+
+.callout.success {
+  background: rgba(36, 161, 72, 0.1);
+  border-left-color: var(--ibm-green);
+}
+
+.callout.info {
+  background: rgba(15, 98, 254, 0.1);
+  border-left-color: var(--ibm-blue-60);
+}
+
+.callout.warning {
+  background: rgba(241, 194, 27, 0.1);
+  border-left-color: #f1c21b;
+}
+
+.callout.danger {
+  background: rgba(218, 30, 40, 0.1);
+  border-left-color: #da1e28;
+}
+
+/* ============================================
+   Animated Icons
+   ============================================ */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animated-icon {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ============================================
+   Dark Mode Adjustments
+   ============================================ */
+[data-md-color-scheme="slate"] .module-card {
+  background: var(--md-code-bg-color);
+}
+
+[data-md-color-scheme="slate"] .module-card-icon {
+  background: rgba(69, 137, 255, 0.2);
+}
+
+[data-md-color-scheme="slate"] .module-tag {
+  background: rgba(69, 137, 255, 0.2);
+  color: var(--ibm-blue-30);
+}
+
+[data-md-color-scheme="slate"] .quick-link:hover {
+  background: rgba(69, 137, 255, 0.1);
+}
+
+/* Made with Bob */
