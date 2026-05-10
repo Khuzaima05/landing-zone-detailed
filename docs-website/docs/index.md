@@ -44,86 +44,23 @@ hide:
 ```mermaid
 graph TD
     START[Start Here] --> RG[Resource Groups]
-    
     RG --> VPC[VPC Infrastructure]
-    
     VPC --> SUBNET[Subnets]
     VPC --> ACL[Network ACLs]
     VPC --> SG[Security Groups]
     VPC --> RT[Route Tables]
-    VPC --> PGW[Public Gateway]
-    
-    SUBNET --> VSI[Virtual Server Instances]
-    SUBNET --> K8S[Kubernetes Clusters]
-    
-    VSI --> STORAGE[Block Storage]
-    VSI --> FIP[Floating IPs]
+    SUBNET --> VSI[Virtual Servers]
+    SUBNET --> K8S[Kubernetes]
+    VSI --> STORAGE[Storage]
     VSI --> LB[Load Balancers]
-    
     K8S --> STORAGE
     K8S --> LB
-    
     VPC --> VPN[VPN Gateway]
     VPC --> TGW[Transit Gateway]
-    VPC --> DNS[DNS Services]
-    
-    STORAGE --> SNAP[Snapshots]
-    
-    VSI --> LOG[Logging]
-    VSI --> MON[Monitoring]
-    K8S --> LOG
-    K8S --> MON
-    
-    RG --> IAM[IAM Policies]
-    IAM --> VSI
-    IAM --> K8S
-    IAM --> STORAGE
-    
+    RG --> IAM[IAM]
     VSI --> DB[Databases]
-    K8S --> DB
-    
-    click RG "resource-management/" "Resource Management Documentation"
-    click VPC "vpc/vpc-foundation/" "VPC Foundation Guide"
-    click SUBNET "vpc/subnet-service-internals/" "Subnet Service Guide"
-    click ACL "vpc/network-acl-architecture/" "Network ACL Guide"
-    click SG "vpc/security-group-service-internals/" "Security Groups Guide"
-    click RT "vpc/route-table-service/" "Route Tables Guide"
-    click PGW "vpc/vpc-foundation/#public-gateway" "Public Gateway Documentation"
-    click VSI "vsi/vsi-provisioning-overview/" "VSI Infrastructure Guide"
-    click K8S "cluster/" "Cluster Infrastructure Guide"
-    click STORAGE "storage/" "Storage Infrastructure Guide"
-    click FIP "vpc/floating-ip-architecture/" "Floating IP Guide"
-    click LB "vpc/load-balancer-architecture/" "Load Balancer Guide"
-    click VPN "vpc/vpn-architecture/" "VPN Architecture Guide"
-    click TGW "vpc/transit-gateway-integration/" "Transit Gateway Guide"
-    click DNS "vpc/hub-spoke-dns-architecture/" "DNS Architecture Guide"
-    click SNAP "vsi/vsi-lifecycle-recovery/#snapshots" "Snapshot Documentation"
-    click LOG "observability/" "Logging & Observability"
-    click MON "observability/" "Monitoring & Observability"
-    click IAM "iam/" "IAM Infrastructure Guide"
-    click DB "database/" "Database Infrastructure Guide"
-    
-    style START fill:#E50914,stroke:#fff,stroke-width:3px,color:#fff
-    style RG fill:#2a2a2a,stroke:#E50914,stroke-width:2px,color:#fff
-    style VPC fill:#1f1f1f,stroke:#E50914,stroke-width:2px,color:#fff
-    style SUBNET fill:#2a2a2a,stroke:#666,stroke-width:2px,color:#fff
-    style ACL fill:#2a2a2a,stroke:#666,stroke-width:2px,color:#fff
-    style SG fill:#2a2a2a,stroke:#666,stroke-width:2px,color:#fff
-    style RT fill:#2a2a2a,stroke:#666,stroke-width:2px,color:#fff
-    style PGW fill:#2a2a2a,stroke:#666,stroke-width:2px,color:#fff
-    style VSI fill:#1f1f1f,stroke:#E50914,stroke-width:2px,color:#fff
-    style K8S fill:#1f1f1f,stroke:#E50914,stroke-width:2px,color:#fff
-    style STORAGE fill:#2a2a2a,stroke:#666,stroke-width:2px,color:#fff
-    style FIP fill:#2a2a2a,stroke:#666,stroke-width:2px,color:#fff
-    style LB fill:#2a2a2a,stroke:#666,stroke-width:2px,color:#fff
-    style VPN fill:#2a2a2a,stroke:#666,stroke-width:2px,color:#fff
-    style TGW fill:#2a2a2a,stroke:#666,stroke-width:2px,color:#fff
-    style DNS fill:#2a2a2a,stroke:#666,stroke-width:2px,color:#fff
-    style SNAP fill:#2a2a2a,stroke:#666,stroke-width:2px,color:#fff
-    style LOG fill:#2a2a2a,stroke:#666,stroke-width:2px,color:#fff
-    style MON fill:#2a2a2a,stroke:#666,stroke-width:2px,color:#fff
-    style IAM fill:#2a2a2a,stroke:#666,stroke-width:2px,color:#fff
-    style DB fill:#2a2a2a,stroke:#666,stroke-width:2px,color:#fff
+    VSI --> OBS[Observability]
+    K8S --> OBS
 ```
 
 </div>
