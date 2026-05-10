@@ -43,43 +43,43 @@ hide:
 
 ```mermaid
 graph TD
-    START[🚀 Start Here] --> RG[📦 Resource Groups]
+    START[Start Here] --> RG[Resource Groups]
     
-    RG --> VPC[🌐 VPC Infrastructure]
+    RG --> VPC[VPC Infrastructure]
     
-    VPC --> SUBNET[🔷 Subnets]
-    VPC --> ACL[🛡️ Network ACLs]
-    VPC --> SG[🔒 Security Groups]
-    VPC --> RT[🗺️ Route Tables]
-    VPC --> PGW[🌍 Public Gateway]
+    VPC --> SUBNET[Subnets]
+    VPC --> ACL[Network ACLs]
+    VPC --> SG[Security Groups]
+    VPC --> RT[Route Tables]
+    VPC --> PGW[Public Gateway]
     
-    SUBNET --> VSI[💻 Virtual Server Instances]
-    SUBNET --> K8S[☸️ Kubernetes Clusters]
+    SUBNET --> VSI[Virtual Server Instances]
+    SUBNET --> K8S[Kubernetes Clusters]
     
-    VSI --> STORAGE[💾 Block Storage]
-    VSI --> FIP[🌐 Floating IPs]
-    VSI --> LB[⚖️ Load Balancers]
+    VSI --> STORAGE[Block Storage]
+    VSI --> FIP[Floating IPs]
+    VSI --> LB[Load Balancers]
     
     K8S --> STORAGE
     K8S --> LB
     
-    VPC --> VPN[🔐 VPN Gateway]
-    VPC --> TGW[🔗 Transit Gateway]
-    VPC --> DNS[🌐 DNS Services]
+    VPC --> VPN[VPN Gateway]
+    VPC --> TGW[Transit Gateway]
+    VPC --> DNS[DNS Services]
     
-    STORAGE --> SNAP[📸 Snapshots]
+    STORAGE --> SNAP[Snapshots]
     
-    VSI --> LOG[📊 Logging]
-    VSI --> MON[📈 Monitoring]
+    VSI --> LOG[Logging]
+    VSI --> MON[Monitoring]
     K8S --> LOG
     K8S --> MON
     
-    RG --> IAM[👥 IAM Policies]
+    RG --> IAM[IAM Policies]
     IAM --> VSI
     IAM --> K8S
     IAM --> STORAGE
     
-    VSI --> DB[🗄️ Databases]
+    VSI --> DB[Databases]
     K8S --> DB
     
     click RG "resource-management/" "Resource Management Documentation"
