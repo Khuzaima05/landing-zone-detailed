@@ -1,86 +1,74 @@
-/* IBM Cloud Landing Zone - Netflix-Inspired Dark Theme */
+/* IBM Cloud Landing Zone - Clean Minimalistic Dark Theme */
 
 /* ============================================
-   Netflix Color Palette
+   Netflix-Inspired Color Palette (Simplified)
    ============================================ */
 :root {
-  /* Netflix Core Colors */
-  --netflix-black: #141414;
-  --netflix-dark-gray: #1f1f1f;
-  --netflix-medium-gray: #2f2f2f;
-  --netflix-light-gray: #3f3f3f;
-  --netflix-red: #E50914;
-  --netflix-red-dark: #B20710;
-  --netflix-red-light: #F40612;
+  /* Core Dark Colors */
+  --bg-primary: #141414;
+  --bg-secondary: #1f1f1f;
+  --bg-tertiary: #2a2a2a;
   
-  /* Text Colors */
+  /* Netflix Red (minimal use) */
+  --accent-red: #E50914;
+  --accent-red-hover: #f40612;
+  
+  /* Text Colors - High Contrast */
   --text-primary: #ffffff;
   --text-secondary: #e5e5e5;
   --text-muted: #b3b3b3;
-  --text-dim: #808080;
   
-  /* Accent Colors (minimal use) */
-  --accent-blue: #0071eb;
-  --accent-green: #46d369;
-  --accent-yellow: #ffa00a;
+  /* Borders */
+  --border-color: #333333;
 }
 
 /* ============================================
-   Netflix Dark Theme Base
+   Base Dark Theme
    ============================================ */
 [data-md-color-scheme="slate"] {
-  --md-default-bg-color: var(--netflix-black);
+  --md-default-bg-color: var(--bg-primary);
   --md-default-fg-color: var(--text-secondary);
-  --md-code-bg-color: var(--netflix-dark-gray);
+  --md-code-bg-color: var(--bg-secondary);
   --md-code-fg-color: var(--text-secondary);
   
-  /* Primary colors - Netflix red for key accents only */
-  --md-primary-fg-color: var(--netflix-black);
-  --md-primary-fg-color--light: var(--netflix-dark-gray);
+  /* Header colors */
+  --md-primary-fg-color: #000000;
+  --md-primary-fg-color--light: var(--bg-primary);
   --md-primary-fg-color--dark: #000000;
-  --md-accent-fg-color: var(--netflix-red);
+  
+  /* Accent - Netflix red */
+  --md-accent-fg-color: var(--accent-red);
   --md-accent-fg-color--transparent: rgba(229, 9, 20, 0.1);
-  
-  /* Typography colors */
-  --md-typeset-color: var(--text-secondary);
-  --md-typeset-a-color: var(--text-primary);
-  
-  /* Background colors */
-  --md-footer-bg-color: var(--netflix-black);
-  --md-footer-bg-color--dark: #000000;
 }
 
 /* ============================================
-   Typography - Clean and Modern
+   Typography - Clean & Readable
    ============================================ */
-@import url('https://fonts.googleapis.com/css2?family=Netflix+Sans:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
-
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--netflix-black);
+  background-color: var(--bg-primary);
   color: var(--text-secondary);
+  line-height: 1.7;
 }
 
-code, pre, .md-typeset code {
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
+code, pre {
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
 }
 
 /* ============================================
-   Header - Dark with Subtle Gradient
+   Header - Simple Dark
    ============================================ */
 .md-header {
-  background: linear-gradient(180deg, #000000 0%, var(--netflix-black) 100%) !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  border-bottom: 1px solid var(--netflix-dark-gray);
+  background: #000000 !important;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: none;
 }
 
 .md-header__title {
   color: var(--text-primary);
-  font-weight: 700;
-  letter-spacing: -0.5px;
+  font-weight: 600;
 }
 
 .md-header__button {
@@ -92,331 +80,269 @@ code, pre, .md-typeset code {
 }
 
 /* ============================================
-   Hero Section - Netflix Style
-   ============================================ */
-.hero-section {
-  background: linear-gradient(180deg, var(--netflix-dark-gray) 0%, var(--netflix-black) 100%);
-  color: var(--text-primary);
-  padding: 4rem 2rem;
-  text-align: center;
-  margin: -1.6rem -1.6rem 2rem -1.6rem;
-  border-radius: 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-  border-bottom: 2px solid var(--netflix-medium-gray);
-}
-
-.hero-section h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--text-primary);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
-  letter-spacing: -1px;
-}
-
-.hero-section p {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-  color: var(--text-secondary);
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.hero-button {
-  display: inline-block;
-  padding: 0.75rem 2rem;
-  background: var(--netflix-red);
-  color: var(--text-primary);
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(229, 9, 20, 0.3);
-}
-
-.hero-button:hover {
-  background: var(--netflix-red-light);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(229, 9, 20, 0.5);
-  color: var(--text-primary);
-}
-
-.hero-button.secondary {
-  background: transparent;
-  color: var(--text-primary);
-  border: 2px solid var(--text-muted);
-}
-
-.hero-button.secondary:hover {
-  background: var(--netflix-dark-gray);
-  border-color: var(--text-primary);
-  color: var(--text-primary);
-}
-
-/* ============================================
-   Feature Cards - Dark Netflix Style
-   ============================================ */
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
-}
-
-.feature-card {
-  background: var(--netflix-dark-gray);
-  border: 1px solid var(--netflix-medium-gray);
-  border-radius: 8px;
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.feature-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-  border-color: var(--netflix-light-gray);
-  background: var(--netflix-medium-gray);
-}
-
-.feature-card-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: var(--netflix-red);
-}
-
-.feature-card h3 {
-  margin-top: 0;
-  color: var(--text-primary);
-  font-weight: 600;
-}
-
-.feature-card p {
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-
-.feature-card a {
-  color: var(--text-primary);
-  text-decoration: none;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  transition: color 0.2s ease;
-}
-
-.feature-card a:hover {
-  color: var(--netflix-red);
-}
-
-/* ============================================
-   Statistics Section
-   ============================================ */
-.stats-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  margin: 3rem 0;
-  padding: 2rem;
-  background: var(--netflix-dark-gray);
-  border-radius: 8px;
-  border: 1px solid var(--netflix-medium-gray);
-}
-
-.stat-item {
-  text-align: center;
-}
-
-.stat-number {
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--netflix-red);
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.stat-label {
-  font-size: 1rem;
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-/* ============================================
-   Content Area - Dark Background
-   ============================================ */
-.md-content {
-  background-color: var(--netflix-black);
-}
-
-.md-content article {
-  background: var(--netflix-black);
-  color: var(--text-secondary);
-}
-
-/* ============================================
-   Admonitions - Netflix Style
-   ============================================ */
-.md-typeset .admonition,
-.md-typeset details {
-  background: var(--netflix-dark-gray);
-  border-left: 4px solid;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  color: var(--text-secondary);
-}
-
-.md-typeset .admonition-title,
-.md-typeset summary {
-  background: var(--netflix-medium-gray);
-  color: var(--text-primary);
-}
-
-.md-typeset .admonition.note {
-  border-left-color: var(--accent-blue);
-}
-
-.md-typeset .admonition.tip {
-  border-left-color: var(--accent-green);
-}
-
-.md-typeset .admonition.warning {
-  border-left-color: var(--accent-yellow);
-}
-
-.md-typeset .admonition.danger {
-  border-left-color: var(--netflix-red);
-}
-
-.md-typeset .admonition.info {
-  border-left-color: var(--text-muted);
-}
-
-/* ============================================
-   Code Blocks - Dark Theme
-   ============================================ */
-.md-typeset pre {
-  background: var(--netflix-dark-gray);
-  border: 1px solid var(--netflix-medium-gray);
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.md-typeset pre > code {
-  background: var(--netflix-dark-gray);
-  color: var(--text-secondary);
-}
-
-.md-typeset code {
-  background: var(--netflix-medium-gray);
-  color: var(--text-primary);
-  border-radius: 3px;
-  padding: 0.1em 0.4em;
-}
-
-.md-typeset .highlight .filename {
-  background: var(--netflix-medium-gray);
-  color: var(--text-primary);
-  padding: 0.5rem 1rem;
-  border-radius: 4px 4px 0 0;
-  font-weight: 600;
-  border-bottom: 1px solid var(--netflix-light-gray);
-}
-
-/* ============================================
-   Navigation - Dark Sidebar
+   Navigation - Clean Sidebar
    ============================================ */
 .md-sidebar {
-  background-color: var(--netflix-black);
+  background-color: var(--bg-primary);
 }
 
 .md-nav {
   color: var(--text-secondary);
+  font-size: 0.9rem;
 }
 
 .md-nav__title {
-  background-color: var(--netflix-dark-gray);
+  background-color: var(--bg-secondary);
   color: var(--text-primary);
   font-weight: 600;
-}
-
-.md-nav__item--active > .md-nav__link {
-  color: var(--netflix-red);
-  font-weight: 600;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .md-nav__link {
   color: var(--text-secondary);
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
   transition: all 0.2s ease;
 }
 
 .md-nav__link:hover {
   color: var(--text-primary);
-  background: var(--netflix-dark-gray);
-  border-radius: 4px;
+  background: var(--bg-secondary);
+}
+
+.md-nav__item--active > .md-nav__link {
+  color: var(--accent-red);
+  font-weight: 600;
+  background: var(--bg-secondary);
 }
 
 /* ============================================
-   Tables - Dark Theme
+   Content Area - Clean & Spacious
+   ============================================ */
+.md-content {
+  background-color: var(--bg-primary);
+}
+
+.md-content article {
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  max-width: 900px;
+  padding: 2rem;
+}
+
+/* Headings - Clear Hierarchy */
+.md-typeset h1 {
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--accent-red);
+  padding-bottom: 0.5rem;
+}
+
+.md-typeset h2 {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 2rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.md-typeset h3 {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+.md-typeset h4, .md-typeset h5, .md-typeset h6 {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Paragraphs - Better Readability */
+.md-typeset p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+
+/* ============================================
+   Links - Simple & Clear
+   ============================================ */
+.md-typeset a {
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.md-typeset a:hover {
+  color: var(--accent-red);
+  border-bottom-color: var(--accent-red);
+}
+
+/* ============================================
+   Code Blocks - Clean Dark
+   ============================================ */
+.md-typeset code {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-radius: 3px;
+  padding: 0.2em 0.4em;
+  font-size: 0.9em;
+  border: 1px solid var(--border-color);
+}
+
+.md-typeset pre {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.md-typeset pre > code {
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  padding: 0;
+}
+
+/* ============================================
+   Tables - Clean & Readable
    ============================================ */
 .md-typeset table:not([class]) {
-  border-radius: 4px;
+  border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  background: var(--netflix-dark-gray);
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  width: 100%;
 }
 
 .md-typeset table:not([class]) th {
-  background: var(--netflix-medium-gray);
+  background: var(--bg-tertiary);
   color: var(--text-primary);
   font-weight: 600;
-  border-bottom: 2px solid var(--netflix-light-gray);
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 2px solid var(--border-color);
 }
 
 .md-typeset table:not([class]) td {
-  border-bottom: 1px solid var(--netflix-medium-gray);
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--border-color);
   color: var(--text-secondary);
 }
 
 .md-typeset table:not([class]) tr:hover {
-  background: var(--netflix-medium-gray);
+  background: var(--bg-tertiary);
+}
+
+.md-typeset table:not([class]) tr:last-child td {
+  border-bottom: none;
 }
 
 /* ============================================
-   Tabs - Dark Theme
+   Admonitions - Clear & Visible
    ============================================ */
-.md-typeset .tabbed-set {
-  background: var(--netflix-dark-gray);
+.md-typeset .admonition,
+.md-typeset details {
+  background: var(--bg-secondary);
+  border-left: 4px solid;
   border-radius: 4px;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-color: var(--border-color);
 }
 
-.md-typeset .tabbed-set > input:checked + label {
-  border-bottom: 3px solid var(--netflix-red);
+.md-typeset .admonition-title,
+.md-typeset summary {
+  background: transparent;
   color: var(--text-primary);
-  background: var(--netflix-medium-gray);
+  font-weight: 600;
+  margin: -1rem -1rem 0.5rem -1rem;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.md-typeset .tabbed-set > label {
-  color: var(--text-muted);
+.md-typeset .admonition.note {
+  border-left-color: #0ea5e9;
 }
 
-.md-typeset .tabbed-set > label:hover {
-  color: var(--text-primary);
+.md-typeset .admonition.tip {
+  border-left-color: #10b981;
+}
+
+.md-typeset .admonition.warning {
+  border-left-color: #f59e0b;
+}
+
+.md-typeset .admonition.danger {
+  border-left-color: var(--accent-red);
+}
+
+.md-typeset .admonition.info {
+  border-left-color: #8b5cf6;
 }
 
 /* ============================================
-   Search - Dark Theme
+   Lists - Clean & Organized
+   ============================================ */
+.md-typeset ul, .md-typeset ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.md-typeset li {
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.md-typeset li::marker {
+  color: var(--accent-red);
+}
+
+/* Task lists */
+.md-typeset .task-list-item {
+  list-style: none;
+  margin-left: -1.5rem;
+}
+
+.md-typeset .task-list-item input[type="checkbox"] {
+  margin-right: 0.5rem;
+  accent-color: var(--accent-red);
+}
+
+/* ============================================
+   Buttons - Simple & Clear
+   ============================================ */
+.md-button {
+  background: var(--accent-red) !important;
+  color: var(--text-primary) !important;
+  border-radius: 4px;
+  padding: 0.6rem 1.5rem;
+  font-weight: 600;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.md-button:hover {
+  background: var(--accent-red-hover) !important;
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   Search - Clean Dark
    ============================================ */
 .md-search__input {
-  background: var(--netflix-dark-gray);
+  background: var(--bg-secondary);
   color: var(--text-primary);
-  border: 1px solid var(--netflix-medium-gray);
+  border: 1px solid var(--border-color);
   border-radius: 4px;
 }
 
@@ -425,25 +351,15 @@ code, pre, .md-typeset code {
 }
 
 .md-search__input:focus {
-  border-color: var(--netflix-red);
-  box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.2);
-}
-
-.md-search-result {
-  background: var(--netflix-dark-gray);
-  color: var(--text-secondary);
-}
-
-.md-search-result__link:hover {
-  background: var(--netflix-medium-gray);
+  border-color: var(--accent-red);
 }
 
 /* ============================================
-   Footer - Dark Theme
+   Footer - Simple Dark
    ============================================ */
 .md-footer {
-  background: var(--netflix-black);
-  border-top: 1px solid var(--netflix-dark-gray);
+  background: #000000;
+  border-top: 1px solid var(--border-color);
   color: var(--text-muted);
 }
 
@@ -451,116 +367,66 @@ code, pre, .md-typeset code {
   background: #000000;
 }
 
-.md-footer__link {
-  color: var(--text-muted);
+/* ============================================
+   Tabs - Clean Style
+   ============================================ */
+.md-typeset .tabbed-set {
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
 }
 
-.md-footer__link:hover {
+.md-typeset .tabbed-set > label {
+  color: var(--text-muted);
+  padding: 0.8rem 1.2rem;
+}
+
+.md-typeset .tabbed-set > label:hover {
   color: var(--text-primary);
 }
 
+.md-typeset .tabbed-set > input:checked + label {
+  border-bottom: 2px solid var(--accent-red);
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+}
+
 /* ============================================
-   Grid Cards - Netflix Style
+   Mermaid Diagrams - Dark Background
+   ============================================ */
+.mermaid {
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border: 1px solid var(--border-color);
+}
+
+/* ============================================
+   Grid Cards - Simple Layout
    ============================================ */
 .grid.cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
   margin: 2rem 0;
 }
 
 .grid.cards > * {
-  background: var(--netflix-dark-gray);
-  border: 1px solid var(--netflix-medium-gray);
-  border-radius: 8px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
   padding: 1.5rem;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .grid.cards > *:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  border-color: var(--netflix-light-gray);
-  background: var(--netflix-medium-gray);
+  border-color: var(--accent-red);
+  transform: translateY(-2px);
 }
 
 /* ============================================
-   Learning Roadmap Styles
-   ============================================ */
-.learning-roadmap h2 {
-  color: var(--text-primary);
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  border-bottom: 2px solid var(--netflix-red);
-  padding-bottom: 0.5rem;
-}
-
-.learning-roadmap h3 {
-  color: var(--text-primary);
-  font-weight: 600;
-  margin-top: 2rem;
-  padding: 1rem;
-  background: var(--netflix-dark-gray);
-  border-radius: 4px;
-  border-left: 4px solid var(--netflix-red);
-}
-
-/* ============================================
-   Mermaid Diagrams - Dark Theme
-   ============================================ */
-.mermaid {
-  background: var(--netflix-dark-gray);
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin: 1.5rem 0;
-  border: 1px solid var(--netflix-medium-gray);
-}
-
-/* ============================================
-   Links - Netflix Style
-   ============================================ */
-.md-typeset a {
-  color: var(--text-primary);
-  transition: all 0.2s ease;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-}
-
-.md-typeset a:hover {
-  color: var(--netflix-red);
-  border-bottom-color: var(--netflix-red);
-}
-
-/* ============================================
-   Checkboxes - Custom Style
-   ============================================ */
-.md-typeset .task-list-item input[type="checkbox"] {
-  appearance: none;
-  width: 18px;
-  height: 18px;
-  border: 2px solid var(--text-muted);
-  border-radius: 3px;
-  background: var(--netflix-dark-gray);
-  cursor: pointer;
-}
-
-.md-typeset .task-list-item input[type="checkbox"]:checked {
-  background: var(--netflix-red);
-  border-color: var(--netflix-red);
-}
-
-.md-typeset .task-list-item input[type="checkbox"]:checked::after {
-  content: "✓";
-  color: white;
-  font-weight: bold;
-  display: block;
-  text-align: center;
-  line-height: 14px;
-}
-
-/* ============================================
-   Scrollbar - Netflix Style
+   Scrollbar - Minimal Dark
    ============================================ */
 ::-webkit-scrollbar {
   width: 10px;
@@ -568,66 +434,36 @@ code, pre, .md-typeset code {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--netflix-black);
+  background: var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--netflix-medium-gray);
+  background: var(--bg-tertiary);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--netflix-light-gray);
-}
-
-/* ============================================
-   Smooth Transitions
-   ============================================ */
-* {
-  transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-/* ============================================
-   Animations
-   ============================================ */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in {
-  animation: fadeIn 0.6s ease-out;
+  background: var(--border-color);
 }
 
 /* ============================================
    Responsive Design
    ============================================ */
 @media screen and (max-width: 768px) {
-  .hero-section h1 {
+  .md-content article {
+    padding: 1rem;
+  }
+  
+  .md-typeset h1 {
     font-size: 2rem;
   }
   
-  .hero-section p {
-    font-size: 1rem;
+  .md-typeset h2 {
+    font-size: 1.5rem;
   }
   
-  .feature-grid {
+  .grid.cards {
     grid-template-columns: 1fr;
-  }
-  
-  .stats-section {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  
-  .stat-number {
-    font-size: 2rem;
   }
 }
 
@@ -635,86 +471,36 @@ code, pre, .md-typeset code {
    Print Styles
    ============================================ */
 @media print {
-  .hero-section,
+  body {
+    background: white;
+    color: black;
+  }
+  
   .md-header,
   .md-sidebar,
   .md-footer {
     display: none;
-  }
-  
-  body {
-    background: white;
-    color: black;
   }
 }
 
 /* ============================================
    Accessibility
    ============================================ */
-.skip-to-content {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: var(--netflix-red);
-  color: white;
-  padding: 8px;
-  text-decoration: none;
-  z-index: 100;
-}
-
-.skip-to-content:focus {
-  top: 0;
-}
-
-/* Focus states */
 *:focus-visible {
-  outline: 2px solid var(--netflix-red);
+  outline: 2px solid var(--accent-red);
   outline-offset: 2px;
 }
 
-/* ============================================
-   Buttons and Interactive Elements
-   ============================================ */
-.md-button {
-  background: var(--netflix-red) !important;
-  color: var(--text-primary) !important;
-  border-radius: 4px;
-  padding: 10px 25px;
-  transition: all 0.2s ease;
-  border: none;
+/* High contrast for better readability */
+.md-typeset strong {
+  color: var(--text-primary);
+  font-weight: 700;
 }
 
-.md-button:hover {
-  background: var(--netflix-red-light) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(229, 9, 20, 0.4);
-}
-
-.md-button--primary {
-  background: var(--netflix-red) !important;
-}
-
-/* ============================================
-   Breadcrumbs
-   ============================================ */
-.breadcrumbs {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.breadcrumbs a {
-  color: var(--text-secondary);
-  text-decoration: none;
-}
-
-.breadcrumbs a:hover {
+.md-typeset em {
   color: var(--text-primary);
 }
 
-/* Made with Bob - Netflix Dark Theme Edition */
+/* Made with Bob - Clean Minimalistic Dark Theme */
 
 /* Made with Bob */
