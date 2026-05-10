@@ -15,6 +15,26 @@ hide:
   </div>
 </div>
 
+<div class="grid cards" markdown>
+
+-   :material-map-marker-path:{ .lg .middle } **🗺️ New to IBM Cloud Landing Zone?**
+
+    ---
+
+    Follow our **[Interactive Learning Path](learning-path.md)** with visual roadmaps and step-by-step guidance!
+    
+    **✨ Features:**
+    
+    - 📊 6 structured learning phases
+    - ⏱️ 16-22 hours total learning time
+    - 🎨 Interactive Mermaid diagrams
+    - ✅ Progress tracking checklist
+    - 🎯 Clear milestones and objectives
+    
+    [:octicons-arrow-right-24: Start Your Journey](learning-path.md){ .md-button .md-button--primary }
+
+</div>
+
 ## Welcome to IBM Cloud Landing Zone
 
 IBM Cloud Landing Zone provides a comprehensive, production-ready foundation for deploying enterprise workloads on IBM Cloud. This documentation covers all aspects of infrastructure deployment, configuration, and management across 11 core modules.

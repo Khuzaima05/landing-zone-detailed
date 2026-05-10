@@ -19,28 +19,26 @@ theme:
   
   # Color Palette
   palette:
-    # Light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: custom
-      accent: blue
+    # Light mode - Vibrant and playful
+    - scheme: default
+      primary: deep purple
+      accent: pink
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     
-    # Dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: custom
-      accent: blue
+    # Dark mode - Modern and sleek
+    - scheme: slate
+      primary: deep purple
+      accent: pink
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
   
   # Fonts
   font:
-    text: IBM Plex Sans
-    code: IBM Plex Mono
+    text: Poppins
+    code: JetBrains Mono
   
   # Logo and Favicon
   logo: assets/images/ibm-cloud-logo.svg
@@ -226,6 +224,7 @@ markdown_extensions:
 # Navigation Structure
 nav:
   - Home: index.md
+  - 🗺️ Learning Path: learning-path.md
   - Getting Started:
     - getting-started.md
     - Quick Start: getting-started/quick-start.md
@@ -258,62 +257,29 @@ nav:
   
   - Cluster Infrastructure:
     - cluster/index.md
-    - Overview: cluster/overview.md
-    - Kubernetes Service: cluster/kubernetes-service.md
-    - OpenShift: cluster/openshift.md
-    - Configuration: cluster/configuration.md
   
   - Security Infrastructure:
     - security/index.md
-    - Overview: security/overview.md
-    - Key Management: security/key-management.md
-    - Secrets Manager: security/secrets-manager.md
-    - Security & Compliance: security/security-compliance.md
   
   - Observability Infrastructure:
     - observability/index.md
-    - Overview: observability/overview.md
-    - Logging: observability/logging.md
-    - Monitoring: observability/monitoring.md
-    - Activity Tracker: observability/activity-tracker.md
   
   - Storage Infrastructure:
     - storage/index.md
-    - Overview: storage/overview.md
-    - Block Storage: storage/block-storage.md
-    - Object Storage: storage/object-storage.md
-    - File Storage: storage/file-storage.md
   
   - Database Infrastructure:
     - database/index.md
-    - Overview: database/overview.md
-    - Cloud Databases: database/cloud-databases.md
-    - Database Configuration: database/configuration.md
   
   - Networking Infrastructure:
     - networking/index.md
-    - Overview: networking/overview.md
-    - DNS Services: networking/dns-services.md
-    - CDN: networking/cdn.md
-    - Direct Link: networking/direct-link.md
   
   - IAM Infrastructure:
     - iam/index.md
-    - Overview: iam/overview.md
-    - Access Groups: iam/access-groups.md
-    - Service IDs: iam/service-ids.md
-    - Policies: iam/policies.md
   
   - Resource Management:
     - resource-management/index.md
-    - Overview: resource-management/overview.md
-    - Resource Groups: resource-management/resource-groups.md
-    - Tagging Strategy: resource-management/tagging-strategy.md
   
   - Reference:
-    - API Reference: reference/api.md
-    - CLI Reference: reference/cli.md
-    - Terraform Modules: reference/terraform.md
     - Best Practices: reference/best-practices.md
     - Troubleshooting: reference/troubleshooting.md
     - FAQ: reference/faq.md

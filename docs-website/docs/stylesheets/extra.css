@@ -436,3 +436,239 @@ code, pre, .md-typeset code {
 }
 
 /* Made with Bob */
+
+
+/* ============================================
+   PLAYFUL THEME REDESIGN
+   ============================================ */
+
+/* Import Poppins and JetBrains Mono fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* Playful gradient header */
+.md-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+}
+
+/* Animated gradient for main title */
+.md-header__title {
+  background: linear-gradient(45deg, #fff, #ffd700);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Playful card-like sections */
+.md-content article {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+/* Colorful navigation items */
+.md-nav__link:hover {
+  background: linear-gradient(90deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+  border-radius: 10px;
+  transform: translateX(5px);
+  transition: all 0.3s ease;
+}
+
+/* Fun emoji bullets for lists */
+.md-typeset ul li::marker {
+  content: "🚀 ";
+}
+
+/* Colorful code blocks */
+.md-typeset pre {
+  border-left: 4px solid #667eea;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Playful buttons */
+.md-button {
+  background: linear-gradient(135deg, #667eea, #764ba2) !important;
+  border-radius: 25px;
+  padding: 10px 25px;
+  transition: transform 0.2s;
+  color: white !important;
+}
+
+.md-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Animated progress indicators */
+.learning-path-step {
+  position: relative;
+  padding-left: 40px;
+  margin: 20px 0;
+}
+
+.learning-path-step::before {
+  content: "✨";
+  position: absolute;
+  left: 0;
+  font-size: 24px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Learning Roadmap Styles */
+.learning-roadmap {
+  padding: 2rem;
+}
+
+.learning-roadmap h2 {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.learning-roadmap h3 {
+  color: #667eea;
+  font-weight: 600;
+  margin-top: 2rem;
+}
+
+/* Mermaid diagram styling */
+.mermaid {
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+/* Grid cards for quick navigation */
+.grid.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.grid.cards > * {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  border: 2px solid rgba(102, 126, 234, 0.3);
+  border-radius: 15px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.grid.cards > *:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+  border-color: #667eea;
+}
+
+/* Enhanced admonitions with playful colors */
+.md-typeset .admonition.tip {
+  border-left-color: #43e97b;
+  background: rgba(67, 233, 123, 0.1);
+}
+
+.md-typeset .admonition.info {
+  border-left-color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+/* Playful hover effects for links */
+.md-typeset a {
+  color: #667eea;
+  transition: all 0.2s ease;
+}
+
+.md-typeset a:hover {
+  color: #764ba2;
+  text-decoration: underline wavy;
+}
+
+/* Animated checkboxes */
+.md-typeset .task-list-item input[type="checkbox"]:checked::before {
+  content: "✅";
+}
+
+.md-typeset .task-list-item input[type="checkbox"]::before {
+  content: "⬜";
+}
+
+/* Phase sections with gradient backgrounds */
+.learning-roadmap > div > h3 {
+  background: linear-gradient(90deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+  padding: 1rem;
+  border-radius: 10px;
+  border-left: 5px solid #667eea;
+}
+
+/* Estimated time badges */
+.learning-roadmap p strong {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  display: inline-block;
+}
+
+/* Dark mode adjustments */
+[data-md-color-scheme="slate"] .md-content article {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+[data-md-color-scheme="slate"] .grid.cards > * {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Playful focus states */
+*:focus {
+  outline: 3px solid rgba(102, 126, 234, 0.5);
+  outline-offset: 2px;
+  border-radius: 5px;
+}
+
+/* Enhanced table styling */
+.md-typeset table:not([class]) {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.15);
+}
+
+.md-typeset table:not([class]) th {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+/* Playful scrollbar */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #764ba2, #667eea);
+}
+
+/* Made with Bob - Playful Edition */
