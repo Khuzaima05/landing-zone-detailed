@@ -44,20 +44,26 @@ Vercel will automatically detect the `vercel.json` configuration file. Verify th
 
 ```json
 {
-  "buildCommand": "cd docs-website && pip install -r requirements.txt && mkdocs build",
+  "buildCommand": "cd docs-website && uv pip install --system -r requirements.txt && mkdocs build",
   "outputDirectory": "docs-website/site",
   "framework": null,
   "devCommand": "cd docs-website && mkdocs serve"
 }
 ```
 
-**Note**: The `installCommand` field has been removed as Vercel's managed Python environment (using `uv`) handles package management automatically and doesn't allow `pip install --upgrade pip`.
+**Important**: Vercel uses `uv` (a fast Python package installer) to manage Python environments. You **must** use `uv pip install --system` instead of regular `pip` commands:
+
+- ✅ **Correct**: `uv pip install --system -r requirements.txt`
+- ❌ **Incorrect**: `pip install -r requirements.txt`
+- ❌ **Incorrect**: `pip install --upgrade pip`
+
+The `--system` flag tells uv to install packages system-wide, which is required in Vercel's managed environment. Regular `pip` commands are blocked and will cause build failures.
 
 **Manual Configuration** (if needed):
 
 - **Framework Preset**: `Other`
 - **Root Directory**: `./` (leave as root)
-- **Build Command**: `cd docs-website && pip install -r requirements.txt && mkdocs build`
+- **Build Command**: `cd docs-website && uv pip install --system -r requirements.txt && mkdocs build`
 - **Output Directory**: `docs-website/site`
 - **Install Command**: Leave empty (Vercel handles this automatically)
 
@@ -146,22 +152,28 @@ Value: cname.vercel-dns.com
 
 ### Build Failures
 
-**Problem**: Build fails with `pip install --upgrade pip` error on Vercel
+**Problem**: Build fails with `pip` command errors on Vercel
 
 **Solution**:
-Vercel uses `uv` to manage Python environments and doesn't allow upgrading pip. The `installCommand` field has been removed from `vercel.json`. If you encounter this error:
+Vercel uses `uv` (a fast Python package installer) to manage Python environments and blocks regular `pip` commands. You **must** use `uv pip install --system` instead:
 
-1. Ensure `vercel.json` does NOT contain `"installCommand": "pip install --upgrade pip"`
-2. The correct configuration should be:
+1. **Correct vercel.json configuration**:
    ```json
    {
-     "buildCommand": "cd docs-website && pip install -r requirements.txt && mkdocs build",
+     "buildCommand": "cd docs-website && uv pip install --system -r requirements.txt && mkdocs build",
      "outputDirectory": "docs-website/site",
      "framework": null,
      "devCommand": "cd docs-website && mkdocs serve"
    }
    ```
-3. Alternatively, use the build script approach:
+
+2. **Why `--system` flag is required**:
+   - Vercel's environment is managed by `uv`
+   - Regular `pip` commands are blocked
+   - The `--system` flag installs packages system-wide in uv's managed environment
+   - Without it, you'll get permission errors or package installation failures
+
+3. **Alternative: Use the build script**:
    ```json
    {
      "buildCommand": "cd docs-website && bash build-vercel.sh",
@@ -169,6 +181,12 @@ Vercel uses `uv` to manage Python environments and doesn't allow upgrading pip. 
      "framework": null
    }
    ```
+   The `build-vercel.sh` script already uses `uv pip install --system`.
+
+4. **Common errors and fixes**:
+   - ❌ `pip: command not found` → Use `uv pip` instead
+   - ❌ `pip install --upgrade pip` blocked → Remove this command, uv manages pip
+   - ❌ Permission denied errors → Add `--system` flag to `uv pip install`
 
 **Problem**: Build fails with Python errors
 

@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-echo "Installing dependencies..."
-pip install -r requirements.txt
+echo "Installing dependencies with uv pip..."
+uv pip install --system -r requirements.txt
 
 echo "Building MkDocs site..."
 mkdocs build
