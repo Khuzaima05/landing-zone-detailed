@@ -46,11 +46,12 @@ Vercel will automatically detect the `vercel.json` configuration file. Verify th
 {
   "buildCommand": "cd docs-website && pip install -r requirements.txt && mkdocs build",
   "outputDirectory": "docs-website/site",
-  "installCommand": "pip install --upgrade pip",
   "framework": null,
   "devCommand": "cd docs-website && mkdocs serve"
 }
 ```
+
+**Note**: The `installCommand` field has been removed as Vercel's managed Python environment (using `uv`) handles package management automatically and doesn't allow `pip install --upgrade pip`.
 
 **Manual Configuration** (if needed):
 
@@ -58,7 +59,7 @@ Vercel will automatically detect the `vercel.json` configuration file. Verify th
 - **Root Directory**: `./` (leave as root)
 - **Build Command**: `cd docs-website && pip install -r requirements.txt && mkdocs build`
 - **Output Directory**: `docs-website/site`
-- **Install Command**: `pip install --upgrade pip`
+- **Install Command**: Leave empty (Vercel handles this automatically)
 
 ### Step 3: Deploy
 
@@ -144,6 +145,30 @@ Value: cname.vercel-dns.com
 ## Troubleshooting
 
 ### Build Failures
+
+**Problem**: Build fails with `pip install --upgrade pip` error on Vercel
+
+**Solution**:
+Vercel uses `uv` to manage Python environments and doesn't allow upgrading pip. The `installCommand` field has been removed from `vercel.json`. If you encounter this error:
+
+1. Ensure `vercel.json` does NOT contain `"installCommand": "pip install --upgrade pip"`
+2. The correct configuration should be:
+   ```json
+   {
+     "buildCommand": "cd docs-website && pip install -r requirements.txt && mkdocs build",
+     "outputDirectory": "docs-website/site",
+     "framework": null,
+     "devCommand": "cd docs-website && mkdocs serve"
+   }
+   ```
+3. Alternatively, use the build script approach:
+   ```json
+   {
+     "buildCommand": "cd docs-website && bash build-vercel.sh",
+     "outputDirectory": "docs-website/site",
+     "framework": null
+   }
+   ```
 
 **Problem**: Build fails with Python errors
 
