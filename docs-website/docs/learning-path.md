@@ -11,9 +11,9 @@ Follow this sequential path to master IBM Cloud infrastructure!
 
 ```mermaid
 graph LR
-    A[🏁 Start] --> B[Getting Started]
-    B --> C[VPC Foundation]
-    C --> D[Architecture Basics]
+    A["Start"] --> B["Getting Started"]
+    B --> C["VPC Foundation"]
+    C --> D["Architecture Basics"]
     style A fill:#667eea,color:#fff
     style B fill:#764ba2,color:#fff
     style C fill:#f093fb,color:#fff
@@ -42,10 +42,10 @@ graph LR
 
 ```mermaid
 graph TD
-    A[Phase 1 Complete ✅] --> B[Subnets & CIDR]
-    B --> C[Security Groups]
-    C --> D[Network ACLs]
-    D --> E[Routing]
+    A["Phase 1 Complete"] --> B["Subnets & CIDR"]
+    B --> C["Security Groups"]
+    C --> D["Network ACLs"]
+    D --> E["Routing"]
     style A fill:#4facfe,color:#fff
     style B fill:#00f2fe,color:#fff
     style C fill:#43e97b,color:#fff
@@ -65,9 +65,9 @@ graph TD
 
 ```mermaid
 graph LR
-    A[Networking ✅] --> B[Virtual Servers]
-    B --> C[Kubernetes]
-    C --> D[OpenShift]
+    A["Networking Complete"] --> B["Virtual Servers"]
+    B --> C["Kubernetes"]
+    C --> D["OpenShift"]
     style A fill:#667eea,color:#fff
     style B fill:#f093fb,color:#fff
     style C fill:#764ba2,color:#fff
@@ -85,9 +85,9 @@ graph LR
 
 ```mermaid
 graph TD
-    A[Compute ✅] --> B[IAM]
-    B --> C[Security Services]
-    C --> D[Compliance]
+    A["Compute Complete"] --> B["IAM"]
+    B --> C["Security Services"]
+    C --> D["Compliance"]
     style A fill:#4facfe,color:#fff
     style B fill:#43e97b,color:#fff
     style C fill:#fa709a,color:#fff
@@ -104,9 +104,9 @@ graph TD
 
 ```mermaid
 graph LR
-    A[Security ✅] --> B[Observability]
-    B --> C[Storage]
-    C --> D[Databases]
+    A["Security Complete"] --> B["Observability"]
+    B --> C["Storage"]
+    C --> D["Databases"]
     style A fill:#667eea,color:#fff
     style B fill:#f093fb,color:#fff
     style C fill:#4facfe,color:#fff
@@ -124,10 +124,10 @@ graph LR
 
 ```mermaid
 graph TD
-    A[Operations ✅] --> B[Transit Gateway]
-    B --> C[VPN]
-    C --> D[Load Balancers]
-    D --> E[🎉 Expert!]
+    A["Operations Complete"] --> B["Transit Gateway"]
+    B --> C["VPN"]
+    C --> D["Load Balancers"]
+    D --> E["Expert Level!"]
     style A fill:#4facfe,color:#fff
     style B fill:#667eea,color:#fff
     style C fill:#764ba2,color:#fff
