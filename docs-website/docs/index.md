@@ -41,43 +41,43 @@ hide:
 
 ```mermaid
 graph LR
-    OBJECTIVE[Deploy Enterprise<br/>Landing Zone]
+    OBJECTIVE["Deploy Enterprise Landing Zone"]
     
-    OBJECTIVE --> FOUNDATION[Foundation Strategy]
-    OBJECTIVE --> COMPUTE[Compute Strategy]
-    OBJECTIVE --> DATA[Data Strategy]
+    OBJECTIVE --> FOUNDATION["Foundation Strategy"]
+    OBJECTIVE --> COMPUTE["Compute Strategy"]
+    OBJECTIVE --> DATA["Data Strategy"]
     
-    FOUNDATION --> FOUNDATION_T1[Network Tactic]
-    FOUNDATION --> FOUNDATION_T2[Security Tactic]
+    FOUNDATION --> FOUNDATION_T1["Network Tactic"]
+    FOUNDATION --> FOUNDATION_T2["Security Tactic"]
     
-    FOUNDATION_T1 --> VPC[VPC Infrastructure]
-    FOUNDATION_T1 --> SUBNET[Subnets]
-    FOUNDATION_T1 --> RT[Route Tables]
-    FOUNDATION_T1 --> VPN[VPN Gateway]
+    FOUNDATION_T1 --> VPC["VPC Infrastructure"]
+    FOUNDATION_T1 --> SUBNET["Subnets"]
+    FOUNDATION_T1 --> RT["Route Tables"]
+    FOUNDATION_T1 --> VPN["VPN Gateway"]
     
-    FOUNDATION_T2 --> ACL[Network ACLs]
-    FOUNDATION_T2 --> SG[Security Groups]
-    FOUNDATION_T2 --> IAM[IAM Policies]
+    FOUNDATION_T2 --> ACL["Network ACLs"]
+    FOUNDATION_T2 --> SG["Security Groups"]
+    FOUNDATION_T2 --> IAM["IAM Policies"]
     
-    COMPUTE --> COMPUTE_T1[Virtual Servers Tactic]
-    COMPUTE --> COMPUTE_T2[Containers Tactic]
+    COMPUTE --> COMPUTE_T1["Virtual Servers Tactic"]
+    COMPUTE --> COMPUTE_T2["Containers Tactic"]
     
-    COMPUTE_T1 --> VSI[VSI Instances]
-    COMPUTE_T1 --> LB[Load Balancers]
-    COMPUTE_T1 --> FIP[Floating IPs]
+    COMPUTE_T1 --> VSI["VSI Instances"]
+    COMPUTE_T1 --> LB["Load Balancers"]
+    COMPUTE_T1 --> FIP["Floating IPs"]
     
-    COMPUTE_T2 --> K8S[Kubernetes Clusters]
-    COMPUTE_T2 --> REGISTRY[Container Registry]
+    COMPUTE_T2 --> K8S["Kubernetes Clusters"]
+    COMPUTE_T2 --> REGISTRY["Container Registry"]
     
-    DATA --> DATA_T1[Storage Tactic]
-    DATA --> DATA_T2[Database Tactic]
+    DATA --> DATA_T1["Storage Tactic"]
+    DATA --> DATA_T2["Database Tactic"]
     
-    DATA_T1 --> BLOCK[Block Storage]
-    DATA_T1 --> OBJECT[Object Storage]
-    DATA_T1 --> FILE[File Storage]
+    DATA_T1 --> BLOCK["Block Storage"]
+    DATA_T1 --> OBJECT["Object Storage"]
+    DATA_T1 --> FILE["File Storage"]
     
-    DATA_T2 --> DB[Managed Databases]
-    DATA_T2 --> BACKUP[Backup Services]
+    DATA_T2 --> DB["Managed Databases"]
+    DATA_T2 --> BACKUP["Backup Services"]
     
     classDef objectiveStyle fill:#2d2d2d,stroke:#E50914,stroke-width:3px,color:#fff
     classDef strategyStyle fill:#8B4513,stroke:#E50914,stroke-width:2px,color:#fff
