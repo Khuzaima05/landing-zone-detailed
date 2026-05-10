@@ -413,16 +413,39 @@ code, pre {
 }
 
 .grid.cards > * {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
   border-radius: 6px;
   padding: 1.5rem;
   transition: all 0.2s ease;
 }
 
 .grid.cards > *:hover {
-  border-color: var(--accent-red);
+  border-color: var(--accent-red) !important;
   transform: translateY(-2px);
+}
+
+/* Force all card content to have proper colors */
+.grid.cards > * * {
+  color: var(--text-secondary) !important;
+}
+
+.grid.cards > * h3,
+.grid.cards > * h4,
+.grid.cards > * strong {
+  color: var(--text-primary) !important;
+}
+
+.grid.cards > * p {
+  color: var(--text-secondary) !important;
+}
+
+.grid.cards > * ul {
+  color: var(--text-secondary) !important;
+}
+
+.grid.cards > * li {
+  color: var(--text-secondary) !important;
 }
 
 /* ============================================
