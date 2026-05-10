@@ -35,31 +35,75 @@ hide:
 
 </div>
 
-## 🌳 Infrastructure Dependency Tree
+## 🎯 Infrastructure Deployment KPI Tree
 
 **Click on any component to navigate to its documentation**
 
 ```mermaid
-graph TD
-    START[Start Here] --> RG[Resource Groups]
-    RG --> VPC[VPC Infrastructure]
-    VPC --> SUBNET[Subnets]
-    VPC --> ACL[Network ACLs]
-    VPC --> SG[Security Groups]
-    VPC --> RT[Route Tables]
-    SUBNET --> VSI[Virtual Servers]
-    SUBNET --> K8S[Kubernetes]
-    VSI --> STORAGE[Storage]
-    VSI --> LB[Load Balancers]
-    K8S --> STORAGE
-    K8S --> LB
-    VPC --> VPN[VPN Gateway]
-    VPC --> TGW[Transit Gateway]
-    RG --> IAM[IAM]
-    VSI --> DB[Databases]
-    VSI --> OBS[Observability]
-    K8S --> OBS
-```
+graph LR
+    OBJECTIVE[Deploy Enterprise<br/>Landing Zone]
+    
+    OBJECTIVE --> FOUNDATION[Foundation Strategy]
+    OBJECTIVE --> COMPUTE[Compute Strategy]
+    OBJECTIVE --> DATA[Data Strategy]
+    
+    FOUNDATION --> FOUNDATION_T1[Network Tactic]
+    FOUNDATION --> FOUNDATION_T2[Security Tactic]
+    
+    FOUNDATION_T1 --> VPC[VPC Infrastructure]
+    FOUNDATION_T1 --> SUBNET[Subnets]
+    FOUNDATION_T1 --> RT[Route Tables]
+    FOUNDATION_T1 --> VPN[VPN Gateway]
+    
+    FOUNDATION_T2 --> ACL[Network ACLs]
+    FOUNDATION_T2 --> SG[Security Groups]
+    FOUNDATION_T2 --> IAM[IAM Policies]
+    
+    COMPUTE --> COMPUTE_T1[Virtual Servers Tactic]
+    COMPUTE --> COMPUTE_T2[Containers Tactic]
+    
+    COMPUTE_T1 --> VSI[VSI Instances]
+    COMPUTE_T1 --> LB[Load Balancers]
+    COMPUTE_T1 --> FIP[Floating IPs]
+    
+    COMPUTE_T2 --> K8S[Kubernetes Clusters]
+    COMPUTE_T2 --> REGISTRY[Container Registry]
+    
+    DATA --> DATA_T1[Storage Tactic]
+    DATA --> DATA_T2[Database Tactic]
+    
+    DATA_T1 --> BLOCK[Block Storage]
+    DATA_T1 --> OBJECT[Object Storage]
+    DATA_T1 --> FILE[File Storage]
+    
+    DATA_T2 --> DB[Managed Databases]
+    DATA_T2 --> BACKUP[Backup Services]
+    
+    classDef objectiveStyle fill:#2d2d2d,stroke:#E50914,stroke-width:3px,color:#fff
+    classDef strategyStyle fill:#8B4513,stroke:#E50914,stroke-width:2px,color:#fff
+    classDef tacticStyle fill:#4169E1,stroke:#666,stroke-width:2px,color:#fff
+    classDef kpiStyle fill:#90EE90,stroke:#666,stroke-width:1px,color:#000
+    
+    class OBJECTIVE objectiveStyle
+    class FOUNDATION,COMPUTE,DATA strategyStyle
+    class FOUNDATION_T1,FOUNDATION_T2,COMPUTE_T1,COMPUTE_T2,DATA_T1,DATA_T2 tacticStyle
+    class VPC,SUBNET,RT,VPN,ACL,SG,IAM,VSI,LB,FIP,K8S,REGISTRY,BLOCK,OBJECT,FILE,DB,BACKUP kpiStyle
+    
+    click VPC "vpc/vpc-foundation/" "VPC Foundation Guide"
+    click SUBNET "vpc/subnet-service-internals/" "Subnet Service Guide"
+    click RT "vpc/route-table-service/" "Route Tables Guide"
+    click VPN "vpc/vpn-architecture/" "VPN Architecture Guide"
+    click ACL "vpc/network-acl-architecture/" "Network ACL Guide"
+    click SG "vpc/security-group-service-internals/" "Security Groups Guide"
+    click IAM "iam/" "IAM Infrastructure Guide"
+    click VSI "vsi/vsi-provisioning-overview/" "VSI Infrastructure Guide"
+    click LB "vpc/load-balancer-architecture/" "Load Balancer Guide"
+    click FIP "vpc/floating-ip-architecture/" "Floating IP Guide"
+    click K8S "cluster/" "Cluster Infrastructure Guide"
+    click BLOCK "storage/" "Block Storage Guide"
+    click OBJECT "storage/" "Object Storage Guide"
+    click FILE "storage/" "File Storage Guide"
+    click DB "database/" "Database Infrastructure Guide"
 
 ### 📋 Dependency Rules
 
