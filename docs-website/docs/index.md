@@ -35,10 +35,11 @@ hide:
 
 </div>
 
-## 🎯 Infrastructure Deployment KPI Tree
+## 🎯 Infrastructure Deployment Guide
 
 **Click on any component to navigate to its documentation**
 
+### 🎯 Objective: Deploy Enterprise Landing Zone
 
 <div class="grid cards" markdown>
 
@@ -46,50 +47,63 @@ hide:
     
     ---
     
-    **Network Components:**
+    Build the network and security foundation
     
-    - [VPC Infrastructure](vpc/vpc-foundation/)
-    - [Subnets](vpc/subnet-service-internals/)
-    - [Route Tables](vpc/route-table-service/)
-    - [VPN Gateway](vpc/vpn-architecture/)
+    **Network Tactics:**
     
-    **Security Components:**
+    - 🌐 [VPC Infrastructure](vpc/vpc-foundation/) → Network isolation
+    - 📡 [Subnets](vpc/subnet-service-internals/) → Network segments
+    - 🔀 [Route Tables](vpc/route-table-service/) → Traffic routing
+    - 🔒 [VPN Gateway](vpc/vpn-architecture/) → Secure connectivity
     
-    - [Network ACLs](vpc/network-acl-architecture/)
-    - [Security Groups](vpc/security-group-service-internals/)
-    - [IAM Policies](iam/)
+    **Security Tactics:**
+    
+    - 🛡️ [Network ACLs](vpc/network-acl-architecture/) → Subnet-level firewall
+    - 🔐 [Security Groups](vpc/security-group-service-internals/) → Instance-level firewall
+    - 👤 [IAM Policies](iam/) → Access control
 
 -   **💻 Compute Strategy**
     
     ---
     
-    **Virtual Servers:**
+    Deploy workloads and applications
     
-    - [VSI Instances](vsi/vsi-provisioning-overview/)
-    - [Load Balancers](vpc/load-balancer-architecture/)
-    - [Floating IPs](vpc/floating-ip-architecture/)
+    **Virtual Server Tactics:**
     
-    **Containers:**
+    - 🖥️ [VSI Instances](vsi/vsi-provisioning-overview/) → Virtual machines
+    - ⚖️ [Load Balancers](vpc/load-balancer-architecture/) → Traffic distribution
+    - 🌍 [Floating IPs](vpc/floating-ip-architecture/) → Public access
     
-    - [Kubernetes Clusters](cluster/)
-    - [Container Registry](cluster/)
+    **Container Tactics:**
+    
+    - ☸️ [Kubernetes Clusters](cluster/) → Container orchestration
+    - 📦 [Container Registry](cluster/) → Image storage
 
 -   **💾 Data Strategy**
     
     ---
     
-    **Storage:**
+    Manage storage and databases
     
-    - [Block Storage](storage/)
-    - [Object Storage](storage/)
-    - [File Storage](storage/)
+    **Storage Tactics:**
     
-    **Database:**
+    - 💿 [Block Storage](storage/) → Persistent volumes
+    - 🗄️ [Object Storage](storage/) → Scalable storage
+    - 📁 [File Storage](storage/) → Shared file systems
     
-    - [Managed Databases](database/)
-    - [Backup Services](database/)
+    **Database Tactics:**
+    
+    - 🗃️ [Managed Databases](database/) → Relational & NoSQL
+    - 💾 [Backup Services](database/) → Data protection
 
 </div>
+
+!!! info "Deployment Flow"
+    **Foundation** → **Compute** → **Data**
+    
+    1. Start with Foundation (VPC, Subnets, Security)
+    2. Deploy Compute resources (VSI, Kubernetes)
+    3. Add Data services (Storage, Databases)
 
 
 ### 📋 Dependency Rules
