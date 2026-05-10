@@ -195,8 +195,8 @@
   position: relative;
   margin-bottom: 2rem;
   padding: 1.5rem;
-  background: var(--md-default-bg-color);
-  border: 1px solid var(--md-default-fg-color--lightest);
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
   border-radius: 0.75rem;
   transition: all 0.3s ease;
 }
@@ -226,7 +226,15 @@
 
 .learning-step h3 {
   margin-top: 0;
-  color: var(--ibm-blue-70);
+  color: var(--text-primary) !important;
+}
+
+.learning-step p {
+  color: var(--text-secondary) !important;
+}
+
+.learning-step a {
+  color: var(--accent-red) !important;
 }
 
 /* ============================================
