@@ -263,7 +263,19 @@ nav:
   
   - VSI Infrastructure:
     - vsi/index.md
-    - Complete Guide: vsi/vsi-infrastructure-complete-guide.md
+    - Provisioning Overview: vsi/vsi-provisioning-overview.md
+    - Layer 1 - Resource Scoping: vsi/vsi-resource-scoping.md
+    - Layer 2 - Network Foundation: vsi/vsi-network-foundation.md
+    - Layer 3 - Compute Instantiation: vsi/vsi-compute-instantiation.md
+    - Layer 4 - Storage Configuration: vsi/vsi-storage-configuration.md
+    - Layer 5 - Instance Networking: vsi/vsi-instance-networking.md
+    - Layer 6 - Security Groups: vsi/vsi-security-groups.md
+    - Layer 7 - Secondary Interfaces: vsi/vsi-secondary-interfaces.md
+    - Layer 8 - Load Balancer: vsi/vsi-load-balancer.md
+    - Layer 9 - Observability: vsi/vsi-observability.md
+    - Layer 10 - Lifecycle & Recovery: vsi/vsi-lifecycle-recovery.md
+    - Architecture Summary: vsi/vsi-architecture-summary.md
+    - Complete Guide (Legacy): vsi/vsi-infrastructure-complete-guide.md
   
   - Cluster Infrastructure:
     - cluster/index.md
