@@ -23,6 +23,97 @@
 }
 
 /* ============================================
+   Homepage Hero Section - Fix CTA Visibility
+   ============================================ */
+.hero-section {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: var(--bg-primary);
+  margin-bottom: 3rem;
+}
+
+.hero-section h1 {
+  color: var(--text-primary) !important;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.hero-section p {
+  color: var(--text-secondary) !important;
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-button {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background: var(--accent-red) !important;
+  color: var(--text-primary) !important;
+  text-decoration: none !important;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  border: 2px solid var(--accent-red);
+}
+
+.hero-button:hover {
+  background: var(--accent-red-hover) !important;
+  border-color: var(--accent-red-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(229, 9, 20, 0.3);
+}
+
+.hero-button.secondary {
+  background: transparent !important;
+  color: var(--text-primary) !important;
+  border: 2px solid var(--border-color);
+}
+
+.hero-button.secondary:hover {
+  background: var(--bg-secondary) !important;
+  border-color: var(--accent-red);
+}
+
+/* Stats Section */
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+  padding: 2rem;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-red) !important;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  display: block;
+  color: var(--text-secondary) !important;
+  font-size: 0.9rem;
+}
+
+/* ============================================
    Base Dark Theme
    ============================================ */
 [data-md-color-scheme="slate"] {
@@ -450,7 +541,29 @@ code, pre {
 }
 
 .grid.cards > * a {
-  color: var(--accent-red) !important;
+  color: var(--text-primary) !important;
+  text-decoration: none !important;
+}
+
+/* Fix for Material for MkDocs button styling in cards */
+.grid.cards > * a.md-button,
+.grid.cards > * a.md-button--primary {
+  background: var(--accent-red) !important;
+  color: var(--text-primary) !important;
+  padding: 0.6rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  display: inline-block;
+  transition: all 0.3s ease;
+  border: 2px solid var(--accent-red);
+}
+
+.grid.cards > * a.md-button:hover,
+.grid.cards > * a.md-button--primary:hover {
+  background: var(--accent-red-hover) !important;
+  border-color: var(--accent-red-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3);
 }
 
 /* Feature Grid Cards */
