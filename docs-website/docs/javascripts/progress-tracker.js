@@ -1,143 +1,173 @@
 /**
- * Progress Tracker - Shows reading progress and navigation flow
- * Minimalistic design that appears on the side
+ * Cumulative Progress Tracker - Shows overall reading progress across all documentation
+ * Tracks progress through VPC, VSI, and Cluster infrastructure sections
  */
 
 (function() {
   'use strict';
 
-  // Configuration for each documentation section
-  const sectionConfigs = {
-    'vpc': {
-      title: 'VPC Infrastructure',
-      icon: '🌐',
-      chapters: [
-        { path: 'vpc/index.md', title: 'Overview' },
-        { path: 'vpc/vpc-foundation.md', title: 'Foundation' },
-        { path: 'vpc/vpc-service-internals.md', title: 'Service Internals' },
-        { path: 'vpc/zones-datacenter-architecture.md', title: 'Zones & Datacenters' },
-        { path: 'vpc/cidr-planning-ipam.md', title: 'CIDR Planning' },
-        { path: 'vpc/subnet-service-internals.md', title: 'Subnet Service' },
-        { path: 'vpc/network-acl-architecture.md', title: 'Network ACL' },
-        { path: 'vpc/acl-service-internals.md', title: 'ACL Internals' },
-        { path: 'vpc/security-group-service-internals.md', title: 'Security Groups' },
-        { path: 'vpc/route-table-service.md', title: 'Route Tables' },
-        { path: 'vpc/vpn-architecture.md', title: 'VPN' },
-        { path: 'vpc/transit-gateway-integration.md', title: 'Transit Gateway' },
-        { path: 'vpc/floating-ip-architecture.md', title: 'Floating IPs' },
-        { path: 'vpc/load-balancer-architecture.md', title: 'Load Balancers' },
-        { path: 'vpc/flow-logs-observability.md', title: 'Flow Logs' },
-        { path: 'vpc/hub-spoke-dns-architecture.md', title: 'Hub-Spoke DNS' },
-        { path: 'vpc/terraform-mapping.md', title: 'Terraform Mapping' },
-        { path: 'vpc/outputs-downstream-consumption.md', title: 'Outputs' }
-      ]
-    },
-    'vsi': {
-      title: 'VSI Infrastructure',
-      icon: '💻',
-      chapters: [
-        { path: 'vsi/index.md', title: 'Overview' },
-        { path: 'vsi/vsi-provisioning-overview.md', title: 'Provisioning Overview' },
-        { path: 'vsi/vsi-resource-scoping.md', title: 'Layer 1: Resource Scoping' },
-        { path: 'vsi/vsi-network-foundation.md', title: 'Layer 2: Network Foundation' },
-        { path: 'vsi/vsi-compute-instantiation.md', title: 'Layer 3: Compute' },
-        { path: 'vsi/vsi-storage-configuration.md', title: 'Layer 4: Storage' },
-        { path: 'vsi/vsi-instance-networking.md', title: 'Layer 5: Networking' },
-        { path: 'vsi/vsi-security-groups.md', title: 'Layer 6: Security Groups' },
-        { path: 'vsi/vsi-secondary-interfaces.md', title: 'Layer 7: Secondary Interfaces' },
-        { path: 'vsi/vsi-load-balancer.md', title: 'Layer 8: Load Balancer' },
-        { path: 'vsi/vsi-observability.md', title: 'Layer 9: Observability' },
-        { path: 'vsi/vsi-lifecycle-recovery.md', title: 'Layer 10: Lifecycle' },
-        { path: 'vsi/vsi-architecture-summary.md', title: 'Architecture Summary' }
-      ]
-    },
-    'cluster': {
-      title: 'Cluster Infrastructure',
-      icon: '☸️',
-      chapters: [
-        { path: 'cluster/index.md', title: 'Overview' },
-        { path: 'cluster/base-ocp-vpc/index.md', title: 'Base OCP VPC' },
-        { path: 'cluster/base-ocp-vpc/01-openshift-fundamentals.md', title: '01: OpenShift Fundamentals' },
-        { path: 'cluster/base-ocp-vpc/02-cluster-architecture.md', title: '02: Architecture' },
-        { path: 'cluster/base-ocp-vpc/03-prerequisites-planning.md', title: '03: Prerequisites' },
-        { path: 'cluster/base-ocp-vpc/04-cluster-provisioning-flow.md', title: '04: Provisioning Flow' },
-        { path: 'cluster/base-ocp-vpc/05-resource-scoping.md', title: '05: Resource Scoping' },
-        { path: 'cluster/base-ocp-vpc/06-vpc-networking-integration.md', title: '06: VPC Integration' },
-        { path: 'cluster/base-ocp-vpc/07-worker-pools-configuration.md', title: '07: Worker Pools' },
-        { path: 'cluster/base-ocp-vpc/08-operating-system-selection.md', title: '08: OS Selection' },
-        { path: 'cluster/base-ocp-vpc/09-security-groups-network-isolation.md', title: '09: Security Groups' },
-        { path: 'cluster/base-ocp-vpc/10-kms-encryption.md', title: '10: KMS Encryption' },
-        { path: 'cluster/base-ocp-vpc/11-cos-registry-storage.md', title: '11: COS Registry' },
-        { path: 'cluster/base-ocp-vpc/12-cluster-endpoints.md', title: '12: Endpoints' },
-        { path: 'cluster/base-ocp-vpc/13-addons-extensions.md', title: '13: Add-ons' },
-        { path: 'cluster/base-ocp-vpc/14-autoscaling-configuration.md', title: '14: Autoscaling' },
-        { path: 'cluster/base-ocp-vpc/15-load-balancer-vpe-security.md', title: '15: LB & VPE' },
-        { path: 'cluster/base-ocp-vpc/16-cbr-rules.md', title: '16: CBR Rules' },
-        { path: 'cluster/base-ocp-vpc/17-secrets-manager-integration.md', title: '17: Secrets Manager' },
-        { path: 'cluster/base-ocp-vpc/18-cluster-lifecycle.md', title: '18: Lifecycle' },
-        { path: 'cluster/base-ocp-vpc/19-runtime-scripts-verification.md', title: '19: Runtime Scripts' },
-        { path: 'cluster/base-ocp-vpc/20-terraform-mapping.md', title: '20: Terraform Mapping' },
-        { path: 'cluster/base-ocp-vpc/21-terraform-module-usage.md', title: '21: Module Usage' },
-        { path: 'cluster/base-ocp-vpc/22-best-practices.md', title: '22: Best Practices' },
-        { path: 'cluster/base-ocp-vpc/23-troubleshooting.md', title: '23: Troubleshooting' },
-        { path: 'cluster/base-ocp-vpc/24-outputs-integration.md', title: '24: Outputs' }
-      ]
-    }
-  };
+  // Global ordered list of all tracked documentation pages
+  // This represents the complete learning journey across all sections
+  const allPages = [
+    // VPC Infrastructure (18 pages)
+    { path: 'vpc/index', title: 'VPC Overview', section: 'VPC' },
+    { path: 'vpc/vpc-foundation', title: 'VPC Foundation', section: 'VPC' },
+    { path: 'vpc/vpc-service-internals', title: 'VPC Service Internals', section: 'VPC' },
+    { path: 'vpc/zones-datacenter-architecture', title: 'Zones & Datacenters', section: 'VPC' },
+    { path: 'vpc/cidr-planning-ipam', title: 'CIDR Planning', section: 'VPC' },
+    { path: 'vpc/subnet-service-internals', title: 'Subnet Service', section: 'VPC' },
+    { path: 'vpc/network-acl-architecture', title: 'Network ACL', section: 'VPC' },
+    { path: 'vpc/acl-service-internals', title: 'ACL Internals', section: 'VPC' },
+    { path: 'vpc/security-group-service-internals', title: 'Security Groups', section: 'VPC' },
+    { path: 'vpc/route-table-service', title: 'Route Tables', section: 'VPC' },
+    { path: 'vpc/vpn-architecture', title: 'VPN', section: 'VPC' },
+    { path: 'vpc/transit-gateway-integration', title: 'Transit Gateway', section: 'VPC' },
+    { path: 'vpc/floating-ip-architecture', title: 'Floating IPs', section: 'VPC' },
+    { path: 'vpc/load-balancer-architecture', title: 'Load Balancers', section: 'VPC' },
+    { path: 'vpc/flow-logs-observability', title: 'Flow Logs', section: 'VPC' },
+    { path: 'vpc/hub-spoke-dns-architecture', title: 'Hub-Spoke DNS', section: 'VPC' },
+    { path: 'vpc/terraform-mapping', title: 'Terraform Mapping', section: 'VPC' },
+    { path: 'vpc/outputs-downstream-consumption', title: 'Outputs', section: 'VPC' },
+    
+    // VSI Infrastructure (13 pages)
+    { path: 'vsi/index', title: 'VSI Overview', section: 'VSI' },
+    { path: 'vsi/vsi-provisioning-overview', title: 'Provisioning Overview', section: 'VSI' },
+    { path: 'vsi/vsi-resource-scoping', title: 'Resource Scoping', section: 'VSI' },
+    { path: 'vsi/vsi-network-foundation', title: 'Network Foundation', section: 'VSI' },
+    { path: 'vsi/vsi-compute-instantiation', title: 'Compute', section: 'VSI' },
+    { path: 'vsi/vsi-storage-configuration', title: 'Storage', section: 'VSI' },
+    { path: 'vsi/vsi-instance-networking', title: 'Networking', section: 'VSI' },
+    { path: 'vsi/vsi-security-groups', title: 'Security Groups', section: 'VSI' },
+    { path: 'vsi/vsi-secondary-interfaces', title: 'Secondary Interfaces', section: 'VSI' },
+    { path: 'vsi/vsi-load-balancer', title: 'Load Balancer', section: 'VSI' },
+    { path: 'vsi/vsi-observability', title: 'Observability', section: 'VSI' },
+    { path: 'vsi/vsi-lifecycle-recovery', title: 'Lifecycle', section: 'VSI' },
+    { path: 'vsi/vsi-architecture-summary', title: 'Architecture Summary', section: 'VSI' },
+    
+    // Cluster Infrastructure (35 pages - base-ocp-vpc + namespace)
+    { path: 'cluster/index', title: 'Cluster Overview', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/index', title: 'Base OCP VPC', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/01-openshift-fundamentals', title: 'OpenShift Fundamentals', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/02-cluster-architecture', title: 'Architecture', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/03-prerequisites-planning', title: 'Prerequisites', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/04-cluster-provisioning-flow', title: 'Provisioning Flow', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/05-resource-scoping', title: 'Resource Scoping', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/06-vpc-networking-integration', title: 'VPC Integration', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/07-worker-pools-configuration', title: 'Worker Pools', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/08-operating-system-selection', title: 'OS Selection', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/09-security-groups-network-isolation', title: 'Security Groups', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/10-kms-encryption', title: 'KMS Encryption', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/11-cos-registry-storage', title: 'COS Registry', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/12-cluster-endpoints', title: 'Endpoints', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/13-addons-extensions', title: 'Add-ons', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/14-autoscaling-configuration', title: 'Autoscaling', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/15-load-balancer-vpe-security', title: 'LB & VPE', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/16-cbr-rules', title: 'CBR Rules', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/17-secrets-manager-integration', title: 'Secrets Manager', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/18-cluster-lifecycle', title: 'Lifecycle', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/19-runtime-scripts-verification', title: 'Runtime Scripts', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/20-terraform-mapping', title: 'Terraform Mapping', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/21-terraform-module-usage', title: 'Module Usage', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/22-best-practices', title: 'Best Practices', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/23-troubleshooting', title: 'Troubleshooting', section: 'Cluster' },
+    { path: 'cluster/base-ocp-vpc/24-outputs-integration', title: 'Outputs', section: 'Cluster' },
+    { path: 'cluster/namespace/index', title: 'Namespace Overview', section: 'Cluster' },
+    { path: 'cluster/namespace/01-namespace-fundamentals', title: 'Namespace Fundamentals', section: 'Cluster' },
+    { path: 'cluster/namespace/02-namespace-architecture', title: 'Namespace Architecture', section: 'Cluster' },
+    { path: 'cluster/namespace/03-terraform-module-usage', title: 'Terraform Module', section: 'Cluster' },
+    { path: 'cluster/namespace/04-resource-quotas-limits', title: 'Resource Quotas', section: 'Cluster' },
+    { path: 'cluster/namespace/05-rbac-security', title: 'RBAC Security', section: 'Cluster' },
+    { path: 'cluster/namespace/06-network-policies', title: 'Network Policies', section: 'Cluster' },
+    { path: 'cluster/namespace/07-terraform-mapping', title: 'Terraform Mapping', section: 'Cluster' },
+    { path: 'cluster/namespace/08-best-practices', title: 'Best Practices', section: 'Cluster' },
+    { path: 'cluster/namespace/09-troubleshooting', title: 'Troubleshooting', section: 'Cluster' }
+  ];
 
-  function getCurrentSection() {
+  const totalPages = allPages.length;
+
+  /**
+   * Find the current page index in the global page list
+   * @returns {number} Index of current page, or -1 if not found
+   */
+  function getCurrentPageIndex() {
     const path = window.location.pathname;
-    for (const [key, config] of Object.entries(sectionConfigs)) {
-      if (path.includes(`/${key}/`)) {
-        return { key, config };
-      }
-    }
-    return null;
+    
+    // Normalize path by removing leading/trailing slashes and .html extension
+    const normalizedPath = path.replace(/^\/+|\/+$/g, '').replace(/\.html$/, '').replace(/\/$/, '');
+    
+    return allPages.findIndex(page => {
+      const pagePath = page.path.replace(/^\/+|\/+$/g, '');
+      return normalizedPath.includes(pagePath) || normalizedPath === pagePath;
+    });
   }
 
-  function getCurrentChapterIndex(section, chapters) {
-    const path = window.location.pathname;
-    return chapters.findIndex(chapter => 
-      path.includes(chapter.path.replace('.md', ''))
-    );
+  /**
+   * Get section icon based on section name
+   */
+  function getSectionIcon(section) {
+    const icons = {
+      'VPC': '🌐',
+      'VSI': '💻',
+      'Cluster': '☸️'
+    };
+    return icons[section] || '📚';
   }
 
+  /**
+   * Create and display the progress tracker
+   */
   function createProgressTracker() {
-    const sectionData = getCurrentSection();
-    if (!sectionData) return;
+    // Remove existing tracker if present
+    const existing = document.querySelector('.doc-progress-tracker');
+    if (existing) {
+      existing.remove();
+    }
 
-    const { config } = sectionData;
-    const currentIndex = getCurrentChapterIndex(sectionData.key, config.chapters);
-    if (currentIndex === -1) return;
+    const currentIndex = getCurrentPageIndex();
+    
+    // Only show tracker if we're on a tracked page
+    if (currentIndex === -1) {
+      return;
+    }
 
-    const progress = ((currentIndex + 1) / config.chapters.length) * 100;
+    const currentPage = allPages[currentIndex];
+    const progress = ((currentIndex + 1) / totalPages) * 100;
+    const completedPages = currentIndex + 1;
 
     const tracker = document.createElement('div');
     tracker.className = 'doc-progress-tracker';
     tracker.innerHTML = `
       <div class="progress-header">
-        <span class="progress-icon">${config.icon}</span>
-        <span class="progress-title">${config.title}</span>
+        <span class="progress-icon">${getSectionIcon(currentPage.section)}</span>
+        <span class="progress-title">Documentation Progress</span>
       </div>
       <div class="progress-bar-container">
         <div class="progress-bar" style="width: ${progress}%"></div>
       </div>
       <div class="progress-info">
-        <span class="progress-current">${currentIndex + 1} of ${config.chapters.length}</span>
+        <span class="progress-current">${completedPages} of ${totalPages}</span>
         <span class="progress-percent">${Math.round(progress)}%</span>
       </div>
+      <div class="progress-section-info">
+        <span class="current-section">${currentPage.section}: ${currentPage.title}</span>
+      </div>
       <div class="progress-chapters">
-        ${config.chapters.map((chapter, idx) => {
+        ${allPages.map((page, idx) => {
           let status = 'pending';
           if (idx < currentIndex) status = 'completed';
           else if (idx === currentIndex) status = 'current';
           
+          // Add section divider
+          const showDivider = idx > 0 && allPages[idx - 1].section !== page.section;
+          const divider = showDivider ? `<div class="section-divider">${getSectionIcon(page.section)} ${page.section}</div>` : '';
+          
           return `
-            <a href="/${chapter.path.replace('.md', '/')}" 
+            ${divider}
+            <a href="/${page.path}/" 
                class="progress-chapter ${status}"
-               title="${chapter.title}">
+               title="${page.section}: ${page.title}">
               <span class="chapter-dot"></span>
-              <span class="chapter-title">${chapter.title}</span>
+              <span class="chapter-title">${page.title}</span>
             </a>
           `;
         }).join('')}
@@ -153,26 +183,38 @@
     });
   }
 
-  // Initialize when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', createProgressTracker);
-  } else {
+  /**
+   * Initialize the progress tracker
+   */
+  function init() {
     createProgressTracker();
   }
 
-  // Re-initialize on navigation (for instant loading)
-  document.addEventListener('DOMContentLoaded', () => {
-    const observer = new MutationObserver(() => {
-      const existing = document.querySelector('.doc-progress-tracker');
-      if (existing) existing.remove();
-      createProgressTracker();
-    });
+  // Initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 
-    observer.observe(document.querySelector('.md-content'), {
-      childList: true,
-      subtree: true
+  // Handle MkDocs instant navigation
+  // MkDocs Material uses navigation.instant which requires special handling
+  document.addEventListener('DOMContentLoaded', () => {
+    // Listen for instant navigation events
+    document$.subscribe(() => {
+      // Small delay to ensure DOM is updated
+      setTimeout(createProgressTracker, 50);
     });
   });
+
+  // Fallback: Also listen for location changes (for instant navigation)
+  let lastPath = window.location.pathname;
+  setInterval(() => {
+    if (window.location.pathname !== lastPath) {
+      lastPath = window.location.pathname;
+      createProgressTracker();
+    }
+  }, 100);
 })();
 
 // Made with Bob
