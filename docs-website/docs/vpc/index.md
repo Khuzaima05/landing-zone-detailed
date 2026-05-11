@@ -300,10 +300,12 @@ graph TB
 === "Microservices"
     Container-based architecture:
     
-    - Kubernetes/OpenShift clusters
+    - Kubernetes/OpenShift clusters (see [Cluster Infrastructure](../cluster/README.md))
     - Service mesh networking
     - Internal load balancing
     - Network policies for pod security
+    
+    For detailed cluster networking integration, see [VPC Networking Integration](../cluster/base-ocp-vpc/06-vpc-networking-integration.md).
 
 === "Data Processing"
     Big data and analytics:

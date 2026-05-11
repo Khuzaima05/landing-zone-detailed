@@ -6,8 +6,19 @@ The Virtual Server Instance (VSI) infrastructure module provides comprehensive c
 
 ## 📚 Documentation
 
-For complete VSI infrastructure details, see:
-- **[VSI Infrastructure Complete Guide](../vsi-infrastructure-complete-guide.md)** - Comprehensive deep-dive covering all VSI concepts
+For complete VSI infrastructure details, see the chapter-based guides:
+- **[Provisioning Overview](vsi-provisioning-overview.md)** - Overview of VSI provisioning architecture
+- **[Resource Scoping](vsi-resource-scoping.md)** - Layer 1: Resource groups, tags, and IAM
+- **[Network Foundation](vsi-network-foundation.md)** - Layer 2: VPC, subnets, and network setup
+- **[Compute Instantiation](vsi-compute-instantiation.md)** - Layer 3: VSI instances and profiles
+- **[Storage Configuration](vsi-storage-configuration.md)** - Layer 4: Boot volumes and block storage
+- **[Instance Networking](vsi-instance-networking.md)** - Layer 5: Network interfaces and IPs
+- **[Security Groups](vsi-security-groups.md)** - Layer 6: Security group configuration
+- **[Secondary Interfaces](vsi-secondary-interfaces.md)** - Layer 7: Multi-homed networking
+- **[Load Balancer](vsi-load-balancer.md)** - Layer 8: Load balancer integration
+- **[Observability](vsi-observability.md)** - Layer 9: Monitoring and logging
+- **[Lifecycle & Recovery](vsi-lifecycle-recovery.md)** - Layer 10: Lifecycle management
+- **[Architecture Summary](vsi-architecture-summary.md)** - Complete architecture overview
 
 ## 🎯 What This Module Covers
 

@@ -340,6 +340,8 @@ Server Deployed
 Without subnet outputs:
 > **VSI deployment impossible**
 
+> **For VSI deployment details:** See [VSI Infrastructure](../vsi/README.md) and [VSI Network Foundation](../vsi/vsi-network-foundation.md)
+
 ---
 
 ## ☸️ Example — OpenShift Module Consumption
@@ -364,6 +366,8 @@ Worker Nodes Created
 ```
 
 Networking must already exist before Kubernetes deployment begins.
+
+> **For cluster deployment details:** See [Cluster Infrastructure](../cluster/README.md) and [VPC Networking Integration](../cluster/base-ocp-vpc/06-vpc-networking-integration.md)
 
 ---
 

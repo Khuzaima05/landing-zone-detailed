@@ -535,6 +535,8 @@ Subnet allocates:
 - routing ownership
 - connectivity path
 
+> **For detailed VSI networking:** See [VSI Network Foundation](../vsi/vsi-network-foundation.md) and [VSI Instance Networking](../vsi/vsi-instance-networking.md)
+
 ---
 
 ## ☸️ OpenShift Networking Example
@@ -557,6 +559,8 @@ Subnets become foundational for:
 - Kubernetes networking
 - pod communication
 - ingress traffic
+
+> **For detailed cluster networking:** See [Cluster VPC Networking Integration](../cluster/base-ocp-vpc/06-vpc-networking-integration.md)
 
 ---
 

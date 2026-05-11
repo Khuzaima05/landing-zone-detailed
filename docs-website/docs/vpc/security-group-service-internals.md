@@ -611,6 +611,8 @@ Security Groups commonly attach to:
 | VPE | Protect private endpoints |
 | VPN Gateway | Restrict tunnel traffic |
 
+> **For VSI security group configuration:** See [VSI Security Groups](../vsi/vsi-security-groups.md)
+
 ---
 
 ## ☸️ OpenShift Security Groups
@@ -628,6 +630,8 @@ Security Groups dynamically control:
 > **allowed cluster communication**
 
 This becomes extremely important at scale.
+
+> **For cluster security group configuration:** See [Cluster Security Groups and Network Isolation](../cluster/base-ocp-vpc/09-security-groups-network-isolation.md)
 
 ---
 

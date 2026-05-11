@@ -197,6 +197,12 @@ Before deploying VSIs, ensure:
 
 > **Critical:** The network foundation must exist before VSI deployment. VSIs cannot create their own network infrastructure.
 
+**VPC Foundation Resources:**
+- [VPC Foundation](../vpc/vpc-foundation.md) - Core VPC concepts and architecture
+- [Subnet Service Internals](../vpc/subnet-service-internals.md) - Detailed subnet design and configuration
+- [CIDR Planning](../vpc/cidr-planning-ipam.md) - IP address planning strategies
+- [Network ACL Architecture](../vpc/network-acl-architecture.md) - Subnet-level security
+
 ---
 
 ## Best Practices

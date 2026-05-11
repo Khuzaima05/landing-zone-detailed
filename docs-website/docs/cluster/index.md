@@ -4,6 +4,9 @@
 
 Deploy and manage Kubernetes and OpenShift clusters on IBM Cloud for containerized workloads. This guide covers cluster deployment, configuration, and best practices.
 
+!!! info "Prerequisites"
+    Cluster deployment requires a configured VPC foundation. See [VPC Infrastructure](../vpc/README.md) for complete networking setup including [VPC Foundation](../vpc/vpc-foundation.md), [Subnets](../vpc/subnet-service-internals.md), and [Security Groups](../vpc/security-group-service-internals.md).
+
 ## 📚 Documentation
 
 Comprehensive guides for Kubernetes Service and Red Hat OpenShift on IBM Cloud.

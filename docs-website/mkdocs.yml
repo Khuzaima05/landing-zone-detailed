@@ -277,7 +277,6 @@ nav:
     - Layer 9 - Observability: vsi/vsi-observability.md
     - Layer 10 - Lifecycle & Recovery: vsi/vsi-lifecycle-recovery.md
     - Architecture Summary: vsi/vsi-architecture-summary.md
-    - Complete Guide (Legacy): vsi/vsi-infrastructure-complete-guide.md
   
   - Cluster Infrastructure:
     - cluster/index.md

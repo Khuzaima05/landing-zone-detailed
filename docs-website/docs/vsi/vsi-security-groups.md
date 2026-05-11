@@ -318,6 +318,8 @@ Application Auth
 
 Each layer provides additional protection.
 
+> **For VPC security architecture:** See [Security Group Service Internals](../vpc/security-group-service-internals.md) and [Network ACL Architecture](../vpc/network-acl-architecture.md)
+
 ---
 
 ## Next Layer

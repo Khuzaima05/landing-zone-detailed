@@ -16,6 +16,8 @@ IBM Cloud **Virtual Private Cloud (VPC)** is a logically isolated network enviro
 
 **Think of it as**: Your own private data center in the cloud, with complete control over networking.
 
+> **For detailed VPC architecture:** See [VPC Infrastructure](../../vpc/README.md), [VPC Foundation](../../vpc/vpc-foundation.md), and [Subnet Service Internals](../../vpc/subnet-service-internals.md)
+
 ### VPC Components for OpenShift
 
 **1. VPC Instance**:

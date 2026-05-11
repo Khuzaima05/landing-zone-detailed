@@ -4,31 +4,27 @@
 
 Virtual Server Instances (VSI) provide flexible, scalable compute resources in IBM Cloud VPC. This guide covers VSI deployment, configuration, and management for various workload requirements.
 
+!!! info "Prerequisites"
+    VSI deployment requires a configured VPC foundation. See [VPC Infrastructure](../vpc/README.md) for complete networking setup including [VPC Foundation](../vpc/vpc-foundation.md), [Subnets](../vpc/subnet-service-internals.md), and [Security Groups](../vpc/security-group-service-internals.md).
+
 ## 📚 Documentation
 
-<div class="module-cards">
-  <div class="module-card">
-    <div class="module-card-header">
-      <div class="module-card-icon">📖</div>
-      <h3 class="module-card-title">Complete Guide</h3>
-    </div>
-    <p class="module-card-description">
-      Comprehensive guide covering all aspects of VSI infrastructure deployment and management.
-    </p>
-    <a href="vsi-infrastructure-complete-guide/" class="module-card-link">Complete Guide →</a>
-  </div>
+The VSI infrastructure documentation is organized into layered chapters covering the complete provisioning flow:
 
-  <div class="module-card">
-    <div class="module-card-header">
-      <div class="module-card-icon">🚀</div>
-      <h3 class="module-card-title">Quick Start</h3>
-    </div>
-    <p class="module-card-description">
-      Get started quickly with VSI deployment using pre-configured templates and best practices.
-    </p>
-    <a href="README/" class="module-card-link">Quick Start →</a>
-  </div>
-</div>
+- **[Provisioning Overview](vsi-provisioning-overview.md)** - Start here for architecture overview
+- **[Layer 1: Resource Scoping](vsi-resource-scoping.md)** - Resource groups, tags, and IAM
+- **[Layer 2: Network Foundation](vsi-network-foundation.md)** - VPC, subnets, and network setup
+- **[Layer 3: Compute Instantiation](vsi-compute-instantiation.md)** - VSI instances and profiles
+- **[Layer 4: Storage Configuration](vsi-storage-configuration.md)** - Boot volumes and block storage
+- **[Layer 5: Instance Networking](vsi-instance-networking.md)** - Network interfaces and IPs
+- **[Layer 6: Security Groups](vsi-security-groups.md)** - Security group configuration
+- **[Layer 7: Secondary Interfaces](vsi-secondary-interfaces.md)** - Multi-homed networking
+- **[Layer 8: Load Balancer](vsi-load-balancer.md)** - Load balancer integration
+- **[Layer 9: Observability](vsi-observability.md)** - Monitoring and logging
+- **[Layer 10: Lifecycle & Recovery](vsi-lifecycle-recovery.md)** - Lifecycle management
+- **[Architecture Summary](vsi-architecture-summary.md)** - Complete architecture overview
+
+For quick reference, see the **[README](README.md)** for common use cases and examples.
 
 ## 🏗️ VSI Architecture
 

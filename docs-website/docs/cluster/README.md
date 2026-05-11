@@ -841,6 +841,8 @@ Network Flow:
 Internet → ALB/NLB → Ingress → Service → Pod
 ```
 
+> **VPC Prerequisites:** Clusters require a configured VPC foundation. See [VPC Infrastructure](../vpc/README.md) for complete networking setup including [Subnets](../vpc/subnet-service-internals.md), [Security Groups](../vpc/security-group-service-internals.md), and [VPC Outputs](../vpc/outputs-downstream-consumption.md).
+
 **Configuration:**
 ```hcl
 # VPC Load Balancer for cluster ingress
