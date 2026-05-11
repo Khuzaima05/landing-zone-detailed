@@ -281,6 +281,32 @@ nav:
   
   - Cluster Infrastructure:
     - cluster/index.md
+    - Base OCP VPC:
+      - Overview: cluster/base-ocp-vpc/index.md
+      - 01 OpenShift Fundamentals: cluster/base-ocp-vpc/01-openshift-fundamentals.md
+      - 02 Cluster Architecture: cluster/base-ocp-vpc/02-cluster-architecture.md
+      - 03 Prerequisites and Planning: cluster/base-ocp-vpc/03-prerequisites-planning.md
+      - 04 Cluster Provisioning Flow: cluster/base-ocp-vpc/04-cluster-provisioning-flow.md
+      - 05 Resource Scoping: cluster/base-ocp-vpc/05-resource-scoping.md
+      - 06 VPC Networking Integration: cluster/base-ocp-vpc/06-vpc-networking-integration.md
+      - 07 Worker Pools Configuration: cluster/base-ocp-vpc/07-worker-pools-configuration.md
+      - 08 Operating System Selection: cluster/base-ocp-vpc/08-operating-system-selection.md
+      - 09 Security Groups and Network Isolation: cluster/base-ocp-vpc/09-security-groups-network-isolation.md
+      - 10 KMS Encryption: cluster/base-ocp-vpc/10-kms-encryption.md
+      - 11 COS Registry Storage: cluster/base-ocp-vpc/11-cos-registry-storage.md
+      - 12 Cluster Endpoints: cluster/base-ocp-vpc/12-cluster-endpoints.md
+      - 13 Add-ons and Extensions: cluster/base-ocp-vpc/13-addons-extensions.md
+      - 14 Autoscaling Configuration: cluster/base-ocp-vpc/14-autoscaling-configuration.md
+      - 15 Load Balancer and VPE Security: cluster/base-ocp-vpc/15-load-balancer-vpe-security.md
+      - 16 CBR Rules: cluster/base-ocp-vpc/16-cbr-rules.md
+      - 17 Secrets Manager Integration: cluster/base-ocp-vpc/17-secrets-manager-integration.md
+      - 18 Cluster Lifecycle: cluster/base-ocp-vpc/18-cluster-lifecycle.md
+      - 19 Runtime Scripts and Verification: cluster/base-ocp-vpc/19-runtime-scripts-verification.md
+      - 20 Terraform Mapping: cluster/base-ocp-vpc/20-terraform-mapping.md
+      - 21 Terraform Module Usage: cluster/base-ocp-vpc/21-terraform-module-usage.md
+      - 22 Best Practices: cluster/base-ocp-vpc/22-best-practices.md
+      - 23 Troubleshooting: cluster/base-ocp-vpc/23-troubleshooting.md
+      - 24 Outputs and Integration: cluster/base-ocp-vpc/24-outputs-integration.md
     - Namespace:
       - Overview: cluster/namespace/index.md
       - 01 Namespace Fundamentals: cluster/namespace/01-namespace-fundamentals.md
