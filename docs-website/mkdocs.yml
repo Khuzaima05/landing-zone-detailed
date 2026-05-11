@@ -281,7 +281,17 @@ nav:
   
   - Cluster Infrastructure:
     - cluster/index.md
-    - Namespace Management: cluster/namespace-management.md
+    - Namespace:
+      - Overview: cluster/namespace/index.md
+      - 01 Namespace Fundamentals: cluster/namespace/01-namespace-fundamentals.md
+      - 02 Namespace Architecture: cluster/namespace/02-namespace-architecture.md
+      - 03 Terraform Module Usage: cluster/namespace/03-terraform-module-usage.md
+      - 04 Resource Quotas and Limits: cluster/namespace/04-resource-quotas-limits.md
+      - 05 RBAC and Security: cluster/namespace/05-rbac-security.md
+      - 06 Network Policies: cluster/namespace/06-network-policies.md
+      - 07 Terraform Mapping: cluster/namespace/07-terraform-mapping.md
+      - 08 Best Practices: cluster/namespace/08-best-practices.md
+      - 09 Troubleshooting: cluster/namespace/09-troubleshooting.md
   
   - Security Infrastructure:
     - security/index.md
