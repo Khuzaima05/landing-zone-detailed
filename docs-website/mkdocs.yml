@@ -281,6 +281,7 @@ nav:
   
   - Cluster Infrastructure:
     - cluster/index.md
+    - Namespace Management: cluster/namespace-management.md
   
   - Security Infrastructure:
     - security/index.md
