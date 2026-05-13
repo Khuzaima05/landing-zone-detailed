@@ -1,0 +1,13 @@
+nav:
+  - index.md
+  - vsi-provisioning-overview.md
+  - vsi-resource-scoping.md
+  - vsi-network-foundation.md
+  - vsi-compute-instantiation.md
+  - vsi-storage-configuration.md
+  - vsi-instance-networking.md
+  - vsi-security-groups.md
+  - vsi-load-balancer.md
+  - vsi-observability.md
+  - vsi-lifecycle-recovery.md
+  - vsi-architecture-summary.md

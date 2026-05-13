@@ -1,167 +1,93 @@
-# Layer 1: Resource Scoping & Ownership
+# Resource Scoping
 
-> Defining organizational ownership and governance before infrastructure creation
+[← Previous: VSI Provisioning Overview](./vsi-provisioning-overview.md) | [Index](./index.md) | [Next: Network Foundation →](./vsi-network-foundation.md)
 
----
+## Why This Comes First
 
-## Overview
+Before creating a server, we first decide where it belongs and how it should be identified.
 
-Before anything is created, the module needs to know where resources belong organizationally. This layer has nothing to do with networking or compute yet. Instead, it answers operational questions:
+This page is not about CPU or networking yet. It is about ownership and naming.
 
-- **Which team owns this infrastructure?**
-- **How should resources be identified?**
-- **Which IAM policies apply?**
-- **Which automation systems can discover these resources?**
+## Main Things Decided Here
 
----
+This step usually answers four questions:
 
-## Key Variables
+1. Which resource group will hold the server?
+2. What prefix or naming style will we use?
+3. Which tags help us identify it later?
+4. Which access tags affect permission rules?
 
-| Variable | Purpose |
-|----------|---------|
-| `resource_group_id` | Determines the IBM Cloud resource container where all resources are provisioned |
-| `tags` | Adds searchable metadata for resource identification |
-| `access_tags` | Influences IAM authorization behavior |
-| `prefix` | Becomes the naming foundation used throughout the module |
+## Resource Group
 
----
+A `resource group` is a container used to organize cloud resources.
 
-## Resource Group ID
+It helps with:
 
-The `resource_group_id` determines the IBM Cloud resource container where all VSI-related resources are provisioned.
+- ownership
+- billing
+- access control
+- cleaner organization
 
-**What it controls:**
-- Billing aggregation
-- Access control boundaries
-- Resource organization
-- Team ownership
-
-**Example:**
-```hcl
-resource_group_id = "abc123-resource-group-id"
-```
-
-All VSIs, volumes, network interfaces, and related resources will belong to this resource group.
-
----
-
-## Tags
-
-Tags add searchable metadata for resource identification and organization.
-
-**Common tag patterns:**
-```
-env:production
-team:platform
-cost-center:engineering
-project:web-app
-```
-
-**Benefits:**
-- ✓ Resource discovery
-- ✓ Cost allocation
-- ✓ Automation targeting
-- ✓ Compliance tracking
-
----
-
-## Access Tags
-
-Access tags influence IAM authorization behavior, controlling who can operate on resources.
-
-**How they work:**
-```
-Access Tag: "env:prod"
-IAM Policy: "Users with prod-access can manage resources tagged env:prod"
-```
-
-**Security benefits:**
-- ✓ Fine-grained access control
-- ✓ Environment isolation
-- ✓ Compliance enforcement
-- ✓ Audit trail
-
----
+If a team creates a VSI in a resource group, that group becomes the main place where the resource belongs.
 
 ## Prefix
 
-The `prefix` variable becomes the naming foundation for all generated resources.
+A `prefix` is a common beginning used in resource names.
 
-**Example:**
-```hcl
-prefix = "web-app"
+Example:
+
+```text
+prod-web-vsi-01
+prod-web-vsi-02
+prod-web-volume-01
 ```
 
-**Generated names:**
-```
-web-app-vsi-001
-web-app-vsi-002
-web-app-boot-volume-001
-web-app-nic-001
-```
+This makes it easier to understand what resources belong together.
 
-**Why this matters:**
-- ✓ Consistent naming across all resources
-- ✓ Easy identification in console
-- ✓ Predictable resource discovery
-- ✓ Clear ownership
+## Tags
 
----
+`Tags` are labels added to resources.
 
-## Administrative Identity
+Examples:
 
-This layer establishes administrative identity before infrastructure even exists.
+- `env:prod`
+- `team:platform`
+- `app:web`
 
-**Flow:**
-```
-Define resource group
-    ↓
-Set naming prefix
-    ↓
-Add identification tags
-    ↓
-Apply access control tags
-    ↓
-Ready for infrastructure creation
-```
+Tags help teams search, group, and track resources more easily.
 
----
+## Access Tags
 
-## Best Practices
+`Access tags` are special tags used with permission rules.
 
-### 1. Use Descriptive Prefixes
-```
-✓ Good: "prod-web-app"
-✗ Bad: "test123"
-```
+They help decide who can manage or view a resource.
 
-### 2. Consistent Tagging Strategy
-```
-✓ Good: env:prod, team:platform, app:web
-✗ Bad: production, Platform Team, webapp
-```
+Simple example:
 
-### 3. Separate Resource Groups
-```
-Development → dev-resource-group
-Staging     → staging-resource-group
-Production  → prod-resource-group
-```
+- resources tagged `env:prod`
+- only users with production access can change them
 
-### 4. Access Tag Hierarchy
-```
-env:prod
-  └── Requires production access
-env:dev
-  └── Requires development access
-```
+## Why This Matters
 
----
+If you skip this planning, later it becomes harder to:
 
-## Next Layer
+- know who owns a server
+- find the right resources quickly
+- control access cleanly
+- keep naming consistent
 
-Once resource scoping is defined, proceed to:
+## Easy Mental Model
 
-**[Layer 2: Network Foundation →](vsi-network-foundation.md)**
+Think of this like putting a label on a notebook before writing inside it:
 
----
+- resource group = which shelf it belongs on
+- prefix = the notebook title
+- tags = sticky notes for search
+- access tags = who is allowed to open it
+
+## Key Takeaways
+
+- Resource scoping is about organization before creation.
+- Resource groups decide where the VSI belongs.
+- Prefixes and tags make resources easier to manage.
+- Access tags help with permissions and governance.

@@ -1,6 +1,6 @@
 # 🌐 Hub-Spoke DNS Architecture — Deep Beginner Explanation
 
-[← Previous: VPN Architecture](./vpn-architecture.md) | [Index](./README.md) | [Next: Transit Gateway Integration →](./transit-gateway-integration.md)
+[← Previous: VPN Architecture](./vpn-architecture.md) | [Index](./index.md) | [Next: Transit Gateway Integration →](./transit-gateway-integration.md)
 
 ---
 
@@ -759,4 +759,4 @@ DNS changes are difficult after deployment.
 
 ---
 
-[← Previous: VPN Architecture](./vpn-architecture.md) | [Index](./README.md) | [Next: Transit Gateway Integration →](./transit-gateway-integration.md)
+[← Previous: VPN Architecture](./vpn-architecture.md) | [Index](./index.md) | [Next: Transit Gateway Integration →](./transit-gateway-integration.md)

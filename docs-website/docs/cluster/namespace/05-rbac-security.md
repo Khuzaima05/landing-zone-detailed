@@ -1,198 +1,51 @@
-# RBAC and Security Configuration
+# RBAC and Security
 
-## Why RBAC matters for namespaces
+[← Previous: Resource Quotas and Limits](./04-resource-quotas-limits.md) | [Index](./index.md) | [Next: Network Policies →](./06-network-policies.md)
 
-Namespaces are one of the main places where Kubernetes access control is applied. In most enterprise environments, users and automation should not have unrestricted cluster-wide access. Instead, access is scoped to the namespace that a team owns or operates.
+## What Is RBAC?
 
-This is where RBAC becomes essential.
+`RBAC` stands for `Role-Based Access Control`.
 
-RBAC stands for Role-Based Access Control. It determines who can perform actions on which Kubernetes resources.
+It decides who can do what inside the cluster.
 
-## Namespace-scoped security model
+In namespace design, RBAC is one of the main ways to keep access organized and safe.
 
-A common beginner-friendly model looks like this:
+## Simple Namespace Security Model
 
-- platform administrators manage the whole cluster
-- application teams get access only to their namespaces
-- CI/CD service accounts get limited deployment permissions
-- read-only users get view access for troubleshooting or audits
+A common pattern is:
 
-## Core RBAC objects
+- platform admins manage the whole cluster
+- app teams manage only their own namespaces
+- automation accounts get only the permissions they need
+
+## Main RBAC Objects
 
 ### Role
 
-A `Role` defines permissions inside a specific namespace.
+A `Role` defines permissions inside one namespace.
 
 ### RoleBinding
 
-A `RoleBinding` connects a role to a user, group, or service account inside a namespace.
+A `RoleBinding` connects that role to a user, group, or service account.
 
 ### ClusterRole
 
-A `ClusterRole` defines reusable permissions that may be cluster-wide or referenced from many namespaces.
+A `ClusterRole` is broader and can be reused across the cluster.
 
 ### ClusterRoleBinding
 
-A `ClusterRoleBinding` attaches a `ClusterRole` across the cluster. This should be used carefully because it is broader in scope.
+A `ClusterRoleBinding` attaches broader permissions at cluster scope, so it should be used carefully.
 
-## Terraform example from the original document
+## Good Beginner Practice
 
-```hcl
-role_bindings = [
-  {
-    namespace = "production"
-    role_name = "admin"
-    subjects = [
-      {
-        kind      = "Group"
-        name      = "production-admins"
-        api_group = "rbac.authorization.k8s.io"
-      },
-      {
-        kind      = "User"
-        name      = "john.doe@company.com"
-        api_group = "rbac.authorization.k8s.io"
-      }
-    ]
-  },
-  {
-    namespace = "production"
-    role_name = "view"
-    subjects = [
-      {
-        kind      = "Group"
-        name      = "production-viewers"
-        api_group = "rbac.authorization.k8s.io"
-      }
-    ]
-  },
-  {
-    namespace = "staging"
-    role_name = "edit"
-    subjects = [
-      {
-        kind      = "Group"
-        name      = "developers"
-        api_group = "rbac.authorization.k8s.io"
-      }
-    ]
-  }
-]
-```
+Use the principle of least privilege:
 
-## Built-in roles to know
+- give only the access that is needed
+- avoid broad admin access for everyone
+- separate production access from development access
 
-- `view` - read-only access
-- `edit` - allows modifying most application resources
-- `admin` - broad namespace administration rights
+## Key Takeaways
 
-## Service accounts for automation
-
-```hcl
-service_accounts = [
-  {
-    namespace = "production"
-    name      = "app-deployer"
-    annotations = {
-      "description" = "Service account for CI/CD deployments"
-    }
-  },
-  {
-    namespace = "production"
-    name      = "monitoring-agent"
-    annotations = {
-      "description" = "Service account for monitoring tools"
-    }
-  }
-]
-```
-
-## Least privilege principle
-
-```hcl
-role_bindings = [
-  {
-    namespace = "production"
-    role_name = "view"
-    subjects = [
-      {
-        kind = "Group"
-        name = "all-developers"
-      }
-    ]
-  },
-  {
-    namespace = "production"
-    role_name = "edit"
-    subjects = [
-      {
-        kind = "Group"
-        name = "production-team"
-      }
-    ]
-  },
-  {
-    namespace = "production"
-    role_name = "admin"
-    subjects = [
-      {
-        kind = "Group"
-        name = "production-leads"
-      }
-    ]
-  }
-]
-```
-
-## Common security mistakes
-
-### 1. Giving `admin` to everyone
-
-This breaks least privilege and increases risk.
-
-### 2. Reusing one service account for everything
-
-Each automation purpose should have its own identity when possible.
-
-### 3. Mixing production and development access
-
-Developers may need edit access in development but only read access in production.
-
-### 4. Forgetting to test permissions
-
-Permissions should be validated before relying on them.
-
-## Useful troubleshooting commands
-
-```bash
-kubectl get rolebindings -n production
-kubectl describe rolebinding admin-binding -n production
-kubectl auth can-i create pods --namespace=production --as=user@company.com
-```
-
-## Recommended namespace RBAC pattern
-
-```text
-Cluster Admins
-    │
-    ├── manage cluster-wide resources
-    │
-Platform Team
-    │
-    ├── create namespaces
-    ├── apply quota and policies
-    └── manage baseline RBAC
-    │
-Application Team
-    │
-    ├── edit in dev/staging
-    └── limited access in production
-    │
-Automation Accounts
-    │
-    └── deploy or monitor only what they need
-```
-
-## Key takeaway
-
-Namespaces become meaningful security boundaries only when RBAC is designed carefully. Good namespace security is about giving each team, user, and automation account exactly the access it needs and no more.
+- RBAC controls access in Kubernetes and OpenShift.
+- Namespaces become real security boundaries only when RBAC is designed well.
+- Least privilege is the safest starting point.

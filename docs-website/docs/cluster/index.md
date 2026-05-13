@@ -1,28 +1,63 @@
-# Cluster Infrastructure
+# Cluster Learning Path
 
-## Overview
+## Start Here
 
-Deploy and manage Kubernetes and OpenShift clusters on IBM Cloud for containerized workloads. This guide covers cluster deployment, configuration, and best practices.
+A `cluster` is a group of machines working together to run containers.
 
-!!! info "Prerequisites"
-    Cluster deployment requires a configured VPC foundation. See [VPC Infrastructure](../vpc/README.md) for complete networking setup including [VPC Foundation](../vpc/vpc-foundation.md), [Subnets](../vpc/subnet-service-internals.md), and [Security Groups](../vpc/security-group-service-internals.md).
+Instead of managing every server one by one, you manage the cluster and let it schedule applications for you.
 
-## 📚 Documentation
+In IBM Cloud, clusters usually depend on the VPC foundation you already created.
 
-Comprehensive guides for Kubernetes Service and Red Hat OpenShift on IBM Cloud.
+## Read In This Order
 
-## 🏗️ Cluster Architecture
+### Part 1: Understand the base cluster
 
-Container orchestration with enterprise-grade features including auto-scaling, load balancing, and integrated security.
+1. [OpenShift Fundamentals](base-ocp-vpc/01-openshift-fundamentals.md)
+2. [Cluster Architecture](base-ocp-vpc/02-cluster-architecture.md)
+3. [Prerequisites and Planning](base-ocp-vpc/03-prerequisites-planning.md)
+4. [Cluster Provisioning Flow](base-ocp-vpc/04-cluster-provisioning-flow.md)
+5. [VPC Networking Integration](base-ocp-vpc/06-vpc-networking-integration.md)
+6. [Worker Pools Configuration](base-ocp-vpc/07-worker-pools-configuration.md)
+7. [Security Groups and Isolation](base-ocp-vpc/09-security-groups-network-isolation.md)
+8. [Cluster Endpoints](base-ocp-vpc/12-cluster-endpoints.md)
 
-## 💡 Key Features
+### Part 2: Understand day-to-day operations
 
-- **Managed Kubernetes**: Fully managed Kubernetes service
-- **OpenShift**: Enterprise Kubernetes with developer tools
-- **Auto Scaling**: Horizontal and vertical pod autoscaling
-- **Integrated Security**: Built-in security scanning and policies
-- **Multi-Zone**: High availability across zones
+9. [Add-ons and Extensions](base-ocp-vpc/13-addons-extensions.md)
+10. [Autoscaling](base-ocp-vpc/14-autoscaling-configuration.md)
+11. [Cluster Lifecycle](base-ocp-vpc/18-cluster-lifecycle.md)
+12. [Troubleshooting](base-ocp-vpc/23-troubleshooting.md)
 
-## 🎯 Use Cases
+### Part 3: Understand namespaces
 
-Deploy microservices, CI/CD pipelines, and cloud-native applications.
+13. [Namespace Fundamentals](namespace/01-namespace-fundamentals.md)
+14. [Resource Quotas and Limits](namespace/04-resource-quotas-limits.md)
+15. [RBAC and Security](namespace/05-rbac-security.md)
+16. [Network Policies](namespace/06-network-policies.md)
+
+## Simple Mental Model
+
+```text
+VPC -> Cluster -> Node -> Pod -> Namespace -> Policy
+```
+
+## What To Focus On First
+
+When learning clusters, keep these ideas in order:
+
+1. First understand what problem a cluster solves.
+2. Then understand how it uses VPC, subnets, and worker nodes.
+3. Then learn how teams organize workloads with namespaces and policies.
+
+That order makes the topic much less overwhelming.
+
+## Useful Official References
+
+If you want the product and platform version after reading this learning path, these official docs are useful:
+
+- [IBM Cloud VPC cluster creation](https://cloud.ibm.com/docs/openshift?topic=openshift-cluster-create-vpc-gen2)
+- [IBM Cloud VPC cluster networking basics](https://cloud.ibm.com/docs/openshift?topic=openshift-plan_vpc_basics)
+- [IBM Cloud VPC subnets for OpenShift clusters](https://cloud.ibm.com/docs/openshift?topic=openshift-vpc-subnets)
+- [IBM Cloud worker pools and worker nodes](https://cloud.ibm.com/docs/openshift?topic=openshift-add-workers-vpc)
+- [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)
+- [Kubernetes network policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)

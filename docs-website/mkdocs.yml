@@ -252,7 +252,6 @@ nav:
     - CIDR Planning & IPAM: vpc/cidr-planning-ipam.md
     - Subnet Service: vpc/subnet-service-internals.md
     - Network ACL Architecture: vpc/network-acl-architecture.md
-    - ACL Service Internals: vpc/acl-service-internals.md
     - Security Groups: vpc/security-group-service-internals.md
     - Route Tables: vpc/route-table-service.md
     - VPN Architecture: vpc/vpn-architecture.md
@@ -273,7 +272,6 @@ nav:
     - Layer 4 - Storage Configuration: vsi/vsi-storage-configuration.md
     - Layer 5 - Instance Networking: vsi/vsi-instance-networking.md
     - Layer 6 - Security Groups: vsi/vsi-security-groups.md
-    - Layer 7 - Secondary Interfaces: vsi/vsi-secondary-interfaces.md
     - Layer 8 - Load Balancer: vsi/vsi-load-balancer.md
     - Layer 9 - Observability: vsi/vsi-observability.md
     - Layer 10 - Lifecycle & Recovery: vsi/vsi-lifecycle-recovery.md
@@ -310,7 +308,6 @@ nav:
     - Namespace:
       - Overview: cluster/namespace/index.md
       - 01 Namespace Fundamentals: cluster/namespace/01-namespace-fundamentals.md
-      - 02 Namespace Architecture: cluster/namespace/02-namespace-architecture.md
       - 03 Terraform Module Usage: cluster/namespace/03-terraform-module-usage.md
       - 04 Resource Quotas and Limits: cluster/namespace/04-resource-quotas-limits.md
       - 05 RBAC and Security: cluster/namespace/05-rbac-security.md
@@ -347,8 +344,6 @@ nav:
   
   - Contributing:
     - contributing.md
-    - Code of Conduct: contributing/code-of-conduct.md
-    - Development Guide: contributing/development.md
   
   - Tags: tags.md
 

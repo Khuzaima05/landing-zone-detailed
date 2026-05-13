@@ -1,276 +1,171 @@
-# Layer 5: Instance-Level Networking
+# Instance Networking
 
-> Configuring network interfaces, IP addresses, and public exposure
+[← Previous: Storage Configuration](./vsi-storage-configuration.md) | [Index](./index.md) | [Next: Security Groups →](./vsi-security-groups.md)
 
----
+## What This Step Does
 
-## Overview
+This step gives the VSI its network identity.
 
-The networking stage is where the VSI becomes reachable and capable of communicating with other systems. Until this point, the machine only exists as compute and storage. Networking gives it identity inside the VPC, enables communication with other machines, and optionally exposes it to the internet.
+That includes:
 
----
+- a primary network interface
+- a private IP address
+- optional extra IPs
+- optional internet access
+- optional extra interfaces for advanced designs
 
 ## Primary Network Interface
 
-Every VSI must attach to at least one **network interface** (NIC). The primary network interface connects the VSI to a subnet inside the VPC. When attached, the subnet assigns the interface a **private IP address** from its CIDR range.
+Every VSI needs a main network interface.
 
-### What the Subnet Determines
+That interface connects the server to a subnet in the VPC.
 
-- Which IP range the VSI belongs to
-- Which availability zone the VSI resides in
-- Which route tables apply
-- Whether internet access exists through a public gateway
-- Which ACL rules protect the subnet
+Once connected, the server gets a private IP address from that subnet.
 
-**Example:**
-```
-Subnet CIDR: 10.10.10.0/24
-VSI-1 gets: 10.10.10.4
-VSI-2 gets: 10.10.10.5
+Example:
+
+```text
+Subnet: 10.10.10.0/24
+VSI:    10.10.10.5
 ```
 
----
+## Subnets Are Zonal
+
+In IBM Cloud VPC, subnets are tied to one zone.
+
+That means the server is attached to a zonal subnet, even though the VPC itself is regional.
+
+This matters for availability and design planning.
 
 ## Reserved IPs
 
-Normally, private IP addresses are dynamically assigned. The variable **`manage_reserved_ips`** solves the problem of IP persistence.
+Sometimes you want the server to keep the same private IP even if it is recreated.
 
-### Why Reserved IPs Matter
+That is where `reserved IPs` help.
 
-**Without reserved IPs:**
-```
-VSI created  → Gets IP 10.10.10.5
-VSI deleted  → IP released
-VSI recreated → Gets IP 10.10.10.8 (different!)
-```
+Without a reserved IP:
 
-**With reserved IPs:**
-```
-VSI created  → Gets IP 10.10.10.5
-VSI deleted  → IP remains reserved
-VSI recreated → Gets IP 10.10.10.5 (same!)
-```
+- delete server
+- recreate server
+- IP may change
 
-### Configuration
+With a reserved IP:
 
-```hcl
-manage_reserved_ips = true
-```
+- delete server
+- recreate server
+- IP can stay the same
 
-**When enabled:**
-- Same IP persists across VSI recreations
-- IP becomes an independent resource
-- Prevents application/firewall rule breakage
-- Ensures consistent connectivity
+This is useful for stable environments and predictable connectivity.
 
----
+## Additional Private IPs
 
-## Multiple Private IPs
+A server can sometimes use more than one private IP on an interface.
 
-The variable **`primary_vni_additional_ip_count`** allows multiple private IPs on the same network interface.
+This is useful for:
 
-**Configuration:**
-```hcl
-primary_vni_additional_ip_count = 2
-```
+- special application setups
+- failover cases
+- network appliances
 
-**Result:**
-```
-Primary IP:     10.10.10.5
-Additional IP:  10.10.10.6
-Additional IP:  10.10.10.7
+Beginners usually do not need this first, but it becomes useful in more advanced designs.
+
+## Public Gateway vs Floating IP
+
+IBM Cloud VPC gives two important ways to think about internet connectivity.
+
+### Public gateway
+
+A `public gateway` gives outbound internet access to instances in a subnet.
+
+Simple idea:
+
+```text
+VSI -> Subnet -> Public Gateway -> Internet
 ```
 
-### Use Cases
+This is good when the server needs to reach the internet, but you do not want the internet to start connections directly to that server.
 
-- Hosting multiple applications with different addresses
-- Supporting failover configurations
-- Running network appliances
-- Handling IP-based licensing systems
-- Virtual IP addresses for high availability
+### Floating IP
 
----
+A `floating IP` is a public IP attached to one server interface.
 
-## Floating IPs
+Simple idea:
 
-By default, all addresses are private and only reachable within the VPC. To expose a VSI to the internet, use **`enable_floating_ip`**.
-
-### Floating IP Concept
-
-```
-Internet Traffic
-      ↓
-Floating IP (Public)
-      ↓
-NAT Translation
-      ↓
-Private IP (VSI)
+```text
+Internet -> Floating IP -> Private VSI
 ```
 
-### Configuration
+This is useful for:
 
-```hcl
-enable_floating_ip = true
-```
+- SSH access
+- public web servers
+- bastion hosts
 
-### Without Floating IP
+Based on IBM Cloud VPC behavior, a floating IP gives inbound and outbound connectivity for that specific interface, while a public gateway is mainly for outbound subnet internet access.
 
-- VSI can communicate outward to internet (if public gateway exists)
-- External systems cannot directly initiate connections
-- VSI remains private
+## Important Difference
 
-### With Floating IP
+This is a helpful beginner rule:
 
-- Users can SSH into the machine
-- APIs become publicly accessible
-- Web servers can serve internet traffic
-- Direct inbound connectivity
+- `public gateway` = subnet-level outbound internet access
+- `floating IP` = instance-level public reachability
 
-**Example:**
-```
-Private IP:  10.10.10.5 (internal only)
-Floating IP: 52.116.128.45 (public)
-```
+If both exist for a server, the floating IP is the more direct public-facing path for that interface.
 
----
+## Secondary Interfaces
 
-## Advanced Networking Controls
+Some VSIs need more than one network connection.
 
-| Variable | Purpose |
-|----------|---------|
-| `allow_ip_spoofing` | Allows VSI to send packets from non-assigned IPs (advanced use only) |
-| `placement_group_id` | Influences VSI distribution across physical hosts |
-| `enable_dedicated_host` | Reserves exclusive physical server for customer |
-| `dedicated_host_id` | Specifies which dedicated host to use |
+A `secondary interface` means adding another interface to the same server.
 
-### IP Spoofing
+This is helpful when you want to separate traffic types.
 
-**Default:** Disabled (recommended)
+Examples:
 
-**When to enable:**
-- Network appliances
-- Virtual routers
-- NAT gateways
-- Packet inspection systems
+- one interface for frontend traffic
+- one interface for backend traffic
+- one interface for monitoring or backup traffic
 
-> **Warning:** For normal application workloads, spoofing remains disabled because it weakens network trust boundaries.
+## Same Zone Rule
 
-### Placement Groups
+Secondary interfaces normally connect to subnets in the same zone as the VSI.
 
-Control how VSIs are distributed across physical infrastructure:
+So this is about extra network paths for the same machine, not moving the machine across zones.
 
-**Placement strategies:**
-- **Host spread** - VSIs on different physical hosts (high availability)
-- **Power spread** - VSIs on different power sources (disaster recovery)
+## Why Multiple Interfaces Help
 
-### Dedicated Hosts
+Multiple interfaces can make it easier to:
 
-Reserve an entire physical server for your VSIs:
+- separate public and private traffic
+- isolate backend communication
+- attach different security rules
+- keep monitoring traffic separate
 
-**Benefits:**
-- ✓ Regulatory compliance
-- ✓ Licensing requirements
-- ✓ Performance isolation
-- ✓ Security isolation
+## Simple Example
 
----
+Think of one office building with multiple doors:
 
-## Complete Networking Flow
+- front door for visitors
+- side door for staff
+- service door for deliveries
 
-```
-VSI boots
-    ↓
-Attaches to subnet via network interface
-    ↓
-Subnet assigns private IP addresses
-    ↓
-Security groups and ACLs govern traffic
-    ↓
-Optional reserved IP management ensures persistence
-    ↓
-Optional additional IPs extend capabilities
-    ↓
-Optional floating IPs expose machine publicly
-    ↓
-Routing rules determine packet travel
-    ↓
-Placement rules determine physical location
-```
+The building is still one building, but each door has a different purpose.
 
----
+## Good Beginner Practice
 
-## Best Practices
+Do not give every server a public IP.
 
-### 1. Use Reserved IPs for Production
+Usually:
 
-```
-✓ Good: Enable reserved IPs for stable infrastructure
-✗ Bad: Dynamic IPs that change on recreation
-```
+- web or bastion systems may need public access
+- app and database systems should stay private
 
-### 2. Minimize Public Exposure
+Also, most beginner setups can start with one interface and add more only when the architecture truly needs them.
 
-```
-✓ Good: Only expose necessary services via floating IP
-✗ Bad: Floating IPs on all VSIs
-```
+## Key Takeaways
 
-### 3. Plan IP Addressing
-
-```
-✓ Good: Document IP assignments
-✗ Bad: Random IP allocation
-```
-
-### 4. Placement Strategy
-
-```
-✓ Good: Use host spread for high availability
-✗ Bad: All VSIs on same physical host
-```
-
----
-
-## Common Patterns
-
-### Pattern 1: Private Application Server
-
-```hcl
-manage_reserved_ips  = true
-enable_floating_ip   = false
-allow_ip_spoofing    = false
-```
-
-### Pattern 2: Public Web Server
-
-```hcl
-manage_reserved_ips  = true
-enable_floating_ip   = true
-allow_ip_spoofing    = false
-```
-
-### Pattern 3: Multi-IP Application
-
-```hcl
-manage_reserved_ips             = true
-primary_vni_additional_ip_count = 3
-enable_floating_ip              = true
-```
-
-### Pattern 4: Network Appliance
-
-```hcl
-manage_reserved_ips  = true
-allow_ip_spoofing    = true
-enable_floating_ip   = true
-```
-
----
-
-## Next Layer
-
-Once instance networking is configured, proceed to:
-
-**[Layer 6: Security Groups →](vsi-security-groups.md)**
-
----
+- Instance networking gives the server its IP identity.
+- The subnet provides the private IP.
+- Reserved IPs help keep addresses stable.
+- Public gateways and floating IPs solve different internet access needs.
+- Secondary interfaces are useful for advanced traffic separation.

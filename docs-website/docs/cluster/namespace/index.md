@@ -15,14 +15,13 @@ Namespaces are one of the most important building blocks in Kubernetes and OpenS
 If you are new to the topic, read these pages in order:
 
 1. [Namespace Fundamentals](01-namespace-fundamentals.md)
-2. [Namespace Architecture](02-namespace-architecture.md)
-3. [Terraform Module Usage](03-terraform-module-usage.md)
-4. [Resource Quotas and Limits](04-resource-quotas-limits.md)
-5. [RBAC and Security](05-rbac-security.md)
-6. [Network Policies](06-network-policies.md)
-7. [Terraform Mapping](07-terraform-mapping.md)
-8. [Best Practices](08-best-practices.md)
-9. [Troubleshooting](09-troubleshooting.md)
+2. [Terraform Module Usage](03-terraform-module-usage.md)
+3. [Resource Quotas and Limits](04-resource-quotas-limits.md)
+4. [RBAC and Security](05-rbac-security.md)
+5. [Network Policies](06-network-policies.md)
+6. [Terraform Mapping](07-terraform-mapping.md)
+7. [Best Practices](08-best-practices.md)
+8. [Troubleshooting](09-troubleshooting.md)
 
 ## At a glance
 

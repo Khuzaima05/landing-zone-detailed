@@ -9,15 +9,14 @@
   // Global ordered list of all tracked documentation pages
   // This represents the complete learning journey across all sections
   const allPages = [
-    // VPC Infrastructure (18 pages)
+    // VPC Infrastructure
     { path: 'vpc/index', title: 'VPC Overview', section: 'VPC' },
     { path: 'vpc/vpc-foundation', title: 'VPC Foundation', section: 'VPC' },
     { path: 'vpc/vpc-service-internals', title: 'VPC Service Internals', section: 'VPC' },
     { path: 'vpc/zones-datacenter-architecture', title: 'Zones & Datacenters', section: 'VPC' },
     { path: 'vpc/cidr-planning-ipam', title: 'CIDR Planning', section: 'VPC' },
     { path: 'vpc/subnet-service-internals', title: 'Subnet Service', section: 'VPC' },
-    { path: 'vpc/network-acl-architecture', title: 'Network ACL', section: 'VPC' },
-    { path: 'vpc/acl-service-internals', title: 'ACL Internals', section: 'VPC' },
+    { path: 'vpc/network-acl-architecture', title: 'Network ACLs', section: 'VPC' },
     { path: 'vpc/security-group-service-internals', title: 'Security Groups', section: 'VPC' },
     { path: 'vpc/route-table-service', title: 'Route Tables', section: 'VPC' },
     { path: 'vpc/vpn-architecture', title: 'VPN', section: 'VPC' },
@@ -29,7 +28,7 @@
     { path: 'vpc/terraform-mapping', title: 'Terraform Mapping', section: 'VPC' },
     { path: 'vpc/outputs-downstream-consumption', title: 'Outputs', section: 'VPC' },
     
-    // VSI Infrastructure (13 pages)
+    // VSI Infrastructure
     { path: 'vsi/index', title: 'VSI Overview', section: 'VSI' },
     { path: 'vsi/vsi-provisioning-overview', title: 'Provisioning Overview', section: 'VSI' },
     { path: 'vsi/vsi-resource-scoping', title: 'Resource Scoping', section: 'VSI' },
@@ -38,13 +37,12 @@
     { path: 'vsi/vsi-storage-configuration', title: 'Storage', section: 'VSI' },
     { path: 'vsi/vsi-instance-networking', title: 'Networking', section: 'VSI' },
     { path: 'vsi/vsi-security-groups', title: 'Security Groups', section: 'VSI' },
-    { path: 'vsi/vsi-secondary-interfaces', title: 'Secondary Interfaces', section: 'VSI' },
     { path: 'vsi/vsi-load-balancer', title: 'Load Balancer', section: 'VSI' },
     { path: 'vsi/vsi-observability', title: 'Observability', section: 'VSI' },
     { path: 'vsi/vsi-lifecycle-recovery', title: 'Lifecycle', section: 'VSI' },
     { path: 'vsi/vsi-architecture-summary', title: 'Architecture Summary', section: 'VSI' },
     
-    // Cluster Infrastructure (35 pages - base-ocp-vpc + namespace)
+    // Cluster Infrastructure
     { path: 'cluster/index', title: 'Cluster Overview', section: 'Cluster' },
     { path: 'cluster/base-ocp-vpc/index', title: 'Base OCP VPC', section: 'Cluster' },
     { path: 'cluster/base-ocp-vpc/01-openshift-fundamentals', title: 'OpenShift Fundamentals', section: 'Cluster' },
@@ -73,7 +71,6 @@
     { path: 'cluster/base-ocp-vpc/24-outputs-integration', title: 'Outputs', section: 'Cluster' },
     { path: 'cluster/namespace/index', title: 'Namespace Overview', section: 'Cluster' },
     { path: 'cluster/namespace/01-namespace-fundamentals', title: 'Namespace Fundamentals', section: 'Cluster' },
-    { path: 'cluster/namespace/02-namespace-architecture', title: 'Namespace Architecture', section: 'Cluster' },
     { path: 'cluster/namespace/03-terraform-module-usage', title: 'Terraform Module', section: 'Cluster' },
     { path: 'cluster/namespace/04-resource-quotas-limits', title: 'Resource Quotas', section: 'Cluster' },
     { path: 'cluster/namespace/05-rbac-security', title: 'RBAC Security', section: 'Cluster' },

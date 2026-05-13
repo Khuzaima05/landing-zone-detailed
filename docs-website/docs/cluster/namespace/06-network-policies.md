@@ -1,207 +1,52 @@
-# Network Policies and Namespace Isolation
+# Network Policies
 
-## Why network isolation matters
+[← Previous: RBAC and Security](./05-rbac-security.md) | [Index](./index.md) | [Next: Terraform Mapping →](./07-terraform-mapping.md)
 
-Namespaces organize workloads, but they do not automatically block traffic between workloads. If network policy is not configured, pods may be able to communicate more freely than you expect.
+## Why Network Policies Matter
 
-This is why namespace design and network policy design often go together.
+Namespaces organize workloads, but they do not automatically block traffic between them.
 
-## What a NetworkPolicy does
+That is where `NetworkPolicy` becomes important.
 
-A Kubernetes `NetworkPolicy` controls which traffic is allowed to enter or leave selected pods.
+## What a Network Policy Does
 
-It commonly defines:
+A `NetworkPolicy` controls which pods are allowed to send or receive traffic.
 
-- which pods can receive traffic
-- which pods can send traffic
-- which namespaces are allowed as traffic sources or destinations
-- which ports and protocols are allowed
+It can define:
 
-## Terraform example from the original document
+- allowed sources
+- allowed destinations
+- allowed ports
 
-```hcl
-network_policies = {
-  frontend = {
-    pod_selector = {
-      match_labels = {
-        tier = "frontend"
-      }
-    }
-    policy_types = ["Ingress", "Egress"]
+## Simple Example
 
-    ingress = [
-      {
-        from = []
-        ports = [
-          {
-            protocol = "TCP"
-            port     = 80
-          },
-          {
-            protocol = "TCP"
-            port     = 443
-          }
-        ]
-      }
-    ]
+You may want rules like:
 
-    egress = [
-      {
-        to = [
-          {
-            namespace_selector = {
-              match_labels = {
-                tier = "backend"
-              }
-            }
-          }
-        ]
-        ports = [
-          {
-            protocol = "TCP"
-            port     = 8080
-          }
-        ]
-      }
-    ]
-  }
+- frontend can talk to backend
+- backend can talk to database
+- database should not accept random traffic from anywhere else
 
-  backend = {
-    pod_selector = {
-      match_labels = {
-        tier = "backend"
-      }
-    }
-    policy_types = ["Ingress", "Egress"]
+This creates a cleaner and safer traffic design.
 
-    ingress = [
-      {
-        from = [
-          {
-            namespace_selector = {
-              match_labels = {
-                tier = "frontend"
-              }
-            }
-          }
-        ]
-        ports = [
-          {
-            protocol = "TCP"
-            port     = 8080
-          }
-        ]
-      }
-    ]
+## Important Beginner Idea
 
-    egress = [
-      {
-        to = [
-          {
-            namespace_selector = {
-              match_labels = {
-                tier = "database"
-              }
-            }
-          }
-        ]
-        ports = [
-          {
-            protocol = "TCP"
-            port     = 5432
-          }
-        ]
-      }
-    ]
-  }
+Namespaces create logical boundaries.
 
-  database = {
-    pod_selector = {
-      match_labels = {
-        tier = "database"
-      }
-    }
-    policy_types = ["Ingress"]
+Network policies create traffic boundaries.
 
-    ingress = [
-      {
-        from = [
-          {
-            namespace_selector = {
-              match_labels = {
-                tier = "backend"
-              }
-            }
-          }
-        ]
-        ports = [
-          {
-            protocol = "TCP"
-            port     = 5432
-          }
-        ]
-      }
-    ]
-  }
-}
-```
+You usually need both for strong isolation.
 
-## What this policy model does
+## Good Practice
 
-- frontend accepts traffic on ports 80 and 443
-- frontend can send traffic to backend on port 8080
-- backend accepts traffic only from frontend
-- backend can send traffic only to database on port 5432
-- database accepts traffic only from backend
+A common safe mindset is:
 
-## Default deny pattern
+- block by default
+- allow only what is needed
 
-```hcl
-network_policies = {
-  for ns in var.namespaces :
-  ns.name => {
-    pod_selector = {
-      match_labels = {
-        namespace = ns.name
-      }
-    }
-    policy_types = ["Ingress", "Egress"]
+That is often called a zero-trust style starting point.
 
-    ingress = []
-    egress  = []
-  }
-}
-```
+## Key Takeaways
 
-This creates a zero-trust starting point where traffic is blocked unless explicitly allowed.
-
-## Common mistakes
-
-### 1. Assuming namespaces alone isolate traffic
-
-They do not. Network policies must be defined.
-
-### 2. Forgetting egress rules
-
-Outgoing traffic also needs control.
-
-### 3. Using labels inconsistently
-
-If namespace labels are inconsistent, selectors become unreliable.
-
-### 4. Not testing policies
-
-Always validate policy behavior in a lower environment first.
-
-## Troubleshooting commands
-
-```bash
-kubectl get networkpolicies -n production
-kubectl describe networkpolicy allow-frontend -n production
-kubectl run test-pod --image=busybox -n production -- \
-  wget -O- http://backend-service.backend.svc.cluster.local:8080
-```
-
-## Key takeaway
-
-Namespaces define the logical boundary, and network policies define the traffic rules across that boundary. For secure multi-tenant Kubernetes, both are necessary.
+- Network policies control pod-to-pod traffic.
+- Namespaces alone do not fully isolate network traffic.
+- Good policies allow only the intended communication paths.

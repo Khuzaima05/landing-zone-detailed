@@ -1,94 +1,56 @@
-# VSI Infrastructure
+# VSI Learning Path
 
-## Overview
+## Start Here
 
-Virtual Server Instances (VSI) provide flexible, scalable compute resources in IBM Cloud VPC. This guide covers VSI deployment, configuration, and management for various workload requirements.
+`VSI` means `Virtual Server Instance`.
 
-!!! info "Prerequisites"
-    VSI deployment requires a configured VPC foundation. See [VPC Infrastructure](../vpc/README.md) for complete networking setup including [VPC Foundation](../vpc/vpc-foundation.md), [Subnets](../vpc/subnet-service-internals.md), and [Security Groups](../vpc/security-group-service-internals.md).
+It is simply a cloud server that runs inside your VPC.
 
-## 📚 Documentation
+If VPC is the network foundation, then VSI is the machine you actually use to run:
 
-The VSI infrastructure documentation is organized into layered chapters covering the complete provisioning flow:
+- websites
+- backend apps
+- test machines
+- jump boxes
+- small databases
 
-- **[Provisioning Overview](vsi-provisioning-overview.md)** - Start here for architecture overview
-- **[Layer 1: Resource Scoping](vsi-resource-scoping.md)** - Resource groups, tags, and IAM
-- **[Layer 2: Network Foundation](vsi-network-foundation.md)** - VPC, subnets, and network setup
-- **[Layer 3: Compute Instantiation](vsi-compute-instantiation.md)** - VSI instances and profiles
-- **[Layer 4: Storage Configuration](vsi-storage-configuration.md)** - Boot volumes and block storage
-- **[Layer 5: Instance Networking](vsi-instance-networking.md)** - Network interfaces and IPs
-- **[Layer 6: Security Groups](vsi-security-groups.md)** - Security group configuration
-- **[Layer 7: Secondary Interfaces](vsi-secondary-interfaces.md)** - Multi-homed networking
-- **[Layer 8: Load Balancer](vsi-load-balancer.md)** - Load balancer integration
-- **[Layer 9: Observability](vsi-observability.md)** - Monitoring and logging
-- **[Layer 10: Lifecycle & Recovery](vsi-lifecycle-recovery.md)** - Lifecycle management
-- **[Architecture Summary](vsi-architecture-summary.md)** - Complete architecture overview
+## Read In This Order
 
-For quick reference, see the **[README](README.md)** for common use cases and examples.
+1. [Provisioning Overview](vsi-provisioning-overview.md)
+2. [Resource Scoping](vsi-resource-scoping.md)
+3. [Network Foundation](vsi-network-foundation.md)
+4. [Compute Instantiation](vsi-compute-instantiation.md)
+5. [Storage Configuration](vsi-storage-configuration.md)
+6. [Instance Networking](vsi-instance-networking.md)
+7. [Security Groups](vsi-security-groups.md)
+8. [Load Balancer](vsi-load-balancer.md)
+9. [Observability](vsi-observability.md)
+10. [Lifecycle and Recovery](vsi-lifecycle-recovery.md)
+11. [Architecture Summary](vsi-architecture-summary.md)
 
-## 🏗️ VSI Architecture
+## Simple Mental Model
 
-```mermaid
-graph TB
-    subgraph "VPC"
-        subgraph "Public Subnet"
-            FIP[Floating IP]
-            VSI1[VSI - Web Tier]
-        end
-        
-        subgraph "Private Subnet"
-            VSI2[VSI - App Tier]
-            VSI3[VSI - App Tier]
-        end
-        
-        subgraph "Data Subnet"
-            VSI4[VSI - Database]
-        end
-        
-        LB[Load Balancer]
-        SG1[Security Group - Web]
-        SG2[Security Group - App]
-        SG3[Security Group - DB]
-        
-        FIP --> VSI1
-        LB --> VSI1
-        VSI1 --> VSI2
-        VSI1 --> VSI3
-        VSI2 --> VSI4
-        VSI3 --> VSI4
-        
-        SG1 --> VSI1
-        SG2 --> VSI2
-        SG2 --> VSI3
-        SG3 --> VSI4
-    end
-    
-    style VSI1 fill:#0f62fe,color:#fff
-    style VSI2 fill:#0f62fe,color:#fff
-    style VSI3 fill:#0f62fe,color:#fff
-    style VSI4 fill:#0f62fe,color:#fff
-    style LB fill:#24a148,color:#fff
-    style FIP fill:#009d9a,color:#fff
+```text
+VPC -> Subnet -> VSI -> Storage + Security + Monitoring
 ```
 
-## 💡 Key Features
+## What To Focus On First
 
-- **Flexible Profiles**: Choose from balanced, compute, memory, or storage-optimized profiles
-- **Custom Images**: Use stock images or create custom images
-- **Auto Scaling**: Scale instances based on demand
-- **High Availability**: Deploy across multiple zones
-- **Security**: Integrated with VPC security features
+When learning VSI for the first time, focus on these questions:
 
-## 🎯 Common Use Cases
+1. Which subnet will the server use?
+2. Which profile gives enough CPU and memory?
+3. Which security rules allow access?
+4. Does the server need a public IP or only a private IP?
 
-=== "Web Servers"
-    Deploy scalable web server infrastructure with load balancing and auto-scaling.
+If those four things are clear, the rest of the section becomes much easier.
 
-=== "Application Servers"
-    Run business applications with appropriate compute and memory resources.
+## Useful Official References
 
-=== "Database Servers"
-    Host databases with storage-optimized profiles and backup strategies.
+If you want deeper product detail after finishing this section, these IBM Cloud pages are helpful:
 
-=== "Development/Test"
-    Create isolated environments for development and testing workloads.
+- [IBM Cloud VPC overview](https://cloud.ibm.com/docs/vpc?topic=vpc-about-vpc)
+- [IBM Cloud subnets](https://cloud.ibm.com/docs/vpc?topic=vpc-about-subnets-vpc)
+- [IBM Cloud floating IPs](https://cloud.ibm.com/docs/vpc?topic=vpc-fip-about)
+- [IBM Cloud public gateways](https://cloud.ibm.com/docs/vpc?topic=vpc-about-public-gateways)
+- [IBM Cloud application load balancers](https://cloud.ibm.com/docs/vpc?topic=vpc-load-balancers-about)

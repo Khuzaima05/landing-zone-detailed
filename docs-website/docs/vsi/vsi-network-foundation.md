@@ -1,242 +1,104 @@
-# Layer 2: Network Foundation
+# Network Foundation
 
-> Selecting the networking environment for VSI deployment
+[← Previous: Resource Scoping](./vsi-resource-scoping.md) | [Index](./index.md) | [Next: Compute Instantiation →](./vsi-compute-instantiation.md)
 
----
+## What This Step Does
 
-## Overview
+This step decides where the VSI will live in the network.
 
-The network foundation is defined through VPC-related inputs. At this stage, the module is not yet creating machines—it is selecting the networking environment into which machines will later attach.
+Before a server can start, it needs:
 
----
+- a `VPC`
+- a `subnet`
+- a `zone`
 
-## Key Concepts
+Without those, the server has nowhere to attach.
 
-The variable `vpc_id` selects the isolated virtual network where the VSI will operate. The `subnets` list determines the exact network segments and zones where instances are placed.
+## VPC and Subnet
 
-This layer determines:
+The `VPC` is the large private network.
 
-- ✓ IP address ranges
-- ✓ Availability zones
-- ✓ Routing behavior
-- ✓ Internet access paths
-- ✓ Subnet-level ACL protections
+The `subnet` is the smaller part inside that VPC where the server gets its private IP address.
 
-> **Important:** The subnet effectively becomes the "location" where the VSI will live. Without this networking layer, the machine would have nowhere to attach.
+Simple picture:
 
----
-
-## VPC Selection
-
-The `vpc_id` variable anchors the VSI to a specific virtual private cloud.
-
-**What VPC provides:**
-- Isolated network environment
-- Software-defined networking
-- Private IP address space
-- Network segmentation
-- Security boundaries
-
-**Example:**
-```hcl
-vpc_id = "r006-abc123-vpc-id"
+```text
+VPC
+  -> Subnet
+      -> VSI
 ```
 
-All VSIs deployed will exist within this VPC's network boundaries.
+## What the Subnet Decides
 
----
+The chosen subnet affects:
 
-## Subnet Configuration
+- the private IP range
+- the availability zone
+- the route path
+- whether internet access is possible
+- which subnet-level ACL rules apply
 
-The `subnets` variable is a list that determines where VSIs are placed.
+So the subnet is not just an IP block. It is the server's actual network location.
 
-**Subnet object structure:**
-```hcl
-subnets = [
-  {
-    id   = "subnet-1-id"
-    zone = "us-south-1"
-    cidr = "10.10.10.0/24"
-  },
-  {
-    id   = "subnet-2-id"
-    zone = "us-south-2"
-    cidr = "10.10.20.0/24"
-  }
-]
+## Multi-Zone Thinking
+
+You may choose subnets in more than one zone.
+
+Example:
+
+```text
+us-south-1 -> subnet A
+us-south-2 -> subnet B
+us-south-3 -> subnet C
 ```
 
-### Multi-Zone Distribution
+This helps with high availability because workloads can be spread across zones.
 
-The module distributes VSIs across zones for high availability:
+## VSI Per Subnet
 
-```
-Subnet 1 (Zone 1)
-  └── VSI-1, VSI-2, VSI-3
+Some modules let you define how many VSIs should be created in each subnet.
 
-Subnet 2 (Zone 2)
-  └── VSI-4, VSI-5, VSI-6
-```
+Example:
 
----
-
-## Horizontal Scaling
-
-The `vsi_per_subnet` variable drives horizontal scaling.
-
-**Example:**
-```hcl
-vsi_per_subnet = 3
-subnets = [subnet-1, subnet-2]
+```text
+2 subnets
+3 VSIs per subnet
 ```
 
-**Result:**
-- 3 VSIs in subnet-1
-- 3 VSIs in subnet-2
-- Total: 6 VSIs
+Result:
 
-**Scaling pattern:**
-```
-vsi_per_subnet × number_of_subnets = total_vsis
+```text
+6 VSIs total
 ```
 
----
+This is a simple way to scale horizontally.
 
-## What Subnet Determines
+## Beginner Example
 
-### 1. IP Address Range
-Each VSI receives a private IP from the subnet's CIDR block.
+Suppose you want application servers in two zones:
 
-**Example:**
-```
-Subnet CIDR: 10.10.10.0/24
-VSI-1: 10.10.10.4
-VSI-2: 10.10.10.5
-VSI-3: 10.10.10.6
+```text
+Subnet 1 in zone 1 -> app server 1, app server 2
+Subnet 2 in zone 2 -> app server 3, app server 4
 ```
 
-### 2. Availability Zone
-The subnet's zone determines the physical datacenter location.
+Now the application is less dependent on only one datacenter zone.
 
-**Multi-zone architecture:**
-```
-us-south-1 → Datacenter A
-us-south-2 → Datacenter B
-us-south-3 → Datacenter C
-```
+## Before You Create the VSI
 
-### 3. Routing Behavior
-Subnets have attached route tables that control traffic flow.
+Make sure the network already exists:
 
-**Routing decisions:**
-- Internal VPC traffic
-- Internet-bound traffic
-- Cross-VPC traffic
-- On-premises connectivity
+- VPC created
+- subnets created
+- enough IP space available
+- routes ready
+- gateways added if needed
 
-### 4. Internet Access
-Subnets can have public gateways attached for outbound internet access.
+If the network is not ready, the server deployment will not work properly.
 
-**With public gateway:**
-```
-VSI → Subnet → Public Gateway → Internet
-```
+## Key Takeaways
 
-**Without public gateway:**
-```
-VSI → Subnet → (No internet access)
-```
-
-### 5. Network ACLs
-Subnet-level access control lists provide the first layer of security.
-
-**ACL protection:**
-```
-Internet
-    ↓
-ACL Rules (Subnet level)
-    ↓
-VSI
-```
-
----
-
-## Network Foundation Flow
-
-```
-Select VPC
-    ↓
-Define subnets (with zones)
-    ↓
-Set vsi_per_subnet
-    ↓
-Module calculates distribution
-    ↓
-VSIs placed in subnets
-    ↓
-Each VSI inherits:
-  - IP range
-  - Zone location
-  - Routing rules
-  - Gateway access
-  - ACL protection
-```
-
----
-
-## Pre-Requisites
-
-Before deploying VSIs, ensure:
-
-1. ✓ VPC exists
-2. ✓ Subnets created in desired zones
-3. ✓ Subnets have appropriate CIDR blocks
-4. ✓ Route tables configured
-5. ✓ Public gateways attached (if internet access needed)
-6. ✓ ACLs configured
-
-> **Critical:** The network foundation must exist before VSI deployment. VSIs cannot create their own network infrastructure.
-
-**VPC Foundation Resources:**
-- [VPC Foundation](../vpc/vpc-foundation.md) - Core VPC concepts and architecture
-- [Subnet Service Internals](../vpc/subnet-service-internals.md) - Detailed subnet design and configuration
-- [CIDR Planning](../vpc/cidr-planning-ipam.md) - IP address planning strategies
-- [Network ACL Architecture](../vpc/network-acl-architecture.md) - Subnet-level security
-
----
-
-## Best Practices
-
-### 1. Multi-Zone Deployment
-```
-✓ Good: Deploy across 3 zones
-✗ Bad: Single zone (no redundancy)
-```
-
-### 2. Appropriate Subnet Sizing
-```
-✓ Good: /24 subnet (254 hosts)
-✗ Bad: /28 subnet (14 hosts) - too small
-```
-
-### 3. Consistent Naming
-```
-✓ Good: prod-web-subnet-zone1
-✗ Bad: subnet-abc123
-```
-
-### 4. Zone Distribution
-```
-✓ Good: Even distribution across zones
-✗ Bad: All VSIs in one zone
-```
-
----
-
-## Next Layer
-
-Once network foundation is established, proceed to:
-
-**[Layer 3: Compute Instantiation →](vsi-compute-instantiation.md)**
-
----
+- The network foundation decides where the VSI lives.
+- A server attaches to a subnet inside a VPC.
+- The subnet affects IPs, routing, and zone placement.
+- Multi-zone design improves availability.

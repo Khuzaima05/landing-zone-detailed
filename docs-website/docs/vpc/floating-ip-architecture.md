@@ -1,6 +1,6 @@
 # 🌐 Floating IP Architecture — Overview
 
-[← Previous: Transit Gateway Integration](./transit-gateway-integration.md) | [Index](./README.md) | [Next: Load Balancer Architecture →](./load-balancer-architecture.md)
+[← Previous: Transit Gateway Integration](./transit-gateway-integration.md) | [Index](./index.md) | [Next: Load Balancer Architecture →](./load-balancer-architecture.md)
 
 ---
 
@@ -325,4 +325,4 @@ Application Servers (private)
 
 ---
 
-[← Previous: Transit Gateway Integration](./transit-gateway-integration.md) | [Index](./README.md) | [Next: Load Balancer Architecture →](./load-balancer-architecture.md)
+[← Previous: Transit Gateway Integration](./transit-gateway-integration.md) | [Index](./index.md) | [Next: Load Balancer Architecture →](./load-balancer-architecture.md)

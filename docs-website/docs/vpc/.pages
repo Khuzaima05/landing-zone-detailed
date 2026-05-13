@@ -1,0 +1,18 @@
+nav:
+  - index.md
+  - vpc-foundation.md
+  - vpc-service-internals.md
+  - zones-datacenter-architecture.md
+  - cidr-planning-ipam.md
+  - subnet-service-internals.md
+  - network-acl-architecture.md
+  - security-group-service-internals.md
+  - route-table-service.md
+  - transit-gateway-integration.md
+  - floating-ip-architecture.md
+  - load-balancer-architecture.md
+  - flow-logs-observability.md
+  - hub-spoke-dns-architecture.md
+  - outputs-downstream-consumption.md
+  - terraform-mapping.md
+  - vpn-architecture.md

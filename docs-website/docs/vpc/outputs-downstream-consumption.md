@@ -1,6 +1,6 @@
 # 📤 Outputs and Downstream Consumption — Deep Beginner Explanation
 
-[← Previous: Flow Logs and Observability](./flow-logs-observability.md) | [Index](./README.md) | [Next: End of Topics →](./README.md)
+[← Previous: Flow Logs and Observability](./flow-logs-observability.md) | [Index](./index.md) | [Next: End of Topics →](./index.md)
 
 ---
 
@@ -340,7 +340,7 @@ Server Deployed
 Without subnet outputs:
 > **VSI deployment impossible**
 
-> **For VSI deployment details:** See [VSI Infrastructure](../vsi/README.md) and [VSI Network Foundation](../vsi/vsi-network-foundation.md)
+> **For VSI deployment details:** See [VSI Infrastructure](../vsi/index.md) and [VSI Network Foundation](../vsi/vsi-network-foundation.md)
 
 ---
 
@@ -367,7 +367,7 @@ Worker Nodes Created
 
 Networking must already exist before Kubernetes deployment begins.
 
-> **For cluster deployment details:** See [Cluster Infrastructure](../cluster/README.md) and [VPC Networking Integration](../cluster/base-ocp-vpc/06-vpc-networking-integration.md)
+> **For cluster deployment details:** See [Cluster Infrastructure](../cluster/index.md) and [VPC Networking Integration](../cluster/base-ocp-vpc/06-vpc-networking-integration.md)
 
 ---
 
@@ -764,4 +764,4 @@ is later constructed on top of that foundation using the exported outputs.
 
 ---
 
-[← Previous: Flow Logs and Observability](./flow-logs-observability.md) | [Index](./README.md) | [Next: End of Topics →](./README.md)
+[← Previous: Flow Logs and Observability](./flow-logs-observability.md) | [Index](./index.md) | [Next: End of Topics →](./index.md)

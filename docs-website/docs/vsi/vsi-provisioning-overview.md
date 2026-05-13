@@ -1,144 +1,91 @@
 # VSI Provisioning Overview
 
-> Understanding the complete Virtual Server Instance provisioning flow in IBM Cloud VPC
+[Index](./index.md) | [Next: Resource Scoping →](./vsi-resource-scoping.md)
 
----
+## What This Section Is About
 
-## The VSI Provisioning Flow
+This section explains how a `VSI` is created from start to finish.
 
-The VSI provisioning flow in this module starts at the **account and resource scoping layer**, where `resource_group_id`, `prefix`, `tags`, and `access_tags` define ownership, naming, and governance boundaries. Every resource created—VSI, volumes, network interfaces—gets grouped under a specific resource group and inherits tagging for identification and access control. The prefix enforces consistent naming across all generated resources, ensuring uniqueness and traceability, while access_tags integrate with IAM to control who can operate on the deployed VSI resources.
+`VSI` means `Virtual Server Instance`, which is simply a cloud server.
 
-The next layer is the **network attachment**, which is entirely dependent on pre-existing VPC infrastructure. The `vpc_id` anchors the VSI to a specific virtual network, and the `subnets` list determines exactly where instances are placed. Each subnet object includes id, zone, and optional CIDR, meaning the module distributes VSIs zone-wise. The variable `vsi_per_subnet` drives horizontal scaling: for each subnet provided, that number of VSI instances is created. This establishes the fundamental topology—multi-zone distribution for availability—where each VSI gets deployed inside a specific subnet and inherits its routing, gateway access, and network policies.
+When a VSI is created, IBM Cloud does not create "just one thing." It creates a server by joining several parts together:
 
-The complete flow is strictly layered: resource scoping defines ownership, VPC inputs define network placement, compute variables define the machine, storage variables attach persistence, networking variables expose and connect the instance, security variables restrict traffic, and optional integrations (load balancer, logging, monitoring) extend functionality. Each variable directly maps to a specific API call or resource configuration, and the module enforces constraints through validations to ensure the final VSI deployment is consistent, secure, and reproducible.
+- the resource group
+- the VPC and subnet
+- the machine profile
+- the boot disk
+- the network interface
+- the security rules
 
----
+## The Simple Order
 
-## Layered Architecture
+A good beginner way to understand VSI creation is:
 
-The VSI infrastructure follows a strict 10-layer architecture:
-
-```
-Layer 1: Resource Scoping & Ownership
-         ↓
-Layer 2: Network Foundation
-         ↓
-Layer 3: Compute Instantiation
-         ↓
-Layer 4: Storage Configuration
-         ↓
-Layer 5: Instance-Level Networking
-         ↓
-Layer 6: Security Groups
-         ↓
-Layer 7: Advanced Networking (Secondary Interfaces)
-         ↓
-Layer 8: Load Balancer Integration
-         ↓
-Layer 9: Observability & Monitoring
-         ↓
-Layer 10: Lifecycle Management & Recovery
+```text
+Choose ownership
+  -> Choose network
+      -> Choose server size
+          -> Choose storage
+              -> Choose connectivity
+                  -> Choose security
 ```
 
-> **Rule:** Nothing skips layers. Each layer builds upon the previous one.
+That is the same order used in this guide.
 
----
+## A VSI Is More Than Just a Machine
 
-## Key Principles
+Many beginners think a server is only CPU and memory.
 
-### 1. Dependency Chain
-Every VSI deployment follows this strict order:
+In cloud platforms, a VSI is better understood like this:
 
-```
-Resource Group
-    ↓
-VPC
-    ↓
-Subnet
-    ↓
-Network Interface
-    ↓
-VSI
-    ↓
-Storage
-    ↓
-Security
-    ↓
-Public Exposure
-    ↓
-Observability
-    ↓
-Recovery
+```text
+VSI = compute + disk + network + security + access
 ```
 
-### 2. Resource Composition
-A VSI is **NOT** just a VM. A VSI is:
+If any one of those parts is missing, the server is not really ready to use.
 
-```
-Compute
-  + Storage
-  + Networking
-  + Security
-  + Routing
-  + Persistence
-  + Observability
-  + Recovery
+## What Happens During Provisioning
 
-...inside a VPC
-```
+When you deploy a VSI, the flow usually looks like this:
 
-### 3. Independent Resources
-Everything in cloud infrastructure is actually **independent resources attached together**:
+1. Pick the resource group and naming style.
+2. Select the VPC and subnet where the server will live.
+3. Choose the machine type, such as small or medium.
+4. Choose the boot image or snapshot.
+5. Attach storage.
+6. Assign private networking, and maybe public access.
+7. Apply security rules.
 
-```
-VSI
- ├── NIC
- ├── Security Group
- ├── Boot Volume
- ├── Floating IP
- ├── SSH Keys
- ├── Monitoring Agent
- └── Load Balancer Membership
-```
+## Easy Example
 
-The VM is just the center attachment point.
+Imagine you are setting up a new computer lab machine in a school:
 
----
+- first you decide which department owns it
+- then which room it will sit in
+- then what hardware it needs
+- then what operating system it will use
+- then which network it connects to
+- then who is allowed to access it
 
-## Terraform Mental Model
+A VSI follows the same logic.
 
-**Terraform does NOT create infrastructure directly.**
+## Reading Path
 
-**Flow:**
-```
-Variables
-   ↓
-Terraform Module
-   ↓
-IBM Provider
-   ↓
-IBM Cloud APIs
-   ↓
-Actual Resources
-```
+Follow these pages in order:
 
-Each variable in the module directly maps to a specific API call or resource configuration.
-
----
-
-## Next Steps
-
-Explore each layer in detail:
-
-1. [Resource Scoping & Ownership](vsi-resource-scoping.md)
+1. [Resource Scoping](vsi-resource-scoping.md)
 2. [Network Foundation](vsi-network-foundation.md)
 3. [Compute Instantiation](vsi-compute-instantiation.md)
 4. [Storage Configuration](vsi-storage-configuration.md)
 5. [Instance Networking](vsi-instance-networking.md)
 6. [Security Groups](vsi-security-groups.md)
-7. [Secondary Interfaces](vsi-secondary-interfaces.md)
-8. [Load Balancer Integration](vsi-load-balancer.md)
-9. [Observability & Monitoring](vsi-observability.md)
-10. [Lifecycle & Recovery](vsi-lifecycle-recovery.md)
+7. [Load Balancer](vsi-load-balancer.md)
+8. [Observability](vsi-observability.md)
+9. [Lifecycle and Recovery](vsi-lifecycle-recovery.md)
 
----
+## Key Takeaways
+
+- A VSI is a cloud server.
+- It depends on VPC and subnet setup.
+- It is built step by step, not all at once.
+- Understanding the order makes the topic much easier.

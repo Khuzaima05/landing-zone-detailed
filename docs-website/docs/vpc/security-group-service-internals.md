@@ -1,6 +1,6 @@
 # 🔒 Security Group Service Internals — Deep Beginner Explanation
 
-[← Previous: ACL Service Internals](./acl-service-internals.md) | [Index](./README.md) | [Next: Route Table Service →](./route-table-service.md)
+[← Previous: Network ACLs](./network-acl-architecture.md) | [Index](./index.md) | [Next: Route Table Service →](./route-table-service.md)
 
 ---
 
@@ -847,7 +847,7 @@ This layered security architecture is fundamental to modern cloud networking.
 
 ---
 
-[← Previous: ACL Service Internals](./acl-service-internals.md) | [Index](./README.md) | [Next: Route Table Service →](./route-table-service.md)
+[← Previous: Network ACLs](./network-acl-architecture.md) | [Index](./index.md) | [Next: Route Table Service →](./route-table-service.md)
 
 ---
 
